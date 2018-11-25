@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbf44e8be8c61b4ea56e130a0124fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPooler: {fileID: 0}
 --- !u!4 &202923792
 Transform:
   m_ObjectHideFlags: 0
@@ -272,11 +273,23 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a5a189d3447e854482677526194f968, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1360911515 stripped
+--- !u!1 &1360911515
 GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 1831972883949750, guid: 0a5a189d3447e854482677526194f968,
     type: 2}
   m_PrefabInternal: {fileID: 1360911514}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1360911517}
+  - component: {fileID: 1360911516}
+  m_Layer: 0
+  m_Name: Pooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!114 &1360911516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,3 +305,17 @@ MonoBehaviour:
   - tag: fireball
     prefab: {fileID: 1351893629410162, guid: bb906dee91ed393418605c22ebed8cca, type: 2}
     size: 10
+--- !u!4 &1360911517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4128883323056986, guid: 0a5a189d3447e854482677526194f968,
+    type: 2}
+  m_PrefabInternal: {fileID: 1360911514}
+  m_GameObject: {fileID: 1360911515}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7418189, y: 1.0292513, z: -0.2004807}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

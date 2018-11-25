@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour {
+    [SerializeField]
+    private List<Pool> pools;
+    private Dictionary<string, Queue<GameObject>> poolDictionary;
+
 
     [System.Serializable]
-    public class Pool
+    private class Pool
     {
-        public string tag;
-        public GameObject prefab;
-        public int size;
+        private string tag;
+        private GameObject prefab;
+        private int size;
     }
 
     #region Singleton
-    public static ObjectPooler Instance;
+    private static ObjectPooler Instance;
 
     private void Awake()
     {
@@ -21,8 +25,7 @@ public class ObjectPooler : MonoBehaviour {
     }
     #endregion Singleton
 
-    public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>>  poolDictionary;
+    
 
 
 	// Use this for initialization
@@ -44,7 +47,7 @@ public class ObjectPooler : MonoBehaviour {
         }
 	}
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    private GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if (!poolDictionary.ContainsKey(tag))
         {
