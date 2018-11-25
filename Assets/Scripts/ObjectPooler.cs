@@ -9,15 +9,15 @@ public class ObjectPooler : MonoBehaviour {
 
 
     [System.Serializable]
-    private class Pool
+    public class Pool
     {
-        private string tag;
-        private GameObject prefab;
-        private int size;
+        public string tag;
+        public GameObject prefab;
+        public int size;
     }
 
     #region Singleton
-    private static ObjectPooler Instance;
+    public static ObjectPooler Instance;
 
     private void Awake()
     {
