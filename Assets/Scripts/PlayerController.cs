@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         Vector3 direction = InputManager.MainInput(); //Get input
         Move(direction);
         SpriteChange(direction);
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Move (Vector3 direction)
     {
-        transform.Translate(Vector3.Normalize(direction) * Time.deltaTime * Movespeed);
+        GetComponent<Rigidbody2D>().transform.Translate(Vector3.Normalize(direction) * Time.deltaTime * Movespeed);
     }
 
     private void SpriteChange(Vector3 direction)
