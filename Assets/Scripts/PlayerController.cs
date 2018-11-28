@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Move (Vector3 direction)
     {
-        playerRigidbody.transform.Translate(Vector3.Normalize(direction) * Time.fixedDeltaTime * Movespeed);
+        playerRigidbody.velocity = (Vector3.Normalize(direction) * Movespeed);
     }
 
     private void SpriteChange(Vector3 direction)
