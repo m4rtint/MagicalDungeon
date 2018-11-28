@@ -10,12 +10,17 @@ public class PlayerController : MonoBehaviour {
     public Sprite rightSprite;
     public Sprite downSprite;
 
-	// Use this for initialization
-	void Start () {
+    private Rigidbody2D playerRigidbody;
+    private SpriteRenderer playerSpriteRenderer;
+
+    // Use this for initialization
+    void Start () {
+        playerRigidbody = GetComponent<Rigidbody2D>();
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         Vector3 direction = InputManager.MainInput(); //Get input
         Move(direction);
         SpriteChange(direction);
@@ -25,7 +30,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Move (Vector3 direction)
     {
-        transform.Translate(Vector3.Normalize(direction) * Time.deltaTime * Movespeed);
+        playerRigidbody.transform.Translate(Vector3.Normalize(direction) * Time.fixedDeltaTime * Movespeed);
     }
 
     private void SpriteChange(Vector3 direction)
@@ -38,19 +43,19 @@ public class PlayerController : MonoBehaviour {
             float angle = Mathf.Atan2(position.y, position.x) * Mathf.Rad2Deg;
             if ((angle <= 45 && angle >= 0) || (angle >= -45 && angle <= 0))
             {
-                GetComponent<SpriteRenderer>().sprite = rightSprite;
+                playerSpriteRenderer.sprite = rightSprite;
             }
             else if (angle >= 135 || angle <= -135)
             {
-                GetComponent<SpriteRenderer>().sprite = leftSprite;
+                playerSpriteRenderer.sprite = leftSprite;
             }
             else if (angle > 0)
             {
-                GetComponent<SpriteRenderer>().sprite = upSprite;
+                playerSpriteRenderer.sprite = upSprite;
             }
             else if (angle < 0)
             {
-                GetComponent<SpriteRenderer>().sprite = downSprite;
+                playerSpriteRenderer.sprite = downSprite;
             }
 
 
@@ -69,22 +74,22 @@ public class PlayerController : MonoBehaviour {
             {
                 if (x > 0)
                 {
-                    GetComponent<SpriteRenderer>().sprite = rightSprite;
+                    playerSpriteRenderer.sprite = rightSprite;
                 }
                 else
                 {
-                    GetComponent<SpriteRenderer>().sprite = leftSprite;
+                    playerSpriteRenderer.sprite = leftSprite;
                 }
             }
             else
             {
                 if (y > 0)
                 {
-                    GetComponent<SpriteRenderer>().sprite = upSprite;
+                    playerSpriteRenderer.sprite = upSprite;
                 }
                 else
                 {
-                    GetComponent<SpriteRenderer>().sprite = downSprite;
+                    playerSpriteRenderer.sprite = downSprite;
                 }
             }
 
