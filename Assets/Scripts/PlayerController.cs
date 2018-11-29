@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-
-    public float Movespeed;
+public class PlayerController : ICharacter {
+    
     public Sprite upSprite;
     public Sprite leftSprite;
     public Sprite rightSprite;
@@ -24,13 +23,11 @@ public class PlayerController : MonoBehaviour {
         Vector3 direction = InputManager.MainInput(); //Get input
         Move(direction);
         SpriteChange(direction);
-
-
 	}
 
     private void Move (Vector3 direction)
     {
-        playerRigidbody.velocity = (Vector3.Normalize(direction) * Movespeed);
+        playerRigidbody.velocity = (Vector3.Normalize(direction) * base.moveSpeed);
     }
 
     private void SpriteChange(Vector3 direction)
@@ -92,14 +89,6 @@ public class PlayerController : MonoBehaviour {
                     playerSpriteRenderer.sprite = downSprite;
                 }
             }
-
         }
-
-            
-
-
-
     }
-
-
 }
