@@ -10,6 +10,8 @@ public class ICharacter : MonoBehaviour {
     float healthPoints;
     [SerializeField]
     protected float moveSpeed;
+    [SerializeField]
+    public bool invulnerable;
 
     protected void Awake()
     {
@@ -29,5 +31,29 @@ public class ICharacter : MonoBehaviour {
     {
         healthPoints += heal;
     }
-	
+
+    public void damagedByEnemy(float damage)
+    {
+        if (!invulnerable)
+        {
+            invulnerable = true;
+            decrementHealth(damage);
+            Invoke("resetInvulnerable", 2);
+        }
+    }
+
+    public void getKnockedBackSolid(Collision2D other, Rigidbody2D self, float knockBackAmount)
+    {
+        if (!invulnerable)
+        {
+            Vector2 knockBack = other.gameObject.transform.position - self.transform.position;
+            self.AddForce(knockBack.normalized * -knockBackAmount);
+        }
+    }
+
+
+    public void resetInvulnerable()
+    {
+        invulnerable = false;
+    }
 }

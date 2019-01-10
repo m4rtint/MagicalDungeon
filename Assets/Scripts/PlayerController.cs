@@ -25,6 +25,16 @@ public class PlayerController : ICharacter {
         SpriteChange(direction);
 	}
 
+    //Behaviour while colliding with another solid object e.g enemy meele
+    void OnCollisionStay2D (Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            getKnockedBackSolid(other, playerRigidbody, 2000);
+            damagedByEnemy(10);
+        }
+    }
+
     private void Move (Vector3 direction)
     {
         playerRigidbody.velocity = (Vector3.Normalize(direction) * base.moveSpeed);
