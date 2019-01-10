@@ -122,6 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 179682049}
   - component: {fileID: 179682050}
+  - component: {fileID: 179682052}
+  - component: {fileID: 179682051}
   m_Layer: 0
   m_Name: ConeSpell
   m_TagString: Untagged
@@ -188,6 +190,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &179682051
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 179682048}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.53125}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.3125, y: 3.0625}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3125, y: 3.0625}
+  m_EdgeRadius: 0
+--- !u!114 &179682052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 179682048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd095aef410ba564ab83b096c134cc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  damagePerSecond: 0.5
 --- !u!1 &379551309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,9 +1674,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 1545498875}
   - {fileID: 1110833116}
   - {fileID: 1927462145}
+  - {fileID: 1545498875}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -5874,6 +5914,7 @@ GameObject:
   - component: {fileID: 1541141926}
   - component: {fileID: 1541141928}
   - component: {fileID: 1541141929}
+  - component: {fileID: 1541141930}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5912,7 +5953,6 @@ MonoBehaviour:
   leftSprite: {fileID: 21300000, guid: ca5ff7d17c701cc49804d61c8f36a2ff, type: 3}
   rightSprite: {fileID: 21300000, guid: 5c57377bcceb57e4b960f2f1c384e946, type: 3}
   downSprite: {fileID: 21300000, guid: ced3febe47498074ca0eb8f25595308a, type: 3}
-  coneSpell: {fileID: 179682048}
 --- !u!212 &1541141927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5994,6 +6034,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1541141930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1541141924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481910ea59fca1b479e89f310e3d04ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coneSpellHolder: {fileID: 379551309}
 --- !u!1 &1545498874
 GameObject:
   m_ObjectHideFlags: 0

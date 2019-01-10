@@ -12,10 +12,6 @@ public class PlayerController : ICharacter {
     private Rigidbody2D playerRigidbody;
     private SpriteRenderer playerSpriteRenderer;
 
-    [Header("Attachments")]
-    [SerializeField]
-    GameObject coneSpell;
-
     // Use this for initialization
     void Start () {
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -27,8 +23,6 @@ public class PlayerController : ICharacter {
         Vector3 direction = InputManager.MainInput(); //Get input
         Move(direction);
         SpriteChange(direction);
-        updateSpellCone();
-
     }
 
     #region CharacterMovement
@@ -43,9 +37,9 @@ public class PlayerController : ICharacter {
         if (Input.GetMouseButton(0)) //If mousebutton is down, look at mouse
         {
             //Convert the player to Screen coordinates
-            Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 position = Utilities.worldToScreenObjectPosition(gameObject);
             position = Input.mousePosition - position;
-            float angle = Mathf.Atan2(position.y, position.x) * Mathf.Rad2Deg;
+            float angle = Utilities.getAngleDegBetween(position.y, position.x);
             if ((angle <= 45 && angle >= 0) || (angle >= -45 && angle <= 0))
             {
                 playerSpriteRenderer.sprite = rightSprite;
@@ -98,19 +92,5 @@ public class PlayerController : ICharacter {
         }
     }
 
-    #endregion
-
-    #region Spells
-    private void updateSpellCone()
-    {
-        //Convert the player to Screen coordinates
-        Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
-        position = Input.mousePosition - position;
-        float angle = Mathf.Atan2(position.y, position.x) * Mathf.Rad2Deg;
-
-        coneSpell.transform.RotateAround(transform.position, transform.forward, 100 * Time.deltaTime);
-        Debug.Log("Mouse Angle from char:" + coneSpell.transform.localEulerAngles.z);
-        Debug.Log("Character angle:" + angle);
-    }
     #endregion
 }
