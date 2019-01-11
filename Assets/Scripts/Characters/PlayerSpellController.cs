@@ -38,11 +38,11 @@ public class PlayerSpellController : MonoBehaviour {
     #region Spells
     private void activateSpellConeIfNeeded()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (InputManager.isFiring())
         {
             coneSpellHolder.SetActive(true);
 
-        } else if (Input.GetMouseButtonUp(0))
+        } else if (InputManager.isNotFiring())
         {
             coneSpellHolder.SetActive(false);
         } 
