@@ -9,4 +9,11 @@ public class EnemyController : ICharacter, IPooledObject {
         //TODO
         Debug.Log("Need to setup Enemy on Spawn");
     }
+
+
+    void Update()
+    {
+        Vector2 playerPosition = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform.position;
+        GetComponent<PolyNavAgent>().SetDestination(playerPosition);
+    }
 }
