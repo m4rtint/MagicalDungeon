@@ -27,8 +27,10 @@ public class ConeSpell : MonoBehaviour {
     {
         if (collision.gameObject.tag == Tags.ENEMY && canDamage)
         {
+            Debug.Log("Triggering");
             canDamage = false;
             Invoke("resetCanDamage", damagePerSecond);
+            collision.gameObject.GetComponent<ICharacter>().decrementHealth(damage);
             //TODO - Do something with enemy - decrement health or something
         }
     }
