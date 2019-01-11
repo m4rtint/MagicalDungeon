@@ -25,4 +25,15 @@ public static class InputManager{
         return new Vector3(MainHorizontal(), MainVertical(), 0.0f );
     }
 
+    public static bool isFiring()
+    {
+        return Input.GetButtonDown("Fire");
+    }
+
+    public static bool isNotFiring()
+    {
+        return Input.GetButtonUp("Fire");
+    }
+
+
 }
