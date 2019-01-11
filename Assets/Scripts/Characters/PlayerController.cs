@@ -23,7 +23,9 @@ public class PlayerController : ICharacter {
         Vector3 direction = InputManager.MainInput(); //Get input
         Move(direction);
         SpriteChange(direction);
-	}
+    }
+
+    #region CharacterMovement
 
     private void Move (Vector3 direction)
     {
@@ -35,9 +37,9 @@ public class PlayerController : ICharacter {
         if (Input.GetMouseButton(0)) //If mousebutton is down, look at mouse
         {
             //Convert the player to Screen coordinates
-            Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 position = Utilities.worldToScreenObjectPosition(gameObject);
             position = Input.mousePosition - position;
-            float angle = Mathf.Atan2(position.y, position.x) * Mathf.Rad2Deg;
+            float angle = Utilities.getAngleDegBetween(position.y, position.x);
             if ((angle <= 45 && angle >= 0) || (angle >= -45 && angle <= 0))
             {
                 playerSpriteRenderer.sprite = rightSprite;
@@ -54,8 +56,6 @@ public class PlayerController : ICharacter {
             {
                 playerSpriteRenderer.sprite = downSprite;
             }
-
-
         }
         else //Else look depending on direction
         {
@@ -91,4 +91,6 @@ public class PlayerController : ICharacter {
             }
         }
     }
+
+    #endregion
 }
