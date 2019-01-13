@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour, IPooledObject {
+public class Fireball : MonoBehaviour, IPooledObject
+{
 
     [SerializeField] float velocity;
     [SerializeField] float secondsDuration;
+    [SerializeField] float damage;
     private float angle;
     private float currentDuration;
 
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         transform.Translate(VectorFromAngle(angle) * velocity);
         currentDuration += Time.fixedDeltaTime;
         if (currentDuration > secondsDuration)
@@ -34,6 +38,15 @@ public class Fireball : MonoBehaviour, IPooledObject {
     {
         Vector3 dir = transform.rotation.eulerAngles;
         angle = Utilities.getAngleDegBetween(dir.y, dir.x) + 90;
-        currentDuration = 0; 
+        currentDuration = 0;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Enemy")
+        {
+            gameObject.SetActive(false);
+            
+        }
     }
 }
