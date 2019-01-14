@@ -33,16 +33,13 @@ public class EnemyController : ICharacter, IPooledObject {
     public override void decrementHealth(float damage)
     {
         base.decrementHealth(damage);
-        if (isHealthZero())
-        {
-            onDeath();
-        } else
+        if (!isHealthZero())
         {
             runAnimation("Damaged");
         }
     }
 
-    void onDeath()
+    protected override void onDeath()
     {
         runAnimation("Death");
         GetComponent<PolyNavAgent>().enabled = false;

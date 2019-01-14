@@ -18,22 +18,26 @@ public class ICharacter : MonoBehaviour {
 
     public virtual void decrementHealth(float damage)
     {
-        healthPoints -= damage;
-        if (healthPoints < 0)
+        healthPoints = Mathf.Max(0, healthPoints - damage);
+        if (isHealthZero())
         {
-            healthPoints = 0;
-            Debug.Log("Death");
+            onDeath();
         }
     }
 
-    public bool isHealthZero()
+    protected bool isHealthZero()
     {
-        return healthPoints <= 0;
+        return healthPoints == 0;
+    }
+
+    protected virtual void onDeath()
+    {
+        gameObject.SetActive(false);
     }
 
     public void incrementHealth(float heal)
     {
         healthPoints += heal;
     }
-	
+
 }
