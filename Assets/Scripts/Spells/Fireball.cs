@@ -10,13 +10,7 @@ public class Fireball : MonoBehaviour, IPooledObject
     [SerializeField] float damage;
     private float angle;
     private float currentDuration;
-
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
+    private string[] listOfObstacleTags = { Tags.ENEMY, Tags.SOLID_OBSTACLE };
 
     // Update is called once per frame
     void Update()
@@ -31,7 +25,7 @@ public class Fireball : MonoBehaviour, IPooledObject
 
     Vector2 VectorFromAngle(float theta)
     {
-        return new Vector2(Mathf.Cos(theta), Mathf.Sin(theta)); // Trig is fun
+        return new Vector2(Mathf.Cos(theta), Mathf.Sin(theta)); 
     }
 
     public void OnObjectSpawn()
@@ -43,10 +37,23 @@ public class Fireball : MonoBehaviour, IPooledObject
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Enemy")
+        GameObject hitTarget = col.gameObject;
+        if (hitTarget.tag == Tags.ENEMY)
         {
-            gameObject.SetActive(false);
-            
+            hitTarget.GetComponent<EnemyController>().decrementHealth(damage);
+        }
+
+        deactivateObjectIfNeeded(hitTarget.tag); 
+    }
+
+    void deactivateObjectIfNeeded(string tag)
+    {
+        for(int i = 0; i < listOfObstacleTags.Length; i++)
+        {
+            if (tag == listOfObstacleTags[i])
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }
