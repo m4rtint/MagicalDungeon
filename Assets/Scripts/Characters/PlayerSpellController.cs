@@ -14,8 +14,21 @@ public class PlayerSpellController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        activateSpellConeIfNeeded();
+        //activateSpellConeIfNeeded();
         updateSpellConeRotation();
+        activateFireball();
+    }
+
+    void activateFireball()
+    {
+        if (InputManager.isFiring())
+        {
+            Vector3 dir = Input.mousePosition - Utilities.worldToScreenObjectPosition(gameObject);
+            float angle = Utilities.getAngleDegBetween(dir.y, dir.x);
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            GameObject fireball = ObjectPooler.Instance.SpawnFromPool("Fireball", transform.position, rotation);
+            fireball.GetComponent<Fireball>().OnObjectSpawn();
+        }
     }
 
     #region Spells

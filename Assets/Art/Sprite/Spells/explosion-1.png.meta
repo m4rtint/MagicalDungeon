@@ -1,19 +1,14 @@
 fileFormatVersion: 2
-guid: f630c5c3bc020ff46bd05c36024a50b8
+guid: 442c466e0df45e748ac1176b616d7c44
 TextureImporter:
   fileIDToRecycleName:
-    21300000: TreeMonster_0
-    21300002: TreeMonster_1
-    21300004: TreeMonster_2
-    21300006: TreeMonster_3
-    21300008: TreeMonster_4
-    21300010: TreeMonster_5
-    21300012: TreeMonster_6
-    21300014: TreeMonster_7
-    21300016: TreeMonster_8
-    21300018: TreeMonster_9
-    21300020: TreeMonster_10
-    21300022: TreeMonster_11
+    21300000: explosion-1_0
+    21300002: explosion-1_1
+    21300004: explosion-1_2
+    21300006: explosion-1_3
+    21300008: explosion-1_4
+    21300010: explosion-1_5
+    21300012: explosion-1_6
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -118,193 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TreeMonster_0
+      name: explosion-1_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 300
-        width: 62
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0216740078ca4744f8edbcbdbe8e0ebb
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TreeMonster_1
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 300
-        width: 70
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4353b67e335a814aaf68e6aadf59cd2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TreeMonster_2
-      rect:
-        serializedVersion: 2
-        x: 202
-        y: 300
-        width: 62
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7fe14e039c7c749479cab460958648c0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TreeMonster_3
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 200
-        width: 50
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e365d92a10d5c3c4f82375ef8f58c7b3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TreeMonster_4
-      rect:
-        serializedVersion: 2
-        x: 110
-        y: 200
-        width: 54
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dae82e7cf99aeb1499868f401f05dfa5
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TreeMonster_5
-      rect:
-        serializedVersion: 2
-        x: 202
-        y: 200
-        width: 62
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60d26dad939c9804da88cfcb47209223
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TreeMonster_6
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 100
-        width: 62
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b67b837e27f4a94fbad6de332c823a4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TreeMonster_7
-      rect:
-        serializedVersion: 2
-        x: 114
-        y: 100
-        width: 54
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9365559dfbf75174985cc9e3a127443a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TreeMonster_8
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 100
-        width: 50
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7ffaf9811577974cac15406349e5b07
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TreeMonster_9
-      rect:
-        serializedVersion: 2
-        x: 14
+        x: 0
         y: 0
-        width: 62
-        height: 86
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,19 +127,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 703e6ed483503404f8cce47dc2051eca
+      spriteID: 46961178f97407848b2583a552dacc74
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TreeMonster_10
+      name: explosion-1_1
       rect:
         serializedVersion: 2
-        x: 104
+        x: 32
         y: 0
-        width: 70
-        height: 88
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -332,19 +147,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3c546c44b979814c81c7e3fce45b6cc
+      spriteID: 9f6d0bc197335c744a96e7a5ae4b7cb4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TreeMonster_11
+      name: explosion-1_2
       rect:
         serializedVersion: 2
-        x: 202
+        x: 64
         y: 0
-        width: 62
-        height: 86
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,7 +167,87 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2abb3081ad46d554ba0ca996ada3799d
+      spriteID: 537f7187bcbf0a6439de34eb8bf7f535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosion-1_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d341d5c413f9cfc4e840d76440aac499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosion-1_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 831f46b4c698f2c43a089f2fed8ee02b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosion-1_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b958747499c8484a8c8e13b935f670a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosion-1_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a75cd75f49fcb44db46c6746e83ddae
       vertices: []
       indices: 
       edges: []
@@ -360,7 +255,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a73656c3a6ffc384e86119e8bf692813
+    spriteID: 605c0f82399cfbd43b24ef029a530288
     vertices: []
     indices: 
     edges: []
