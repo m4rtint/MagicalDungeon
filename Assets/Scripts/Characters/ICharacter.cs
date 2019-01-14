@@ -16,13 +16,18 @@ public class ICharacter : MonoBehaviour {
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
-    public void decrementHealth(float damage)
+    public virtual void decrementHealth(float damage)
     {
         healthPoints = Mathf.Max(0, healthPoints - damage);
-        if (healthPoints == 0)
+        if (isHealthZero())
         {
             onDeath();
         }
+    }
+
+    protected bool isHealthZero()
+    {
+        return healthPoints == 0;
     }
 
     protected virtual void onDeath()
@@ -34,5 +39,5 @@ public class ICharacter : MonoBehaviour {
     {
         healthPoints += heal;
     }
-	
+
 }
