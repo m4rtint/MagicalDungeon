@@ -26,7 +26,7 @@ public class PlayerSpellController : MonoBehaviour {
             Vector3 dir = Input.mousePosition - Utilities.worldToScreenObjectPosition(gameObject);
             float angle = Utilities.getAngleDegBetween(dir.y, dir.x);
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            GameObject fireball = ObjectPooler.Instance.SpawnFromPool("Fireball", transform.position, rotation);
+            GameObject fireball = ObjectPooler.Instance.SpawnFromPool(Pool.FIREBALL, transform.position, rotation);
             fireball.GetComponent<Fireball>().OnObjectSpawn();
         }
     }

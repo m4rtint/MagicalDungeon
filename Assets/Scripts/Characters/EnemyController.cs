@@ -5,23 +5,38 @@ using UnityEngine;
 [RequireComponent(typeof(PolyNavAgent))]
 public class EnemyController : ICharacter, IPooledObject {
 
+    public delegate void EnemyDelegate();
+    public EnemyDelegate onDeathDelegate;
+
+    private PolyNavAgent agent;
+
+    
+    private void Awake()
+    {
+        agent = GetComponent<PolyNavAgent>();
+    }
+
     public void OnObjectSpawn()
     {
-        //TODO
-        Debug.Log("Need to setup Enemy on Spawn");
+        agent.enabled = true;
     }
 
 
     void Update()
     {
-        Vector2 playerPosition = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform.position;
-        GetComponent<PolyNavAgent>().SetDestination(playerPosition);
+        agent.SetDestination(playerPosition());
         updateSpriteDirection();
+    }
+
+    #region Motion
+    private Vector3 playerPosition()
+    {
+        return GameObject.FindGameObjectWithTag(Tags.PLAYER).transform.position;
     }
 
     void updateSpriteDirection()
     {
-        if (GetComponent<PolyNavAgent>().movingDirection.x > 0)
+        if (agent.movingDirection.x > 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         } else
@@ -29,7 +44,9 @@ public class EnemyController : ICharacter, IPooledObject {
             transform.localScale = Vector3.one;
         }
     }
+    #endregion
 
+    #region LifeDeath
     public override void decrementHealth(float damage)
     {
         base.decrementHealth(damage);
@@ -42,7 +59,7 @@ public class EnemyController : ICharacter, IPooledObject {
     protected override void onDeath()
     {
         runAnimation("Death");
-        GetComponent<PolyNavAgent>().enabled = false;
+        agent.enabled = false;
     }
 
     void runAnimation(string name)
@@ -53,5 +70,9 @@ public class EnemyController : ICharacter, IPooledObject {
     public void completeDeathAnimation()
     {
         gameObject.SetActive(false);
+        onDeathDelegate();
+        onDeathDelegate = null;
     }
+
+    #endregion
 }
