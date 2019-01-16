@@ -13,7 +13,7 @@ public class ICharacter : MonoBehaviour {
     [SerializeField]
     public bool invulnerable;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
