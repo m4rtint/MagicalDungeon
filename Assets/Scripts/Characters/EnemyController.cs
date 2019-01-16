@@ -11,16 +11,23 @@ public class EnemyController : ICharacter, IPooledObject {
     private PolyNavAgent agent;
 
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         agent = GetComponent<PolyNavAgent>();
+        setSpeed();
     }
 
     public void OnObjectSpawn()
     {
+        setSpeed();
         agent.enabled = true;
     }
 
+    void setSpeed()
+    {
+        agent.maxSpeed = base.moveSpeed;
+    }
 
     void Update()
     {

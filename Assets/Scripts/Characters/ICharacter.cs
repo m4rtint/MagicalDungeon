@@ -11,7 +11,7 @@ public class ICharacter : MonoBehaviour {
     [SerializeField]
     protected float moveSpeed;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
