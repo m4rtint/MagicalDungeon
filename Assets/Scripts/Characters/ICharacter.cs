@@ -10,6 +10,9 @@ public class ICharacter : MonoBehaviour {
     float healthPoints;
     [SerializeField]
     protected float moveSpeed;
+    [SerializeField]
+    float invulnerableTimer;
+    bool isInvulnerable = false;
 
     [SerializeField]
     private GameObject healthBar;
@@ -40,7 +43,7 @@ public class ICharacter : MonoBehaviour {
 
     protected bool isHealthZero()
     {
-        return healthPoints == 0;
+        return healthPoints <= 0;
     }
 
     protected virtual void onDeath()
@@ -54,4 +57,28 @@ public class ICharacter : MonoBehaviour {
         updateHealthBar();
     }
 
+    public void damagedByAttacker(float damage)
+    {
+        if (!isInvulnerable)
+        {
+            isInvulnerable = true;
+            decrementHealth(damage);
+            Invoke("resetInvulnerable", invulnerableTimer);
+        }
+    }
+
+    public void getKnockedBackSolid(float knockBackAmount, Vector3 attackPos)
+    {
+        if (!isInvulnerable)
+        {
+            Vector3 knockBack = attackPos - transform.position;
+            GetComponent<Rigidbody2D>().AddForce(knockBack.normalized * -knockBackAmount);
+        }
+    }
+
+
+    public void resetInvulnerable()
+    {
+        isInvulnerable = false;
+    }
 }

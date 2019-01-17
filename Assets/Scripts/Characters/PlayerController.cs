@@ -28,6 +28,9 @@ public class PlayerController : ICharacter {
 
     #region CharacterMovement
 
+    //Behaviour while colliding with another solid object e.g enemy meele
+
+
     private void Move (Vector3 direction)
     {
         playerRigidbody.velocity = (Vector3.Normalize(direction) * base.moveSpeed);

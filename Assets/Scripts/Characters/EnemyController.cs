@@ -31,14 +31,27 @@ public class EnemyController : ICharacter, IPooledObject {
 
     void Update()
     {
-        agent.SetDestination(playerPosition());
+        gotoPlayerIfNeeded();
         updateSpriteDirection();
     }
 
     #region Motion
-    private Vector3 playerPosition()
+    private void gotoPlayerIfNeeded()
     {
-        return GameObject.FindGameObjectWithTag(Tags.PLAYER).transform.position;
+        if (getPlayer() == null)
+        {
+            agent.enabled = false;
+        }
+        else
+        {
+            agent.SetDestination(getPlayer().transform.position);
+        }
+    }
+
+    private GameObject getPlayer()
+    {
+        return GameObject.FindGameObjectWithTag(Tags.PLAYER);
+       
     }
 
     void updateSpriteDirection()
@@ -79,6 +92,17 @@ public class EnemyController : ICharacter, IPooledObject {
         gameObject.SetActive(false);
         onDeathDelegate();
         onDeathDelegate = null;
+    }
+
+    void OnCollisionStay2D(Collision2D other)
+    {
+        GameObject player = other.gameObject;
+
+        if (player.tag == Tags.PLAYER)
+        {
+            player.GetComponent<ICharacter>().getKnockedBackSolid(3000, transform.position);
+            player.GetComponent<PlayerController>().damagedByAttacker(1);
+        }
     }
 
     #endregion
