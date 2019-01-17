@@ -23,7 +23,6 @@ public class ICharacter : MonoBehaviour {
     {
         maxHealth = healthPoints;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-        decrementHealth(50);
     }
 
     public virtual void decrementHealth(float damage)

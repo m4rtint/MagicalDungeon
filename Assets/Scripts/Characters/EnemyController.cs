@@ -100,7 +100,7 @@ public class EnemyController : ICharacter, IPooledObject {
 
         if (player.tag == Tags.PLAYER)
         {
-            player.GetComponent<ICharacter>().getKnockedBackSolid(3000, transform.position);
+            player.GetComponent<ICharacter>().getKnockedBackSolid(2000, transform.position);
             player.GetComponent<PlayerController>().damagedByAttacker(1);
         }
     }
