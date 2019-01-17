@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 100
   moveSpeed: 5
+  invulnerableTimer: 0.5
 --- !u!212 &212134965187090658
 SpriteRenderer:
   m_ObjectHideFlags: 1

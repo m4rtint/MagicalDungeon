@@ -30,7 +30,7 @@ public class ICharacter : MonoBehaviour {
 
     protected bool isHealthZero()
     {
-        return System.Math.Abs(healthPoints) <= 0;
+        return healthPoints <= 0;
     }
 
     protected virtual void onDeath()
@@ -47,6 +47,7 @@ public class ICharacter : MonoBehaviour {
     {
         if (!isInvulnerable)
         {
+            isInvulnerable = true;
             decrementHealth(damage);
             Invoke("resetInvulnerable", invulnerableTimer);
         }
@@ -56,7 +57,7 @@ public class ICharacter : MonoBehaviour {
     {
         if (!isInvulnerable)
         {
-            Vector3 knockBack = transform.position - attackPos;
+            Vector3 knockBack = attackPos - transform.position;
             GetComponent<Rigidbody2D>().AddForce(knockBack.normalized * -knockBackAmount);
         }
     }

@@ -2260,9 +2260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 1110833116}
   - {fileID: 1927462145}
   - {fileID: 1545498875}
+  - {fileID: 1110833116}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -5670,6 +5670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 100
   moveSpeed: 5
+  invulnerableTimer: 1
   upSprite: {fileID: 21300000, guid: 8a5dc04fd7a197544b89046f42545406, type: 3}
   leftSprite: {fileID: 21300000, guid: ca5ff7d17c701cc49804d61c8f36a2ff, type: 3}
   rightSprite: {fileID: 21300000, guid: 5c57377bcceb57e4b960f2f1c384e946, type: 3}
