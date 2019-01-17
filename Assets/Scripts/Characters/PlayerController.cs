@@ -12,6 +12,7 @@ public class PlayerController : ICharacter {
     private Rigidbody2D playerRigidbody;
     private SpriteRenderer playerSpriteRenderer;
 
+
     // Use this for initialization
     void Start () {
         playerRigidbody = GetComponent<Rigidbody2D>();

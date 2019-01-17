@@ -49,3 +49,6 @@ TagManager:
   - name: Spell
     uniqueID: 431650397
     locked: 0
+  - name: UI
+    uniqueID: 2907410441
+    locked: 0
