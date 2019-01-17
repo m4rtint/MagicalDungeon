@@ -11,7 +11,8 @@ public class ICharacter : MonoBehaviour {
     [SerializeField]
     protected float moveSpeed;
     [SerializeField]
-    public bool invulnerable;
+    float invulnerableTimer;
+    bool isInvulnerable = false;
 
     protected virtual void Awake()
     {
@@ -29,7 +30,7 @@ public class ICharacter : MonoBehaviour {
 
     protected bool isHealthZero()
     {
-        return healthPoints == 0;
+        return System.Math.Abs(healthPoints) <= 0;
     }
 
     protected virtual void onDeath()
@@ -42,28 +43,27 @@ public class ICharacter : MonoBehaviour {
         healthPoints += heal;
     }
 
-    public void damagedByEnemy(float damage)
+    public void damagedByAttacker(float damage)
     {
-        if (!invulnerable)
+        if (!isInvulnerable)
         {
-            invulnerable = true;
             decrementHealth(damage);
-            Invoke("resetInvulnerable", 2);
+            Invoke("resetInvulnerable", invulnerableTimer);
         }
     }
 
-    public void getKnockedBackSolid(Collision2D other, Rigidbody2D self, float knockBackAmount)
+    public void getKnockedBackSolid(float knockBackAmount, Vector3 attackPos)
     {
-        if (!invulnerable)
+        if (!isInvulnerable)
         {
-            Vector2 knockBack = other.gameObject.transform.position - self.transform.position;
-            self.AddForce(knockBack.normalized * -knockBackAmount);
+            Vector3 knockBack = transform.position - attackPos;
+            GetComponent<Rigidbody2D>().AddForce(knockBack.normalized * -knockBackAmount);
         }
     }
 
 
     public void resetInvulnerable()
     {
-        invulnerable = false;
+        isInvulnerable = false;
     }
 }

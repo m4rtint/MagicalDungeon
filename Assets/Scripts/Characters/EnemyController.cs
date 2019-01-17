@@ -81,5 +81,16 @@ public class EnemyController : ICharacter, IPooledObject {
         onDeathDelegate = null;
     }
 
+    void OnCollisionStay2D(Collision2D other)
+    {
+        GameObject player = other.gameObject;
+
+        if (player.tag == Tags.PLAYER)
+        {
+            player.GetComponent<PlayerController>().getKnockedBackSolid(10, transform.position);
+            player.GetComponent<PlayerController>().damagedByAttacker(1);
+        }
+    }
+
     #endregion
 }
