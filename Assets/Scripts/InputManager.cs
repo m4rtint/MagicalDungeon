@@ -30,9 +30,24 @@ public static class InputManager{
         return Input.GetButtonDown("Fire");
     }
 
-    public static bool isNotFiring()
+    public static bool skillOnePressed()
     {
-        return Input.GetButtonUp("Fire");
+        return Input.GetButtonDown("SkillOne");
+    }
+
+    public static bool skillTwoPressed()
+    {
+        return Input.GetButtonDown("SkillTwo");
+    }
+
+    public static bool skillThreePressed()
+    {
+        return Input.GetButtonDown("SkillThree");
+    }
+
+    public static bool skillFourPressed()
+    {
+        return Input.GetButtonDown("SkillFour");
     }
 
 

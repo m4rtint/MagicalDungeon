@@ -10,7 +10,10 @@ public class ConeSpell : MonoBehaviour {
 
     [SerializeField]
     private float damagePerSecond;
+    [SerializeField]
+    private float timeToLive;
 
+    float lifeTimer = 0;
     bool canDamage = true;
 
     private void Awake()
@@ -18,8 +21,18 @@ public class ConeSpell : MonoBehaviour {
         GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
+    private void Update()
+    {
+        lifeTimer += Time.deltaTime;
+        if (lifeTimer > timeToLive)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     private void OnEnable()
     {
+        lifeTimer = 0;
         resetCanDamage();
     }
 
@@ -27,11 +40,9 @@ public class ConeSpell : MonoBehaviour {
     {
         if (collision.gameObject.tag == Tags.ENEMY && canDamage)
         {
-            Debug.Log("Triggering");
             canDamage = false;
             Invoke("resetCanDamage", damagePerSecond);
             collision.gameObject.GetComponent<ICharacter>().decrementHealth(damage);
-            //TODO - Do something with enemy - decrement health or something
         }
     }
 
