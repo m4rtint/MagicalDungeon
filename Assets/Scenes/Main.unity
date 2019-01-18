@@ -296,6 +296,9 @@ MonoBehaviour:
   - tag: Enemy
     prefab: {fileID: 1355603985297062, guid: 8d138036f44e2684fa68d213d9c94c03, type: 2}
     size: 10
+  - tag: Firestorm
+    prefab: {fileID: 1459981774246776, guid: 18fe31ecf774044fdabd63b775afb0d9, type: 2}
+    size: 1
 --- !u!4 &383131363
 Transform:
   m_ObjectHideFlags: 0
@@ -5853,6 +5856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coneSpellHolder: {fileID: 379551309}
+  firestormSpawnDistance: 2.94
 --- !u!1 &1545498874
 GameObject:
   m_ObjectHideFlags: 0

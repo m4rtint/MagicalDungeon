@@ -6,6 +6,8 @@ public class PlayerSpellController : MonoBehaviour {
 
     [SerializeField]
     GameObject coneSpellHolder;
+    [SerializeField]
+    float firestormSpawnDistance;
 
     private void Start()
     {
@@ -16,7 +18,8 @@ public class PlayerSpellController : MonoBehaviour {
     void Update () {
         //activateSpellConeIfNeeded();
         updateSpellConeRotation();
-        activateFireball();
+        //activateFireball();
+        activateFirestorm();
     }
 
     void activateFireball()
@@ -50,6 +53,17 @@ public class PlayerSpellController : MonoBehaviour {
         Vector3 dir = Input.mousePosition - Utilities.worldToScreenObjectPosition(gameObject);
         float angle = Utilities.getAngleDegBetween(dir.y, dir.x) + 90;
         coneSpellHolder.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+
+    private void activateFirestorm()
+    {
+        if (InputManager.isFiring())
+        {
+            Vector3 dir = (Input.mousePosition - Utilities.worldToScreenObjectPosition(gameObject)).normalized;
+            GameObject firestorm = ObjectPooler.Instance.SpawnFromPool(Pool.FIRESTORM, transform.position + dir * firestormSpawnDistance, Quaternion.identity);
+            firestorm.GetComponent<Firestorm>().OnObjectSpawn();
+        }
     }
     #endregion
 }
