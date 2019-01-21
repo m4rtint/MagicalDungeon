@@ -26,7 +26,7 @@ public class PlayerSpellController : MonoBehaviour {
             activateFirestorm();
         } else if (InputManager.skillTwoPressed())
         {
-            coneSpellHolder.SetActive(true);
+            coneSpellHolder.GetComponent<SpellHolder>().turnOnSpell();
         } else if (InputManager.skillThreePressed())
         {
 

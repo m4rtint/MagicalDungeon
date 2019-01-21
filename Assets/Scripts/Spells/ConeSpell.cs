@@ -9,7 +9,7 @@ public class ConeSpell : MonoBehaviour {
     private float damage;
 
     [SerializeField]
-    private float damagePerSecond;
+    private float perTime;
     [SerializeField]
     private float timeToLive;
 
@@ -41,7 +41,7 @@ public class ConeSpell : MonoBehaviour {
         if (collision.gameObject.tag == Tags.ENEMY && canDamage)
         {
             canDamage = false;
-            Invoke("resetCanDamage", damagePerSecond);
+            Invoke("resetCanDamage", perTime);
             collision.gameObject.GetComponent<ICharacter>().decrementHealth(damage);
         }
     }
