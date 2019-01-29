@@ -15,6 +15,9 @@ public class EnemyController : ICharacter, IPooledObject {
     private GameObject player;
 
     [SerializeField]
+    float meleeDamage = 10;
+
+    [SerializeField]
     float agroRange = 4;
     
     protected override void Awake()
@@ -106,7 +109,7 @@ public class EnemyController : ICharacter, IPooledObject {
         if (player.tag == Tags.PLAYER)
         {
             player.GetComponent<ICharacter>().getKnockedBackSolid(2000, transform.position);
-            player.GetComponent<PlayerController>().damagedByAttacker(1);
+            player.GetComponent<PlayerController>().damagedByAttacker(meleeDamage);
         }
     }
 

@@ -165,6 +165,7 @@ MonoBehaviour:
   moveSpeed: 2.5
   invulnerableTimer: 0.5
   healthBar: {fileID: 1377003075469184}
+  meleeDamage: 5
   agroRange: 4
 --- !u!212 &212387286431734664
 SpriteRenderer:
