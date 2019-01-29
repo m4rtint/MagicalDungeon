@@ -10,7 +10,8 @@ public struct Tags  {
 
 public struct Pool
 {
-    public static readonly string ENEMY = "Enemy";
+    public static readonly string ZOMBIE = "Zombie";
+    public static readonly string MUSHROOM = "Mushroom";
     public static readonly string FIREBALL = "Fireball";
     public static readonly string FIRESTORM = "Firestorm";
 } 

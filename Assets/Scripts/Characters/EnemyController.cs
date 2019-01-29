@@ -5,15 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(PolyNavAgent))]
 public class EnemyController : ICharacter, IPooledObject {
 
+    const string ANIMATION_DEATH = "Death";
+    const string ANIMATION_DAMAGED = "Damaged";
+
     public delegate void EnemyDelegate();
     public EnemyDelegate onDeathDelegate;
 
     private PolyNavAgent agent;
+    private GameObject player;
 
+    [SerializeField]
+    float agroRange = 4;
     
     protected override void Awake()
     {
         base.Awake();
+        player = GameObject.FindGameObjectWithTag(Tags.PLAYER);
         agent = GetComponent<PolyNavAgent>();
         setSpeed();
     }
@@ -38,20 +45,17 @@ public class EnemyController : ICharacter, IPooledObject {
     #region Motion
     private void gotoPlayerIfNeeded()
     {
-        if (getPlayer() == null)
+        if (player == null)
         {
             agent.enabled = false;
         }
         else
         {
-            agent.SetDestination(getPlayer().transform.position);
+            if (Vector3.Distance(player.transform.position, transform.position) <= agroRange)
+            {
+                agent.SetDestination(player.transform.position);
+            }
         }
-    }
-
-    private GameObject getPlayer()
-    {
-        return GameObject.FindGameObjectWithTag(Tags.PLAYER);
-       
     }
 
     void updateSpriteDirection()
@@ -72,14 +76,15 @@ public class EnemyController : ICharacter, IPooledObject {
         base.decrementHealth(damage);
         if (!isHealthZero())
         {
-            runAnimation("Damaged");
+            runAnimation(ANIMATION_DAMAGED);
         }
     }
 
     protected override void onDeath()
     {
-        runAnimation("Death");
+        runAnimation(ANIMATION_DEATH);
         agent.enabled = false;
+        Invoke("completeDeathAnimation", 1.5f);
     }
 
     void runAnimation(string name)
@@ -105,5 +110,14 @@ public class EnemyController : ICharacter, IPooledObject {
         }
     }
 
+    #endregion
+
+    #region Gizmo
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, agroRange);
+    }
     #endregion
 }

@@ -6,14 +6,20 @@ public class SpawnManager : MonoBehaviour {
 
     Transform[] spawnPoints;
 
+    [SerializeField]
+    MONSTERS[] monstersToSpawn;
+
     [Range(0, 10)]
     [SerializeField]
     int maxEnemySpawned = 1;
     int currentActiveEnemies;
 
+    [SerializeField]
+    bool isRespawning = false;
+
     private void Awake()
     {
-        spawnPoints = gameObject.GetComponentsInChildren<Transform>(); 
+        spawnPoints = gameObject.GetComponentsInChildren<Transform>();
     }
 
     private void Update()
@@ -21,18 +27,24 @@ public class SpawnManager : MonoBehaviour {
         spawnEnemyIfNeeded();
     }
 
+
     bool isSpawnNeeded()
     {
-        return currentActiveEnemies < maxEnemySpawned;
+        return  currentActiveEnemies < maxEnemySpawned;
     }
 
     void spawnEnemyIfNeeded()
     {
         if (isSpawnNeeded())
         {
-            GameObject enemy = ObjectPooler.Instance.SpawnFromPool(Pool.ENEMY, getSpawnPosition(), Quaternion.identity);
+            GameObject enemy = ObjectPooler.Instance.SpawnFromPool(generateRandomEnemy(), getSpawnPosition(), Quaternion.identity);
             setupEnemy(enemy.GetComponent<EnemyController>());
             currentActiveEnemies++;
+        }
+
+        if (!isRespawning && !isSpawnNeeded())
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -49,11 +61,50 @@ public class SpawnManager : MonoBehaviour {
         return spawnPoints[index].position;
     }
 
+    string generateRandomEnemy()
+    {
+        int length = Mathf.Max(0, monstersToSpawn.Length - 1);
+        int index = Random.Range(0, length);
+
+        return monstersToSpawn.Length == 0 ? convertEnumToString(0) : convertEnumToString(monstersToSpawn[index]);
+    }
+
+    string convertEnumToString(MONSTERS m)
+    {
+        switch(m)
+        {
+            case MONSTERS.MUSHROOM:
+                return Pool.MUSHROOM;
+            case MONSTERS.ZOMBIE:
+                return Pool.ZOMBIE;
+            default:
+                return Pool.MUSHROOM;
+        }
+    }
+
     #region Delegate
     void enemyOnDeath()
     {
-        currentActiveEnemies--;
+        if (isRespawning)
+        {
+            currentActiveEnemies--;
+        }
     }
     #endregion
 
+    #region Debug
+    void OnDrawGizmosSelected()
+    {
+        // Draw SPawn Points
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, 1);
+    }
+    #endregion
+
+}
+
+public enum MONSTERS
+{
+    MUSHROOM,
+    ZOMBIE
 }
