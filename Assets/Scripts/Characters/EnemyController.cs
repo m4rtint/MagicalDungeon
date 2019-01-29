@@ -98,7 +98,9 @@ public class EnemyController : ICharacter, IPooledObject {
     public void completeDeathAnimation()
     {
         gameObject.SetActive(false);
-        onDeathDelegate();
+        if (onDeathDelegate != null) { 
+            onDeathDelegate();
+        }
         onDeathDelegate = null;
     }
 
