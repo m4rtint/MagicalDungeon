@@ -12,6 +12,9 @@ public class PlayerController : ICharacter {
     private Rigidbody2D playerRigidbody;
     private SpriteRenderer playerSpriteRenderer;
 
+    // Created a separate player speed for Haste
+    public float speedModifier = 1;
+
 
     // Use this for initialization
     void Start () {
@@ -33,7 +36,7 @@ public class PlayerController : ICharacter {
 
     private void Move (Vector3 direction)
     {
-        playerRigidbody.velocity = (Vector3.Normalize(direction) * base.moveSpeed);
+        playerRigidbody.velocity = (Vector3.Normalize(direction) * base.moveSpeed * speedModifier);
     }
 
     private void SpriteChange(Vector3 direction)

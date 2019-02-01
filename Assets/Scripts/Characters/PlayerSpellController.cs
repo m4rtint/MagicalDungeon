@@ -8,7 +8,13 @@ public class PlayerSpellController : MonoBehaviour {
     GameObject coneSpellHolder;
     [SerializeField]
     float firestormSpawnDistance;
+
+    [SerializeField]
+    private float hasteSpeedModifier;
+
     Cooldown cooldownHolder;
+
+
 
     private void Awake()
     {
@@ -42,6 +48,7 @@ public class PlayerSpellController : MonoBehaviour {
             cooldownHolder.InitiateCooldown(2);
         } else if (InputManager.skillThreePressed() && !cooldownHolder.isCoolingDown(3))
         {
+            activateHaste();
             cooldownHolder.InitiateCooldown(3);
         } else if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4))
         {
@@ -75,6 +82,12 @@ public class PlayerSpellController : MonoBehaviour {
         Vector3 dir = Utilities.directionBetweenMouseAndCharacter(gameObject).normalized;
         GameObject firestorm = ObjectPooler.Instance.SpawnFromPool(Pool.FIRESTORM, transform.position + dir * firestormSpawnDistance, Quaternion.identity);
         firestorm.GetComponent<Firestorm>().OnObjectSpawn();
+    }
+
+    private void activateHaste()
+    {
+        Debug.Log("Faster");
+        GetComponent<PlayerController>().speedModifier = hasteSpeedModifier;
     }
     #endregion
 }

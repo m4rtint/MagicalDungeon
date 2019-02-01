@@ -108,13 +108,16 @@ public class Cooldown : MonoBehaviour
     private void UpdateCooldown3()
     {
         if (cd3Time > 0)
-        {
+        {   
+
             cd3.fillAmount = (cd3Time * (360 / defaultCD3)) / 360;
             cd3Time -= Time.deltaTime;
         }
         else if (cd3Time <= 0)
         {
             cd3.fillAmount = 0;
+            GetComponent<PlayerController>().speedModifier = 1;
+
         }
     }
 
