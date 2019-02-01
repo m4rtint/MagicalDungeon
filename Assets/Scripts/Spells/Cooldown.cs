@@ -30,6 +30,22 @@ public class Cooldown : MonoBehaviour
     private float defaultCD4 = 2f;
 
 
+    // Is Skill currently cooling down
+    public bool isCoolingDown(int cdNum)
+    {
+        switch(cdNum)
+        {
+            case 1:
+                return cd1Time > 0;
+            case 2:
+                return cd2Time > 0;
+            case 3:
+                return cd3Time > 0;
+            case 4:
+                return cd4Time > 0;
+        }
+        return false;
+    }
 
     void Update()
     {
@@ -68,11 +84,11 @@ public class Cooldown : MonoBehaviour
     {
         if (cd1Time > 0)
         {
-            cd1.fillAmount = (cd1Time * (360 / defaultCD1)) / 360;
+            cd1.fillAmount = cd1Time / defaultCD1;
             cd1Time -= Time.deltaTime;
         } else if (cd1Time <= 0)
         {
-            cd1.fillAmount = 1f;
+            cd1.fillAmount = 0;
         }
     }
 
@@ -85,7 +101,7 @@ public class Cooldown : MonoBehaviour
         }
         else if (cd2Time <= 0)
         {
-            cd2.fillAmount = 1f;
+            cd2.fillAmount = 0;
         }
     }
 
@@ -98,7 +114,7 @@ public class Cooldown : MonoBehaviour
         }
         else if (cd3Time <= 0)
         {
-            cd3.fillAmount = 1f;
+            cd3.fillAmount = 0;
         }
     }
 
@@ -111,7 +127,7 @@ public class Cooldown : MonoBehaviour
         }
         else if (cd4Time <= 0)
         {
-            cd4.fillAmount = 1f;
+            cd4.fillAmount = 0;
         }
     }
 

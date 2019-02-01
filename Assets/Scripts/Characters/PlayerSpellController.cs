@@ -8,8 +8,12 @@ public class PlayerSpellController : MonoBehaviour {
     GameObject coneSpellHolder;
     [SerializeField]
     float firestormSpawnDistance;
-    [SerializeField]
-    GameObject cooldownHolder;
+    Cooldown cooldownHolder;
+
+    private void Awake()
+    {
+        cooldownHolder = GetComponent<Cooldown>();
+    }
 
     // Update is called once per frame
     void Update () {
@@ -24,24 +28,24 @@ public class PlayerSpellController : MonoBehaviour {
     void handleSkillInput()
     {   
         // AOE skill 
-        if (InputManager.skillOnePressed())
+        if (InputManager.skillOnePressed() && !cooldownHolder.isCoolingDown(1))
         {
             activateFirestorm();
             // Update cooldown 1 here
-            cooldownHolder.GetComponent<Cooldown>().InitiateCooldown(1);
+            cooldownHolder.InitiateCooldown(1);
         }
         // Fire cone 
-        else if (InputManager.skillTwoPressed())
+        else if (InputManager.skillTwoPressed() && !cooldownHolder.isCoolingDown(2))
         {
             coneSpellHolder.GetComponent<SpellHolder>().turnOnSpell();
             // Update cooldown 2 here
-            cooldownHolder.GetComponent<Cooldown>().InitiateCooldown(2);
-        } else if (InputManager.skillThreePressed())
+            cooldownHolder.InitiateCooldown(2);
+        } else if (InputManager.skillThreePressed() && !cooldownHolder.isCoolingDown(3))
         {
-            cooldownHolder.GetComponent<Cooldown>().InitiateCooldown(3);
-        } else if (InputManager.skillFourPressed())
+            cooldownHolder.InitiateCooldown(3);
+        } else if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4))
         {
-            cooldownHolder.GetComponent<Cooldown>().InitiateCooldown(4);
+            cooldownHolder.InitiateCooldown(4);
         }
     }
     #endregion
