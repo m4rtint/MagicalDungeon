@@ -14,12 +14,15 @@ public class Cooldown : MonoBehaviour
     [SerializeField]
     private Image cd4;
 
+    private float quickCdTime;
     private float cd1Time;
     private float cd2Time;
     private float cd3Time;
     private float cd4Time;
 
     // Default cooldown times
+    [SerializeField]
+    private float quickSkillCD = 0.3f;
     [SerializeField]
     private float defaultCD1 = 3f;
     [SerializeField]
@@ -35,6 +38,8 @@ public class Cooldown : MonoBehaviour
     {
         switch(cdNum)
         {
+            case 0:
+                return quickCdTime > 0;
             case 1:
                 return cd1Time > 0;
             case 2:
@@ -49,6 +54,7 @@ public class Cooldown : MonoBehaviour
 
     void Update()
     {
+        updateQuickSkillCoolDown();
         UpdateCooldown1();
         UpdateCooldown2();
         UpdateCooldown3();
@@ -60,6 +66,9 @@ public class Cooldown : MonoBehaviour
         //Debug.Log("Cooldown initiated");
         switch(cdNum)
         {
+            case 0:
+                quickCdTime = quickSkillCD;
+                break;
             case 1:
                 cd1Time = defaultCD1;
                 break;
@@ -78,6 +87,11 @@ public class Cooldown : MonoBehaviour
 
         }
 
+    }
+
+    private void updateQuickSkillCoolDown()
+    {
+        quickCdTime -= Time.deltaTime;
     }
 
     private void UpdateCooldown1()

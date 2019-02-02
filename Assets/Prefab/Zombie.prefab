@@ -166,7 +166,7 @@ MonoBehaviour:
   invulnerableTimer: 0.5
   healthBar: {fileID: 1377003075469184}
   meleeDamage: 5
-  agroRange: 10
+  agroRange: 6.44
 --- !u!212 &212387286431734664
 SpriteRenderer:
   m_ObjectHideFlags: 1

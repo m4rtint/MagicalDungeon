@@ -9,10 +9,14 @@ public class SpawnManager : MonoBehaviour {
     [SerializeField]
     MONSTERS[] monstersToSpawn;
 
-    [Range(0, 10)]
+    [Range(0, 20)]
+    [SerializeField]
+    int maxActiveEnemySpawned = 1;
+    [Range(0, 40)]
     [SerializeField]
     int maxEnemySpawned = 1;
     int currentActiveEnemies;
+    int enemiesAlreadySpawned = 0;
 
     [SerializeField]
     bool isRespawning = false;
@@ -30,7 +34,12 @@ public class SpawnManager : MonoBehaviour {
 
     bool isSpawnNeeded()
     {
-        return  currentActiveEnemies < maxEnemySpawned;
+        return  currentActiveEnemies < maxActiveEnemySpawned && (isRespawning || !isSpawnsCompleted());
+    }
+
+    bool isSpawnsCompleted()
+    {
+        return enemiesAlreadySpawned >= maxEnemySpawned;
     }
 
     void spawnEnemyIfNeeded()
@@ -40,9 +49,10 @@ public class SpawnManager : MonoBehaviour {
             GameObject enemy = ObjectPooler.Instance.SpawnFromPool(generateRandomEnemy(), getSpawnPosition(), Quaternion.identity);
             setupEnemy(enemy.GetComponent<EnemyController>());
             currentActiveEnemies++;
+            enemiesAlreadySpawned++;
         }
 
-        if (!isRespawning && !isSpawnNeeded())
+        if (!isRespawning && isSpawnsCompleted())
         {
             Destroy(gameObject);
         }
@@ -85,10 +95,7 @@ public class SpawnManager : MonoBehaviour {
     #region Delegate
     void enemyOnDeath()
     {
-        if (isRespawning)
-        {
-            currentActiveEnemies--;
-        }
+        currentActiveEnemies--;
     }
     #endregion
 

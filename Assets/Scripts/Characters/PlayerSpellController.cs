@@ -53,8 +53,9 @@ public class PlayerSpellController : MonoBehaviour {
 
     void activateFireball()
     {
-        if (InputManager.isFiring())
+        if (InputManager.isFiring() && !cooldownHolder.isCoolingDown(0))
         {
+            cooldownHolder.InitiateCooldown(0);
             GameObject fireball = ObjectPooler.Instance.SpawnFromPool(Pool.FIREBALL, transform.position, getPlayerRotation());
             fireball.GetComponent<Fireball>().OnObjectSpawn();
         }

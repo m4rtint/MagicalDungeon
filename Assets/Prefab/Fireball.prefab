@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30f38fdd2e904e0e8d0720b52071dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 0.1
+  velocity: 0.3
   spellMovementTimeToLive: 3
   damage: 30
 --- !u!212 &212499931797198824
