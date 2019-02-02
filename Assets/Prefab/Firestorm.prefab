@@ -87,9 +87,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d5f938d456a46a5a165760fc26593c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 0.5
-  secondsDuration: 4.9
+  velocity: 0.05
+  spellMovementTimeToLive: 2
   damage: 2.15
+  damageCoolDown: 0.25
 --- !u!212 &212444760425755496
 SpriteRenderer:
   m_ObjectHideFlags: 1

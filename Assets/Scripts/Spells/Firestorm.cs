@@ -5,6 +5,7 @@ using UnityEngine;
 public class Firestorm : ISpell, IPooledObject
 {
     [SerializeField] float damageCoolDown = 0.25f;
+    [SerializeField] float idleTimeToLive = 3f;
     bool isCoolingDown;
     float currentCoolDown = 0;
 
@@ -14,7 +15,7 @@ public class Firestorm : ISpell, IPooledObject
         if (!isMoving)
         {
             currentTimeToLive += Time.fixedDeltaTime;
-            if (currentTimeToLive > spellMovementTimeToLive)
+            if (currentTimeToLive > idleTimeToLive)
             {
                 gameObject.SetActive(false);
             }
@@ -24,7 +25,7 @@ public class Firestorm : ISpell, IPooledObject
 
     protected override void onMovementTimeToLiveStopped()
     {
-        currentTimeToLive = spellMovementTimeToLive * 2;
+        currentTimeToLive = 0;
         isMoving = false;
     }
 
