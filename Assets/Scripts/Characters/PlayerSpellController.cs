@@ -9,16 +9,15 @@ public class PlayerSpellController : MonoBehaviour {
     [SerializeField]
     float firestormSpawnDistance;
 
-    [SerializeField]
-    private float hasteSpeedModifier;
 
     Cooldown cooldownHolder;
-
+    Haste hasteHolder;
 
 
     private void Awake()
     {
         cooldownHolder = GetComponent<Cooldown>();
+        hasteHolder = GetComponent<Haste>();
     }
 
     // Update is called once per frame
@@ -30,7 +29,7 @@ public class PlayerSpellController : MonoBehaviour {
 
 
 
-    #region Skills
+    #region Input Control
     void handleSkillInput()
     {   
         // AOE skill 
@@ -48,7 +47,7 @@ public class PlayerSpellController : MonoBehaviour {
             cooldownHolder.InitiateCooldown(2);
         } else if (InputManager.skillThreePressed() && !cooldownHolder.isCoolingDown(3))
         {
-            activateHaste();
+            hasteHolder.InitiateHaste();
             cooldownHolder.InitiateCooldown(3);
         } else if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4))
         {
@@ -57,6 +56,9 @@ public class PlayerSpellController : MonoBehaviour {
     }
     #endregion
 
+
+
+    #region Spell
     void activateFireball()
     {
         if (InputManager.isFiring())
@@ -68,8 +70,6 @@ public class PlayerSpellController : MonoBehaviour {
         }
     }
 
-    #region Spell
-    
     private void updateSpellConeRotation()
     {
         float angle = Utilities.getAngleDegBetween(gameObject)+90;
@@ -82,12 +82,6 @@ public class PlayerSpellController : MonoBehaviour {
         Vector3 dir = Utilities.directionBetweenMouseAndCharacter(gameObject).normalized;
         GameObject firestorm = ObjectPooler.Instance.SpawnFromPool(Pool.FIRESTORM, transform.position + dir * firestormSpawnDistance, Quaternion.identity);
         firestorm.GetComponent<Firestorm>().OnObjectSpawn();
-    }
-
-    private void activateHaste()
-    {
-        Debug.Log("Faster");
-        GetComponent<PlayerController>().speedModifier = hasteSpeedModifier;
     }
     #endregion
 }

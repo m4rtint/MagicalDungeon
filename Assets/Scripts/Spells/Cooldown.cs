@@ -25,7 +25,7 @@ public class Cooldown : MonoBehaviour
     [SerializeField]
     private float defaultCD2 = 4f;
     [SerializeField]
-    private float defaultCD3 = 5f;
+    private float defaultCD3 = 10f;
     [SerializeField]
     private float defaultCD4 = 2f;
 
@@ -116,7 +116,6 @@ public class Cooldown : MonoBehaviour
         else if (cd3Time <= 0)
         {
             cd3.fillAmount = 0;
-            GetComponent<PlayerController>().speedModifier = 1;
 
         }
     }
