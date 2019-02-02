@@ -24,8 +24,6 @@ public class Firestorm : ISpell, IPooledObject
 
     protected override void onMovementTimeToLiveStopped()
     {
-        Vector3 dir = transform.rotation.eulerAngles;
-        angle = Utilities.getAngleDegBetween(dir.y, dir.x) + 90;
         currentTimeToLive = spellMovementTimeToLive * 2;
         isMoving = false;
     }
@@ -33,6 +31,8 @@ public class Firestorm : ISpell, IPooledObject
 
     public void OnObjectSpawn()
     {
+        Vector3 dir = transform.rotation.eulerAngles;
+        angle = Utilities.getAngleDegBetween(dir.y, dir.x) + 90;
         currentTimeToLive = 0;
         isMoving = true;
     }
@@ -58,6 +58,6 @@ public class Firestorm : ISpell, IPooledObject
 
     protected override void onSpellHitObject()
     {
-        throw new System.NotImplementedException();
+        onMovementTimeToLiveStopped();
     }
 }
