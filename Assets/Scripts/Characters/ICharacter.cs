@@ -27,7 +27,7 @@ public class ICharacter : MonoBehaviour {
 
     public virtual void decrementHealth(float damage)
     {
-        healthPoints = Mathf.Max(0, healthPoints - damage);
+        healthPoints = Mathf.Clamp(healthPoints - damage, 0, maxHealth);
         if (isHealthZero())
         {
             onDeath();
@@ -52,7 +52,8 @@ public class ICharacter : MonoBehaviour {
 
     public void incrementHealth(float heal)
     {
-        healthPoints += heal;
+
+        healthPoints = Mathf.Clamp(healthPoints + heal, 0, maxHealth);
         updateHealthBar();
     }
 

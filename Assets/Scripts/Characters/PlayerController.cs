@@ -20,6 +20,7 @@ public class PlayerController : ICharacter {
     void Start () {
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        decrementHealth(80f);
     }
 	
 	// Update is called once per frame
