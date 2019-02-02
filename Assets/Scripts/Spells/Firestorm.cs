@@ -2,39 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Firestorm : MonoBehaviour, IPooledObject
+public class Firestorm : ISpell, IPooledObject
 {
+    [SerializeField] float damageCoolDown = 0.25f;
+    [SerializeField] float idleTimeToLive = 3f;
+    bool isCoolingDown;
+    float currentCoolDown = 0;
 
-    [SerializeField] float secondsDuration;
-    [SerializeField] float damage;
-    private float currentDuration;
-    private string[] listOfObstacleTags = { Tags.ENEMY, Tags.SOLID_OBSTACLE };
-
-
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        currentDuration += Time.fixedDeltaTime;
-        if (currentDuration > secondsDuration)
+        base.Update();
+        if (!isMoving)
         {
-            gameObject.SetActive(false);
+            currentTimeToLive += Time.fixedDeltaTime;
+            if (currentTimeToLive > idleTimeToLive)
+            {
+                gameObject.SetActive(false);
+            }
         }
+        currentCoolDown += Time.fixedDeltaTime;
+    }
+
+    protected override void onMovementTimeToLiveStopped()
+    {
+        currentTimeToLive = 0;
+        isMoving = false;
     }
 
 
     public void OnObjectSpawn()
     {
-        currentDuration = 0;
+        Vector3 dir = transform.rotation.eulerAngles;
+        angle = Utilities.getAngleDegBetween(dir.y, dir.x) + 90;
+        currentTimeToLive = 0;
+        isMoving = true;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    protected override void OnTriggerEnter2D(Collider2D col)
     {
-        GameObject hitTarget = col.gameObject;
-        if (hitTarget.tag == Tags.ENEMY)
-        {
-            hitTarget.GetComponent<EnemyController>().decrementHealth(damage);
-        }
-
+        base.OnTriggerEnter2D(col);
+        damageEnemyIfNeeded(col.gameObject);
     }
 
+    void OnTriggerStay2D(Collider2D col)
+    {
+        damageEnemyIfNeeded(col.gameObject);
+    }
+
+    void damageEnemyIfNeeded(GameObject colGameObj)
+    {
+        if (colGameObj.tag == Tags.ENEMY)
+        {
+            colGameObj.GetComponent<EnemyController>().decrementHealth(damage);
+        }
+    }
+
+    protected override void onSpellHitObject()
+    {
+        onMovementTimeToLiveStopped();
+    }
 }

@@ -19,6 +19,8 @@ public class EnemyController : ICharacter, IPooledObject {
 
     [SerializeField]
     float agroRange = 4;
+
+    bool isAgroingPlayer = false;
     
     protected override void Awake()
     {
@@ -56,9 +58,14 @@ public class EnemyController : ICharacter, IPooledObject {
         {
             if (Vector3.Distance(player.transform.position, transform.position) <= agroRange)
             {
-                agent.SetDestination(player.transform.position);
+                goToPlayer();
             }
         }
+    }
+
+    void goToPlayer()
+    {
+        agent.SetDestination(player.transform.position);
     }
 
     void updateSpriteDirection()
@@ -79,6 +86,7 @@ public class EnemyController : ICharacter, IPooledObject {
         base.decrementHealth(damage);
         if (!isHealthZero())
         {
+            goToPlayer();
             runAnimation(ANIMATION_DAMAGED);
         }
     }

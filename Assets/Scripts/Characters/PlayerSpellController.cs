@@ -6,10 +6,6 @@ public class PlayerSpellController : MonoBehaviour {
 
     [SerializeField]
     GameObject coneSpellHolder;
-    [SerializeField]
-    float firestormSpawnDistance;
-
-
     Cooldown cooldownHolder;
     Haste hasteHolder;
 
@@ -31,15 +27,15 @@ public class PlayerSpellController : MonoBehaviour {
 
     #region Input Control
     void handleSkillInput()
-    {   
-        // AOE skill 
+    {
+        // AOE skill
         if (InputManager.skillOnePressed() && !cooldownHolder.isCoolingDown(1))
         {
             activateFirestorm();
             // Update cooldown 1 here
             cooldownHolder.InitiateCooldown(1);
         }
-        // Fire cone 
+        // Fire cone
         else if (InputManager.skillTwoPressed() && !cooldownHolder.isCoolingDown(2))
         {
             coneSpellHolder.GetComponent<SpellHolder>().turnOnSpell();
@@ -57,31 +53,36 @@ public class PlayerSpellController : MonoBehaviour {
     #endregion
 
 
-
     #region Spell
+
     void activateFireball()
     {
-        if (InputManager.isFiring())
+        if (InputManager.isFiring() && !cooldownHolder.isCoolingDown(0))
         {
-            float angle = Utilities.getAngleDegBetween(gameObject);
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            GameObject fireball = ObjectPooler.Instance.SpawnFromPool(Pool.FIREBALL, transform.position, rotation);
+            cooldownHolder.InitiateCooldown(0);
+            GameObject fireball = ObjectPooler.Instance.SpawnFromPool(Pool.FIREBALL, transform.position, getPlayerRotation());
             fireball.GetComponent<Fireball>().OnObjectSpawn();
         }
     }
 
+
     private void updateSpellConeRotation()
     {
-        float angle = Utilities.getAngleDegBetween(gameObject)+90;
+        float angle = Utilities.getAngleDegBetweenMouseAnd(gameObject)+90;
         coneSpellHolder.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
 
     private void activateFirestorm()
     {
-        Vector3 dir = Utilities.directionBetweenMouseAndCharacter(gameObject).normalized;
-        GameObject firestorm = ObjectPooler.Instance.SpawnFromPool(Pool.FIRESTORM, transform.position + dir * firestormSpawnDistance, Quaternion.identity);
+        GameObject firestorm = ObjectPooler.Instance.SpawnFromPool(Pool.FIRESTORM, transform.position, getPlayerRotation());
         firestorm.GetComponent<Firestorm>().OnObjectSpawn();
+    }
+
+    private Quaternion getPlayerRotation()
+    {
+        float angle = Utilities.getAngleDegBetweenMouseAnd(gameObject);
+        return Quaternion.AngleAxis(angle, Vector3.forward);
     }
     #endregion
 }
