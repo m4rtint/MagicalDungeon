@@ -101,4 +101,12 @@ public class PlayerController : ICharacter {
     }
 
     #endregion
+
+    #region override
+    public override void incrementHealth(float heal)
+    {
+        base.incrementHealth(heal);
+        GetComponent<PlayerSpellController>().onStateChange(STATE.HEAL);
+    }
+    #endregion
 }

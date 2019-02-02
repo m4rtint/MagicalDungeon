@@ -50,9 +50,8 @@ public class ICharacter : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    public void incrementHealth(float heal)
+    public virtual void incrementHealth(float heal)
     {
-
         healthPoints = Mathf.Clamp(healthPoints + heal, 0, maxHealth);
         updateHealthBar();
     }
