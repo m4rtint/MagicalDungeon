@@ -166,7 +166,7 @@ MonoBehaviour:
   invulnerableTimer: 0.5
   healthBar: {fileID: 1377003075469184}
   meleeDamage: 5
-  agroRange: 4
+  agroRange: 10
 --- !u!212 &212387286431734664
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -200,7 +200,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1464904271
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6b38bf28aa45a0042b7ede6af8a461f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -246,7 +246,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1387556855
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 50104d282a028214ba83ef0acf4b6a05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -63,7 +63,7 @@ public class SpawnManager : MonoBehaviour {
 
     string generateRandomEnemy()
     {
-        int length = Mathf.Max(0, monstersToSpawn.Length - 1);
+        int length = Mathf.Max(0, monstersToSpawn.Length);
         int index = Random.Range(0, length);
 
         return monstersToSpawn.Length == 0 ? convertEnumToString(0) : convertEnumToString(monstersToSpawn[index]);
