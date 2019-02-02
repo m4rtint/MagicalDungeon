@@ -14,13 +14,13 @@ public static class Utilities {
         return Mathf.Atan2(y, x) * Mathf.Rad2Deg;
     }
 
-    public static float getAngleDegBetween(GameObject gObj)
+    public static float getAngleDegBetweenMouseAnd(GameObject gObj)
     {
         Vector3 dir = directionBetweenMouseAndCharacter(gObj);
         return getAngleDegBetween(dir.y, dir.x);
     }
 
-    public static Vector3 directionBetweenMouseAndCharacter(GameObject gObj)
+    private static Vector3 directionBetweenMouseAndCharacter(GameObject gObj)
     {
         return Input.mousePosition - worldToScreenObjectPosition(gObj);
     }
