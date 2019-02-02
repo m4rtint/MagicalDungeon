@@ -19629,10 +19629,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 1927462145}
   - {fileID: 1110833116}
-  - {fileID: 1120765317}
+  - {fileID: 1927462145}
   - {fileID: 1545498875}
+  - {fileID: 1120765317}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -22327,6 +22327,7 @@ GameObject:
   - component: {fileID: 1541141929}
   - component: {fileID: 1541141930}
   - component: {fileID: 1541141931}
+  - component: {fileID: 1541141932}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -22462,7 +22463,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coneSpellHolder: {fileID: 379551309}
   firestormSpawnDistance: 2.94
-  hasteSpeedModifier: 2
 --- !u!114 &1541141931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22482,6 +22482,17 @@ MonoBehaviour:
   defaultCD2: 4
   defaultCD3: 5
   defaultCD4: 2
+--- !u!114 &1541141932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1541141924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba39895d04e7140a4ae5d33e44389dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1545498874
 GameObject:
   m_ObjectHideFlags: 0
