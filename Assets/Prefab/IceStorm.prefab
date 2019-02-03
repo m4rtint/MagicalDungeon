@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212117869758306504}
   - component: {fileID: 58845862990350642}
   - component: {fileID: 114628752061753474}
-  - component: {fileID: 95680975546416900}
+  - component: {fileID: 95017799008111416}
   m_Layer: 0
   m_Name: IceStorm
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1230078627541254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5723996, y: -1.3039467, z: 0}
+  m_LocalPosition: {x: -5.4687815, y: -1.2689681, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,7 +58,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.37
---- !u!95 &95680975546416900
+--- !u!95 &95017799008111416
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
