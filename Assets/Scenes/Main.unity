@@ -945,6 +945,9 @@ MonoBehaviour:
   - tag: Zombie
     prefab: {fileID: 1563925098999238, guid: 0648f967935c636468c384f1e83705aa, type: 2}
     size: 40
+  - tag: IceStorm
+    prefab: {fileID: 1230078627541254, guid: 5107ccbba89a743888808f1cf14e2f93, type: 2}
+    size: 5
 --- !u!4 &383131363
 Transform:
   m_ObjectHideFlags: 0
@@ -35440,20 +35443,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 321358446}
-  - {fileID: 2078351022}
   - {fileID: 1240142424}
-  - {fileID: 1790221686}
-  - {fileID: 575562419}
-  - {fileID: 1157634208}
-  - {fileID: 479447092}
+  - {fileID: 2078351022}
+  - {fileID: 1634865554}
+  - {fileID: 724691832}
+  - {fileID: 1109456942}
+  - {fileID: 1942561655}
   - {fileID: 1048502511}
   - {fileID: 75149687}
-  - {fileID: 1942561655}
+  - {fileID: 1157634208}
+  - {fileID: 575562419}
+  - {fileID: 1790221686}
   - {fileID: 43634573}
-  - {fileID: 1109456942}
-  - {fileID: 724691832}
-  - {fileID: 1634865554}
+  - {fileID: 479447092}
+  - {fileID: 321358446}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -36095,7 +36098,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4569137525337204, guid: b6bddbb7c57c6c947ab030d5380e720f, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114239208184612032, guid: b6bddbb7c57c6c947ab030d5380e720f,
         type: 2}
@@ -36351,7 +36354,7 @@ Transform:
   - {fileID: 1424680821}
   - {fileID: 1052191534}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &828536864
 GameObject:
@@ -52390,7 +52393,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4569137525337204, guid: b6bddbb7c57c6c947ab030d5380e720f, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1846633798135570, guid: b6bddbb7c57c6c947ab030d5380e720f, type: 2}
       propertyPath: m_Name
@@ -54243,7 +54246,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4569137525337204, guid: b6bddbb7c57c6c947ab030d5380e720f, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114239208184612032, guid: b6bddbb7c57c6c947ab030d5380e720f,
         type: 2}
@@ -54810,7 +54813,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2078351021
 GameObject:

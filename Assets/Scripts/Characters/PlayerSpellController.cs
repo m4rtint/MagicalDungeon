@@ -68,7 +68,7 @@ public class PlayerSpellController : MonoBehaviour {
 
     void activateFireball()
     {
-        if (InputManager.isFiring() && !cooldownHolder.isCoolingDown(0))
+        if (InputManager.isFiring() && !cooldownHoldesr.isCoolingDown(0))
         {
             cooldownHolder.InitiateCooldown(0);
             GameObject fireball = ObjectPooler.Instance.SpawnFromPool(Pool.FIREBALL, transform.position, getPlayerRotation());
@@ -81,6 +81,12 @@ public class PlayerSpellController : MonoBehaviour {
     {
         float angle = Utilities.getAngleDegBetweenMouseAnd(gameObject)+90;
         coneSpellHolder.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    private void activeIceStorm()
+    {
+        GameObject firestorm = ObjectPooler.Instance.SpawnFromPool(Pool.FIRESTORM, transform.position, getPlayerRotation());
+        firestorm.GetComponent<Firestorm>().OnObjectSpawn();
     }
 
 
