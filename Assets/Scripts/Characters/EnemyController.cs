@@ -11,14 +11,14 @@ public class EnemyController : ICharacter, IPooledObject {
     public delegate void EnemyDelegate();
     public EnemyDelegate onDeathDelegate;
 
-    private PolyNavAgent agent;
-    private GameObject player;
+    protected PolyNavAgent agent;
+    protected GameObject player;
 
     [SerializeField]
-    float meleeDamage = 10;
+    protected float meleeDamage = 10;
 
     [SerializeField]
-    float agroRange = 4;
+    protected float agroRange = 4; 
 
     bool isAgroingPlayer = false;
     
@@ -41,14 +41,14 @@ public class EnemyController : ICharacter, IPooledObject {
         agent.maxSpeed = base.moveSpeed;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         gotoPlayerIfNeeded();
         updateSpriteDirection();
     }
 
     #region Motion
-    private void gotoPlayerIfNeeded()
+    protected virtual void gotoPlayerIfNeeded()
     {
         if (player == null)
         {
@@ -56,14 +56,14 @@ public class EnemyController : ICharacter, IPooledObject {
         }
         else
         {
-            if (Vector3.Distance(player.transform.position, transform.position) <= agroRange)
+            if (Vector3.Distance(player.transform.position, transform.position) <= this.agroRange)
             {
                 goToPlayer();
             }
         }
     }
 
-    void goToPlayer()
+    protected virtual void goToPlayer()
     {
         agent.SetDestination(player.transform.position);
     }
