@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpellController : MonoBehaviour {
+public class PlayerSpellController : ICharacter
+{
 
     [SerializeField]
     GameObject coneSpellHolder;
     [SerializeField]
     CharacterGlow glow;
     Cooldown cooldownHolder;
-    Haste hasteHolder;
 
+    [Header("Haste")]
+    [SerializeField]
+    float hasteSpeedModifier = 2f;
+    [SerializeField]
+    float hasteTimeToLive = 3f;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         cooldownHolder = GetComponent<Cooldown>();
-        hasteHolder = GetComponent<Haste>();
     }
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
         handleSkillInput();
         updateSpellConeRotation();
         activateFireball();
@@ -47,7 +52,7 @@ public class PlayerSpellController : MonoBehaviour {
             cooldownHolder.InitiateCooldown(2);
         } else if (InputManager.skillThreePressed() && !cooldownHolder.isCoolingDown(3))
         {
-            hasteHolder.InitiateHaste();
+            base.modifySpeed(hasteSpeedModifier, hasteTimeToLive);
             cooldownHolder.InitiateCooldown(3);
             onStateChange(STATE.HASTE);
         } else if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4))
@@ -101,6 +106,14 @@ public class PlayerSpellController : MonoBehaviour {
     {
         float angle = Utilities.getAngleDegBetweenMouseAnd(gameObject);
         return Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+    #endregion
+
+    #region Override
+    public override void incrementHealth(float heal)
+    {
+        base.incrementHealth(heal);
+        GetComponent<PlayerSpellController>().onStateChange(STATE.HEAL);
     }
     #endregion
 }

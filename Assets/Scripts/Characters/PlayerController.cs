@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : ICharacter {
+public class PlayerController : MonoBehaviour {
     
     public Sprite upSprite;
     public Sprite leftSprite;
@@ -11,15 +11,14 @@ public class PlayerController : ICharacter {
 
     private Rigidbody2D playerRigidbody;
     private SpriteRenderer playerSpriteRenderer;
-
-    // Created a separate player speed for Haste
-    public float speedModifier = 1;
+    private PlayerSpellController playerSpell;
 
 
     // Use this for initialization
     void Start () {
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        playerSpell = GetComponent<PlayerSpellController>();
     }
 	
 	// Update is called once per frame
@@ -36,7 +35,7 @@ public class PlayerController : ICharacter {
 
     private void Move (Vector3 direction)
     {
-        playerRigidbody.velocity = (Vector3.Normalize(direction) * base.moveSpeed * speedModifier);
+        playerRigidbody.velocity = (Vector3.Normalize(direction) * playerSpell.MoveSpeed() * playerSpell.SpeedModifier());
     }
 
     private void SpriteChange(Vector3 direction)
@@ -99,13 +98,5 @@ public class PlayerController : ICharacter {
         }
     }
 
-    #endregion
-
-    #region override
-    public override void incrementHealth(float heal)
-    {
-        base.incrementHealth(heal);
-        GetComponent<PlayerSpellController>().onStateChange(STATE.HEAL);
-    }
     #endregion
 }

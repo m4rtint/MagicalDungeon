@@ -43,7 +43,7 @@ public class EnemyFireball : ISpell, IPooledObject
         GameObject hitTarget = col.gameObject;
         if (hitTarget.tag == Tags.PLAYER)
         {
-            hitTarget.GetComponent<PlayerController>().decrementHealth(damage);
+            hitTarget.GetComponent<ICharacter>().decrementHealth(damage);
         }
 
         this.checkIfSpellHitObject(col.tag);

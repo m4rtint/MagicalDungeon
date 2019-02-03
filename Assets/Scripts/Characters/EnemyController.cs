@@ -36,18 +36,31 @@ public class EnemyController : ICharacter, IPooledObject {
         agent.enabled = true;
     }
 
-    void setSpeed()
-    {
-        agent.maxSpeed = base.moveSpeed;
-    }
-
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         gotoPlayerIfNeeded();
         updateSpriteDirection();
     }
 
     #region Motion
+    void setSpeed()
+    {
+        agent.maxSpeed = base.moveSpeed * base.speedModifier;
+    }
+
+    public override void modifySpeed(float mod, float time)
+    {
+        base.modifySpeed(mod, time);
+        setSpeed();
+    }
+
+    protected override void resetSpeedCoolDown()
+    {
+        base.resetSpeedCoolDown();
+        setSpeed();
+    }
+
+
     protected virtual void gotoPlayerIfNeeded()
     {
         if (player == null)
@@ -119,7 +132,7 @@ public class EnemyController : ICharacter, IPooledObject {
         if (player.tag == Tags.PLAYER)
         {
             player.GetComponent<ICharacter>().getKnockedBackSolid(2000, transform.position);
-            player.GetComponent<PlayerController>().damagedByAttacker(meleeDamage);
+            player.GetComponent<ICharacter>().damagedByAttacker(meleeDamage);
         }
     }
 

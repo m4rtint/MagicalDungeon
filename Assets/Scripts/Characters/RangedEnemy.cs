@@ -11,9 +11,9 @@ public class RangedEnemy : EnemyController {
     float attackTime = 2f;
     float currentTime = 0;
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
         attackPlayerIfNeeded();
         if (currentTime > 0)
         {

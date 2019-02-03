@@ -247,9 +247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c316be5ec6804eaca11e54e52a2dc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 500
   moveSpeed: 0
   invulnerableTimer: 0
+  healthPoints: 500
   healthBar: {fileID: 1806010862}
 --- !u!1 &43634572
 GameObject:
@@ -35451,23 +35451,18 @@ MonoBehaviour:
   navObstacles:
   - {fileID: 1240142424}
   - {fileID: 1790221686}
-  - {fileID: 321358446}
   - {fileID: 575562419}
-  - {fileID: 1157634208}
   - {fileID: 479447092}
-  - {fileID: 1048502511}
-  - {fileID: 75149687}
   - {fileID: 1157634208}
-  - {fileID: 575562419}
-  - {fileID: 1790221686}
   - {fileID: 43634573}
-  - {fileID: 479447092}
-  - {fileID: 321358446}
+  - {fileID: 1048502511}
   - {fileID: 724691832}
   - {fileID: 1109456942}
   - {fileID: 1634865554}
+  - {fileID: 321358446}
   - {fileID: 1942561655}
   - {fileID: 2078351022}
+  - {fileID: 75149687}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -54036,7 +54031,6 @@ GameObject:
   - component: {fileID: 1541141929}
   - component: {fileID: 1541141930}
   - component: {fileID: 1541141931}
-  - component: {fileID: 1541141932}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -54070,15 +54064,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efac2e8adf60d7342b8792d327a7fa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
-  moveSpeed: 5
-  invulnerableTimer: 1
-  healthBar: {fileID: 1178251937}
   upSprite: {fileID: 21300000, guid: 8a5dc04fd7a197544b89046f42545406, type: 3}
   leftSprite: {fileID: 21300000, guid: ca5ff7d17c701cc49804d61c8f36a2ff, type: 3}
   rightSprite: {fileID: 21300000, guid: 5c57377bcceb57e4b960f2f1c384e946, type: 3}
   downSprite: {fileID: 21300000, guid: ced3febe47498074ca0eb8f25595308a, type: 3}
-  speedModifier: 1
 --- !u!212 &1541141927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -54171,8 +54160,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481910ea59fca1b479e89f310e3d04ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
+  invulnerableTimer: 1
+  healthPoints: 100
+  healthBar: {fileID: 1178251937}
   coneSpellHolder: {fileID: 379551309}
   glow: {fileID: 1556874204}
+  hasteSpeedModifier: 2
+  hasteTimeToLive: 3
 --- !u!114 &1541141931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54193,17 +54188,6 @@ MonoBehaviour:
   defaultCD2: 4
   defaultCD3: 5
   defaultCD4: 2
---- !u!114 &1541141932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1541141924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba39895d04e7140a4ae5d33e44389dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1556874201
 GameObject:
   m_ObjectHideFlags: 0

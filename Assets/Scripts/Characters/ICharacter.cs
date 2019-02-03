@@ -9,6 +9,9 @@ public class ICharacter : MonoBehaviour {
     [SerializeField]
     protected float moveSpeed;
 
+    private float coolDownTime = 0;
+    protected float speedModifier = 1;
+    private bool isCoolingDown = false;
 
     [SerializeField]
     float invulnerableTimer;
@@ -23,12 +26,61 @@ public class ICharacter : MonoBehaviour {
 
     private float maxHealth;
 
+    #region Getter
+    public float MoveSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public float SpeedModifier()
+    {
+        return speedModifier;
+    }
+    #endregion
+
+    #region Mono
     protected virtual void Awake()
     {
         maxHealth = healthPoints;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+    private void Update()
+    {
+        coolDownMovement();
+    }
+
+    #endregion
+
+    #region Movement
+
+    void coolDownMovement()
+    {
+        if (isCoolingDown)
+        {
+            coolDownTime -= Time.fixedDeltaTime;
+            if (coolDownTime < 0)
+            {
+                resetSpeedCoolDown();
+            }
+        }
+    }
+
+    public virtual void modifySpeed(float mod, float time)
+    {
+        isCoolingDown = true;
+        coolDownTime = time;
+        speedModifier = mod;
+    }
+
+    protected virtual void resetSpeedCoolDown()
+    {
+        isCoolingDown = false;
+        speedModifier = 1;
+    }
+    #endregion
+
+    #region Health
     public virtual void decrementHealth(float damage)
     {
         healthPoints = Mathf.Clamp(healthPoints - damage, 0, maxHealth);
@@ -84,4 +136,6 @@ public class ICharacter : MonoBehaviour {
     {
         isInvulnerable = false;
     }
+
+    #endregion
 }

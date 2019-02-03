@@ -6,6 +6,12 @@ public class IceStorm : ISpell
 {
     [SerializeField] float slowCoolDown = 2.5f;
     [SerializeField] float idleTimeToLive = 0.5f;
+    [SerializeField] float slowDownPercentage = 0.25f;
+
+    private void Awake()
+    {
+        slowDownPercentage = Mathf.Max(0.0001f, slowDownPercentage);
+    }
 
     protected override void Update()
     {
@@ -46,8 +52,7 @@ public class IceStorm : ISpell
     {
         if (gObject.tag == Tags.ENEMY)
         {
-            Debug.Log("Slow down enemy");
-            //gObject.GetComponent<EnemyController>().slowEnemy()
+            gObject.GetComponent<EnemyController>().modifySpeed(0.00001f, slowCoolDown);
         }
     }
 
