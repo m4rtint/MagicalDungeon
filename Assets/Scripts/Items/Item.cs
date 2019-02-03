@@ -7,7 +7,7 @@ public class Item : MonoBehaviour {
     [SerializeField]
     float amountHealed = 30f;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         incrementHealthIfNeeded(other.gameObject);
         Destroy(gameObject);
