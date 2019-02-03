@@ -35450,19 +35450,19 @@ MonoBehaviour:
   generateOnUpdate: 1
   navObstacles:
   - {fileID: 75149687}
-  - {fileID: 43634573}
   - {fileID: 479447092}
-  - {fileID: 1634865554}
-  - {fileID: 724691832}
-  - {fileID: 1109456942}
-  - {fileID: 321358446}
-  - {fileID: 1942561655}
-  - {fileID: 1048502511}
-  - {fileID: 1157634208}
-  - {fileID: 575562419}
-  - {fileID: 1790221686}
-  - {fileID: 1240142424}
   - {fileID: 2078351022}
+  - {fileID: 1240142424}
+  - {fileID: 1790221686}
+  - {fileID: 575562419}
+  - {fileID: 1157634208}
+  - {fileID: 1048502511}
+  - {fileID: 1942561655}
+  - {fileID: 1109456942}
+  - {fileID: 724691832}
+  - {fileID: 1634865554}
+  - {fileID: 43634573}
+  - {fileID: 321358446}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
