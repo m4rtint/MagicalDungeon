@@ -12,11 +12,7 @@ public abstract class ISpell : MonoBehaviour
     protected float currentTimeToLive; //currentDuration
     protected bool isMoving = true;
 
-<<<<<<< HEAD:Assets/Scripts/Spells/ISpell.cs
-    protected string[] listOfObstacleTags = { Tags.ENEMY, Tags.SOLID_OBSTACLE };
-=======
     protected string[] listOfObstacleTags = {Tags.ENEMY, Tags.SOLID_OBSTACLE};
->>>>>>> master:Assets/Scripts/ISpell.cs
 
     // Update is called once per frame
     protected virtual void Update()

@@ -945,18 +945,12 @@ MonoBehaviour:
   - tag: Zombie
     prefab: {fileID: 1563925098999238, guid: 0648f967935c636468c384f1e83705aa, type: 2}
     size: 40
-<<<<<<< HEAD
-  - tag: IceStorm
-    prefab: {fileID: 1230078627541254, guid: 5107ccbba89a743888808f1cf14e2f93, type: 2}
-    size: 5
-=======
   - tag: Enemy Fireball
     prefab: {fileID: 1774836939615620, guid: 58bb284349754404b9edf3fe4678bd18, type: 2}
     size: 40
   - tag: Ranged Mushroom
     prefab: {fileID: 1276287899759596, guid: 007ce6c18a65b48048ced4d04621aa0f, type: 2}
     size: 40
->>>>>>> master
 --- !u!4 &383131363
 Transform:
   m_ObjectHideFlags: 0
@@ -35453,19 +35447,11 @@ MonoBehaviour:
   generateOnUpdate: 1
   navObstacles:
   - {fileID: 1240142424}
-<<<<<<< HEAD
-  - {fileID: 2078351022}
-  - {fileID: 1634865554}
-  - {fileID: 724691832}
-  - {fileID: 1109456942}
-  - {fileID: 1942561655}
-=======
   - {fileID: 1790221686}
   - {fileID: 321358446}
   - {fileID: 575562419}
   - {fileID: 1157634208}
   - {fileID: 479447092}
->>>>>>> master
   - {fileID: 1048502511}
   - {fileID: 75149687}
   - {fileID: 1157634208}
@@ -36371,11 +36357,7 @@ Transform:
   - {fileID: 1424680821}
   - {fileID: 1052191534}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 10
-=======
   m_RootOrder: 11
->>>>>>> master
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &828536864
 GameObject:
@@ -54915,11 +54897,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 8
-=======
   m_RootOrder: 9
->>>>>>> master
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2078351021
 GameObject:
