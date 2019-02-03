@@ -16,4 +16,5 @@ public struct Pool
     public static readonly string FIREBALL = "Fireball";
     public static readonly string ENEMY_FIREBALL = "Enemy Fireball";
     public static readonly string FIRESTORM = "Firestorm";
+    public static readonly string ICESTORM = "Icestorm";
 } 

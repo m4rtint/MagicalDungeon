@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class ICharacter : MonoBehaviour {
 
-    [SerializeField]
-    float healthPoints;
+
+    [Header("Movement")]
     [SerializeField]
     protected float moveSpeed;
+
+
     [SerializeField]
     float invulnerableTimer;
     bool isInvulnerable = false;
 
+
+    [Header("Health")]
+    [SerializeField]
+    float healthPoints;
     [SerializeField]
     private GameObject healthBar;
 

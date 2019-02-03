@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlashFreeze : ISpell
+public class IceStorm : ISpell
 {
     [SerializeField] float slowCoolDown = 2.5f;
     [SerializeField] float idleTimeToLive = 0.5f;
