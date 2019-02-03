@@ -26,7 +26,7 @@ public class Fireball : ISpell, IPooledObject
         GameObject hitTarget = col.gameObject;
         if (hitTarget.tag == Tags.ENEMY)
         {
-            hitTarget.GetComponent<EnemyController>().decrementHealth(damage);
+            hitTarget.GetComponent<ICharacter>().decrementHealth(damage);
         }
 
         base.OnTriggerEnter2D(col);

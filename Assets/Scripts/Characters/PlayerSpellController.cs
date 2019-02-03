@@ -6,6 +6,8 @@ public class PlayerSpellController : MonoBehaviour {
 
     [SerializeField]
     GameObject coneSpellHolder;
+    [SerializeField]
+    CharacterGlow glow;
     Cooldown cooldownHolder;
     Haste hasteHolder;
 
@@ -26,25 +28,28 @@ public class PlayerSpellController : MonoBehaviour {
 
 
     #region Input Control
+    /*
+     * Skill 1 - AOE
+     * Skill 2 - Firecone
+     * Skill 3 - Haste    
+     * 
+     */
     void handleSkillInput()
     {
-        // AOE skill
         if (InputManager.skillOnePressed() && !cooldownHolder.isCoolingDown(1))
         {
             activateFirestorm();
-            // Update cooldown 1 here
             cooldownHolder.InitiateCooldown(1);
         }
-        // Fire cone
         else if (InputManager.skillTwoPressed() && !cooldownHolder.isCoolingDown(2))
         {
             coneSpellHolder.GetComponent<SpellHolder>().turnOnSpell();
-            // Update cooldown 2 here
             cooldownHolder.InitiateCooldown(2);
         } else if (InputManager.skillThreePressed() && !cooldownHolder.isCoolingDown(3))
         {
             hasteHolder.InitiateHaste();
             cooldownHolder.InitiateCooldown(3);
+            onStateChange(STATE.HASTE);
         } else if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4))
         {
             cooldownHolder.InitiateCooldown(4);
@@ -52,6 +57,12 @@ public class PlayerSpellController : MonoBehaviour {
     }
     #endregion
 
+    #region PlayerGlowState
+    public void onStateChange(STATE s)
+    {
+        glow.onStateChange(s);
+    }
+    #endregion
 
     #region Spell
 

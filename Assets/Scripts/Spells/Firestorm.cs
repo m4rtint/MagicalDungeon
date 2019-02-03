@@ -53,7 +53,7 @@ public class Firestorm : ISpell, IPooledObject
     {
         if (colGameObj.tag == Tags.ENEMY)
         {
-            colGameObj.GetComponent<EnemyController>().decrementHealth(damage);
+            colGameObj.GetComponent<ICharacter>().decrementHealth(damage);
         }
     }
 
