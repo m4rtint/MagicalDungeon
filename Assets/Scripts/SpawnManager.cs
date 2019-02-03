@@ -87,8 +87,8 @@ public class SpawnManager : MonoBehaviour {
                 return Pool.MUSHROOM;
             case MONSTERS.ZOMBIE:
                 return Pool.ZOMBIE;
-            case MONSTERS.RANGED_MUSHROOM:
-                return Pool.RANGED_MUSHROOM;
+            case MONSTERS.RANGED_SLIME:
+                return Pool.RANGED_SLIME;
             default:
                 return Pool.MUSHROOM;
         }
@@ -116,5 +116,5 @@ public enum MONSTERS
 {
     MUSHROOM,
     ZOMBIE,
-    RANGED_MUSHROOM,
+    RANGED_SLIME,
 }
