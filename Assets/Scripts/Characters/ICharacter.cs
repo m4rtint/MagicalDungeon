@@ -22,7 +22,7 @@ public class ICharacter : MonoBehaviour {
     [SerializeField]
     float healthPoints;
     [SerializeField]
-    private GameObject healthBar;
+    public GameObject healthBar;
 
     private float maxHealth;
 
@@ -45,7 +45,7 @@ public class ICharacter : MonoBehaviour {
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         coolDownMovement();
     }
