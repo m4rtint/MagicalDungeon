@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 0.3
   spellMovementTimeToLive: 3
-  damage: 30
+  damage: 10
 --- !u!212 &212423615679327944
 SpriteRenderer:
   m_ObjectHideFlags: 1
