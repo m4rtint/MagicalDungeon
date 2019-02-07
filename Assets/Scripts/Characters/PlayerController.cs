@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    
-    public Sprite upSprite;
-    public Sprite leftSprite;
-    public Sprite rightSprite;
-    public Sprite downSprite;
-
     private Rigidbody2D playerRigidbody;
     private SpriteRenderer playerSpriteRenderer;
     private PlayerSpellController playerSpell;
@@ -48,19 +42,19 @@ public class PlayerController : MonoBehaviour {
             float angle = Utilities.getAngleDegBetween(position.y, position.x);
             if ((angle <= 45 && angle >= 0) || (angle >= -45 && angle <= 0))
             {
-                playerSpriteRenderer.sprite = rightSprite;
+                //playerSpriteRenderer.sprite = rightSprite;
             }
             else if (angle >= 135 || angle <= -135)
             {
-                playerSpriteRenderer.sprite = leftSprite;
+                //playerSpriteRenderer.sprite = leftSprite;
             }
             else if (angle > 0)
             {
-                playerSpriteRenderer.sprite = upSprite;
+                //playerSpriteRenderer.sprite = upSprite;
             }
             else if (angle < 0)
             {
-                playerSpriteRenderer.sprite = downSprite;
+                //playerSpriteRenderer.sprite = downSprite;
             }
         }
         else //Else look depending on direction
@@ -77,22 +71,22 @@ public class PlayerController : MonoBehaviour {
             {
                 if (x > 0)
                 {
-                    playerSpriteRenderer.sprite = rightSprite;
+                    //playerSpriteRenderer.sprite = rightSprite;
                 }
                 else
                 {
-                    playerSpriteRenderer.sprite = leftSprite;
+                    //playerSpriteRenderer.sprite = leftSprite;
                 }
             }
             else
             {
                 if (y > 0)
                 {
-                    playerSpriteRenderer.sprite = upSprite;
+                    //playerSpriteRenderer.sprite = upSprite;
                 }
                 else
                 {
-                    playerSpriteRenderer.sprite = downSprite;
+                    //playerSpriteRenderer.sprite = downSprite;
                 }
             }
         }
