@@ -52,7 +52,7 @@ public class IceStorm : ISpell
     {
         if (gObject.tag == Tags.ENEMY)
         {
-            gObject.GetComponent<EnemyController>().modifySpeed(0.00001f, slowCoolDown);
+            gObject.GetComponent<ICharacter>().modifySpeed(0.00001f, slowCoolDown);
         }
     }
 

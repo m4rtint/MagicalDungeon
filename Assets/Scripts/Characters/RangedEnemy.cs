@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RangedEnemy : EnemyController {
 
-    private float attackRange = 15;
+    [SerializeField]
+    private float attackRange = 6;
     private bool attackTriggered = false;
 
     [SerializeField]
@@ -24,32 +25,25 @@ public class RangedEnemy : EnemyController {
     #region Motion
     protected override void gotoPlayerIfNeeded()
     {
+        float distance = Vector3.Distance(player.transform.position, transform.position);
         if (player == null)
         {
             agent.enabled = false;
         }
-        else
+        else if (distance <= this.attackRange && distance > this.agroRange)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) <= this.agroRange)
-            {
-                goToPlayer();
-                attackTriggered = true;
-            }
+            attackTriggered = true;
+            base.goToPlayer();
         }
     }
 
-    protected override void goToPlayer()
-    {
-        // Instead of going straight to player, go to fixed distance from the player and shoot fireballs at them
-        agent.SetDestination((player.transform.position - transform.position)/2);
-    }
     #endregion
 
     void attackPlayerIfNeeded()
     {
         if (player == null)
         {
-            agent.enabled = false;
+            attackTriggered = false;
         }
         else
         {
