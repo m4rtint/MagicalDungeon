@@ -124,8 +124,8 @@ GameObject:
   - component: {fileID: 24039412}
   - component: {fileID: 24039411}
   - component: {fileID: 24039410}
-  - component: {fileID: 24039414}
   - component: {fileID: 24039415}
+  - component: {fileID: 24039414}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -235,7 +235,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &24039414
 MonoBehaviour:
@@ -245,12 +245,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 24039409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c316be5ec6804eaca11e54e52a2dc9f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8734ace101075431b91ec00cc34e28e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
   invulnerableTimer: 0
-  healthPoints: 500
+  healthPoints: 1000
   healthBar: {fileID: 1806010862}
 --- !u!95 &24039415
 Animator:
@@ -35468,20 +35468,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 43634573}
-  - {fileID: 1634865554}
-  - {fileID: 479447092}
-  - {fileID: 724691832}
-  - {fileID: 1109456942}
-  - {fileID: 1942561655}
-  - {fileID: 1048502511}
-  - {fileID: 1157634208}
-  - {fileID: 575562419}
-  - {fileID: 1790221686}
-  - {fileID: 1240142424}
-  - {fileID: 2078351022}
-  - {fileID: 75149687}
   - {fileID: 321358446}
+  - {fileID: 724691832}
+  - {fileID: 1634865554}
+  - {fileID: 2078351022}
+  - {fileID: 1240142424}
+  - {fileID: 1790221686}
+  - {fileID: 43634573}
+  - {fileID: 575562419}
+  - {fileID: 75149687}
+  - {fileID: 1157634208}
+  - {fileID: 1048502511}
+  - {fileID: 1942561655}
+  - {fileID: 1109456942}
+  - {fileID: 479447092}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -53988,7 +53988,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1541141924}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: -0, z: 0}
+  m_LocalPosition: {x: -3.7, y: -0.8, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 379551310}
@@ -54443,7 +54443,7 @@ Transform:
   - {fileID: 277004154}
   - {fileID: 1951160334}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1790221685
 GameObject:
