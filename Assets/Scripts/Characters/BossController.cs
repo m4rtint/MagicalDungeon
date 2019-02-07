@@ -10,7 +10,7 @@ public class BossController : ICharacter {
         healthBar.SetActive(false);
     }
 
-    protected override  void Update()
+    protected override void Update()
     {
 
     }
@@ -22,6 +22,16 @@ public class BossController : ICharacter {
         healthBar.SetActive(true);
     }
 
+    protected override void onDeath()
+    {
+        GetComponent<Animator>().SetTrigger("Death");
+        Invoke("onDeathAnimationComplete", 2.5f);
+    }
+
+    private void onDeathAnimationComplete()
+    {
+        gameObject.SetActive(false);
+    }
 
 
 }

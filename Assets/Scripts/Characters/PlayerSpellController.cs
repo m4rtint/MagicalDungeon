@@ -29,9 +29,7 @@ public class PlayerSpellController : ICharacter
         updateSpellConeRotation();
         activateFireball();
     }
-
-
-
+    
     #region Input Control
     /*
      * Skill 1 - AOE
@@ -85,7 +83,7 @@ public class PlayerSpellController : ICharacter
 
     private void updateSpellConeRotation()
     {
-        float angle = Utilities.getAngleDegBetweenMouseAnd(gameObject)+90;
+        float angle = Utilities.getAngleDegBetweenMouseAnd(gameObject) - 90;
         coneSpellHolder.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
@@ -105,6 +103,7 @@ public class PlayerSpellController : ICharacter
     private Quaternion getPlayerRotation()
     {
         float angle = Utilities.getAngleDegBetweenMouseAnd(gameObject);
+        Debug.Log(angle);
         return Quaternion.AngleAxis(angle, Vector3.forward);
     }
     #endregion
