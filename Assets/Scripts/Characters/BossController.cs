@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BossController : ICharacter {
 
-    public bool awakened;
-
     protected override void Awake()
     {
         base.Awake();
@@ -14,12 +12,15 @@ public class BossController : ICharacter {
 
     protected override  void Update()
     {
-        if (awakened)
-        {
 
-        }
     }
 
+
+    public override void decrementHealth(float damage)
+    {
+        base.decrementHealth(damage);
+        healthBar.SetActive(true);
+    }
 
 
 
