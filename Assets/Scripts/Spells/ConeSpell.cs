@@ -30,18 +30,13 @@ public class ConeSpell : MonoBehaviour {
 
     private void Update()
     {
-
+        updateConeCapacity();
     }
 
     private void updateConeCapacity()
     {
         float powerChange = InputManager.skillTwoPressed() ? -coneDrain : coneRecharge;
         currentConeCapacity = Mathf.Clamp(currentConeCapacity + powerChange, 0, maxConeCapacity);
-    }
-
-    private void OnEnable()
-    {
-        resetCanDamage();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -54,9 +49,16 @@ public class ConeSpell : MonoBehaviour {
         }
     }
 
-    public bool isConePowerEmpty()
+    bool isConePowerEmpty()
     {
         return currentConeCapacity <= 0;
+    }
+
+    public void fireConeIfAble(bool isOn = false)
+    {
+        bool onIfAble = !isConePowerEmpty() && isOn;
+        GetComponent<SpriteRenderer>().enabled = onIfAble;
+        GetComponent<BoxCollider2D>().enabled = onIfAble;
     }
 
     private void resetCanDamage()

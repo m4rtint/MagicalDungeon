@@ -7,6 +7,7 @@ public class PlayerSpellController : ICharacter
 
     [SerializeField]
     GameObject coneSpellHolder;
+    SpellHolder spellHolder;
     [SerializeField]
     CharacterGlow glow;
     Cooldown cooldownHolder;
@@ -20,6 +21,7 @@ public class PlayerSpellController : ICharacter
     protected override void Awake()
     {
         base.Awake();
+        spellHolder = coneSpellHolder.GetComponent<SpellHolder>();
         cooldownHolder = GetComponent<Cooldown>();
     }
 
@@ -48,11 +50,12 @@ public class PlayerSpellController : ICharacter
 
         if (InputManager.skillTwoPressed())
         {
-            bool isPowerAvailable = coneSpellHolder.GetComponent<SpellHolder>().isConePowerEmpty();
-            coneSpellHolder.GetComponent<SpellHolder>().setSpell(isPowerAvailable);
+            spellHolder.fireConeIfAble(true);
             //cooldownHolder.InitiateCooldown(2);
+        } else
+        {
+            spellHolder.fireConeIfAble(false);
         }
-
 
         if (InputManager.skillThreePressed() && !cooldownHolder.isCoolingDown(3)) {
             base.modifySpeed(hasteSpeedModifier, hasteTimeToLive);
@@ -72,15 +75,6 @@ public class PlayerSpellController : ICharacter
     {
         glow.onStateChange(s);
     }
-
-
-    private void updateConeCapacity()
-    {
-        float powerChange = InputManager.skillTwoPressed() ? -coneDrain : coneRecharge;
-        coneCapacity = Mathf.Clamp(coneCapacity + powerChange, 0, maxConeCapacity);
-    }
-
-
 
     #endregion
 

@@ -542,7 +542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &179682049
 Transform:
   m_ObjectHideFlags: 0
@@ -644,7 +644,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   perTime: 0.1
-  timeToLive: 3
+  maxConeCapacity: 2000
+  coneRecharge: 5
+  coneDrain: 17
 --- !u!95 &179682053
 Animator:
   serializedVersion: 3
@@ -35919,7 +35921,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1712599087195054, guid: 100458754b037436f82ea52b79aa2e67, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114270081951269342, guid: 100458754b037436f82ea52b79aa2e67,
         type: 2}
