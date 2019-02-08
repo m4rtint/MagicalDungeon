@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BossController : ICharacter {
 
+    public delegate void BossDelegate();
+    public BossDelegate onBossDeathDelegate;
+
     protected override void Awake()
     {
         base.Awake();
@@ -24,6 +27,8 @@ public class BossController : ICharacter {
 
     protected override void onDeath()
     {
+
+        onBossDeathDelegate();
         GetComponent<Animator>().SetTrigger("Death");
         Invoke("onDeathAnimationComplete", 2.5f);
     }

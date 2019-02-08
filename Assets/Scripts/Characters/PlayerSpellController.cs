@@ -17,6 +17,9 @@ public class PlayerSpellController : ICharacter
     [SerializeField]
     float hasteTimeToLive = 3f;
 
+    public delegate void PlayerDelegate();
+    public PlayerDelegate onDeathDelegate;
+
     protected override void Awake()
     {
         base.Awake();
@@ -29,7 +32,17 @@ public class PlayerSpellController : ICharacter
         updateSpellConeRotation();
         activateFireball();
     }
-    
+
+    protected override void onDeath()
+    {
+        base.onDeath();
+        if (onDeathDelegate != null)
+        {
+            onDeathDelegate();
+        }
+        onDeathDelegate = null;
+    }
+
     #region Input Control
     /*
      * Skill 1 - AOE
@@ -103,7 +116,6 @@ public class PlayerSpellController : ICharacter
     private Quaternion getPlayerRotation()
     {
         float angle = Utilities.getAngleDegBetweenMouseAnd(gameObject);
-        Debug.Log(angle);
         return Quaternion.AngleAxis(angle, Vector3.forward);
     }
     #endregion
