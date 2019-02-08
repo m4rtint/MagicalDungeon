@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
         SpriteChange(direction);
     }
 
+
     #region CharacterMovement
 
     //Behaviour while colliding with another solid object e.g enemy meele
