@@ -17,8 +17,20 @@ public class PlayerSpellController : ICharacter
     [SerializeField]
     float hasteTimeToLive = 3f;
 
+
+    [Header("Cone")]
+    [SerializeField]
+    float maxConeCapacity = 2000f;
+    [SerializeField]
+    float coneRecharge = 5f;
+    [SerializeField]
+    float coneDrain = 17f;
+
+    float coneCapacity = 0f;
+
     protected override void Awake()
     {
+        coneCapacity = maxConeCapacity;
         base.Awake();
         cooldownHolder = GetComponent<Cooldown>();
     }
@@ -28,6 +40,7 @@ public class PlayerSpellController : ICharacter
         handleSkillInput();
         updateSpellConeRotation();
         activateFireball();
+        updateConeCapacity();
     }
     
     #region Input Control
@@ -44,17 +57,27 @@ public class PlayerSpellController : ICharacter
             activateFirestorm();
             cooldownHolder.InitiateCooldown(1);
         }
-        else if (InputManager.skillTwoPressed() && !cooldownHolder.isCoolingDown(2))
+
+        if (InputManager.skillTwoPressed() && coneCapacity > 0)
         {
             coneSpellHolder.GetComponent<SpellHolder>().turnOnSpell();
-            cooldownHolder.InitiateCooldown(2);
-        } else if (InputManager.skillThreePressed() && !cooldownHolder.isCoolingDown(3))
+            Debug.Log("FIREEE");
+            //cooldownHolder.InitiateCooldown(2);
+        }
+        else
         {
+            Debug.Log("NOOOOO");
+            coneSpellHolder.GetComponent<SpellHolder>().turnOffSpell();
+        }
+
+
+        if (InputManager.skillThreePressed() && !cooldownHolder.isCoolingDown(3)) {
             base.modifySpeed(hasteSpeedModifier, hasteTimeToLive);
             cooldownHolder.InitiateCooldown(3);
             onStateChange(STATE.HASTE);
-        } else if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4))
-        {
+        } 
+
+        if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4)){
             activeIceStorm();
             cooldownHolder.InitiateCooldown(4);
         }
@@ -66,6 +89,39 @@ public class PlayerSpellController : ICharacter
     {
         glow.onStateChange(s);
     }
+
+
+    private void updateConeCapacity()
+    {
+
+        if(InputManager.skillTwoPressed() == false)
+        {
+            if(coneCapacity + coneRecharge >= maxConeCapacity)
+            {
+                coneCapacity = maxConeCapacity;
+            }
+            else
+            {
+                coneCapacity += coneRecharge;
+            }
+        }
+        else //skillTwo is Pressed
+        {
+            if(coneCapacity - coneDrain < 0)
+            {
+                coneCapacity = 0;
+            }
+            else
+            {
+                coneCapacity -= coneDrain;
+            }
+        }
+ 
+
+    }
+
+
+
     #endregion
 
     #region Spell

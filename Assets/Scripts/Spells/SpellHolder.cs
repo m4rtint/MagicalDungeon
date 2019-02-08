@@ -11,4 +11,9 @@ public class SpellHolder : MonoBehaviour {
     {
         spell.SetActive(true);
     }
+
+    public void turnOffSpell()
+    {
+        spell.SetActive(false);
+    }
 }

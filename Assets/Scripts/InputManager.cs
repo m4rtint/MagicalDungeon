@@ -27,7 +27,7 @@ public static class InputManager{
 
     public static bool isFiring()
     {
-        return Input.GetButtonDown("Fire");
+        return Input.GetButton("Fire");
     }
 
     public static bool skillOnePressed()
@@ -37,7 +37,7 @@ public static class InputManager{
 
     public static bool skillTwoPressed()
     {
-        return Input.GetButtonDown("SkillTwo");
+        return Input.GetButton("SkillTwo");
     }
 
     public static bool skillThreePressed()
