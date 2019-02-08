@@ -17,20 +17,8 @@ public class PlayerSpellController : ICharacter
     [SerializeField]
     float hasteTimeToLive = 3f;
 
-
-    [Header("Cone")]
-    [SerializeField]
-    float maxConeCapacity = 2000f;
-    [SerializeField]
-    float coneRecharge = 5f;
-    [SerializeField]
-    float coneDrain = 17f;
-
-    float coneCapacity = 0f;
-
     protected override void Awake()
     {
-        coneCapacity = maxConeCapacity;
         base.Awake();
         cooldownHolder = GetComponent<Cooldown>();
     }
@@ -40,7 +28,7 @@ public class PlayerSpellController : ICharacter
         handleSkillInput();
         updateSpellConeRotation();
         activateFireball();
-        updateConeCapacity();
+        //updateConeCapacity();
     }
     
     #region Input Control
@@ -58,16 +46,11 @@ public class PlayerSpellController : ICharacter
             cooldownHolder.InitiateCooldown(1);
         }
 
-        if (InputManager.skillTwoPressed() && coneCapacity > 0)
+        if (InputManager.skillTwoPressed())
         {
-            coneSpellHolder.GetComponent<SpellHolder>().turnOnSpell();
-            Debug.Log("FIREEE");
+            bool isPowerAvailable = coneSpellHolder.GetComponent<SpellHolder>().isConePowerEmpty();
+            coneSpellHolder.GetComponent<SpellHolder>().setSpell(isPowerAvailable);
             //cooldownHolder.InitiateCooldown(2);
-        }
-        else
-        {
-            Debug.Log("NOOOOO");
-            coneSpellHolder.GetComponent<SpellHolder>().turnOffSpell();
         }
 
 
@@ -93,31 +76,8 @@ public class PlayerSpellController : ICharacter
 
     private void updateConeCapacity()
     {
-
-        if(InputManager.skillTwoPressed() == false)
-        {
-            if(coneCapacity + coneRecharge >= maxConeCapacity)
-            {
-                coneCapacity = maxConeCapacity;
-            }
-            else
-            {
-                coneCapacity += coneRecharge;
-            }
-        }
-        else //skillTwo is Pressed
-        {
-            if(coneCapacity - coneDrain < 0)
-            {
-                coneCapacity = 0;
-            }
-            else
-            {
-                coneCapacity -= coneDrain;
-            }
-        }
- 
-
+        float powerChange = InputManager.skillTwoPressed() ? -coneDrain : coneRecharge;
+        coneCapacity = Mathf.Clamp(coneCapacity + powerChange, 0, maxConeCapacity);
     }
 
 

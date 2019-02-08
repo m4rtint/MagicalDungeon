@@ -7,13 +7,14 @@ public class SpellHolder : MonoBehaviour {
     [SerializeField]
     GameObject spell;
 
-	public void turnOnSpell()
+	public void setSpell(bool isOn)
     {
-        spell.SetActive(true);
+        //TODO : spell.SetActive(isOn);
     }
 
-    public void turnOffSpell()
+    public bool isConePowerEmpty()
     {
-        spell.SetActive(false);
+        return spell.GetComponent<ConeSpell>().isConePowerEmpty();
     }
+
 }
