@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1309838803821908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.1155653, y: -1.7809634, z: 0}
+  m_LocalPosition: {x: -9.2, y: -10.14, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4075234206831202}
@@ -161,12 +161,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493bc4f2965374b1d905a9918eb8b79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
   moveSpeed: 5
   invulnerableTimer: 0.5
+  healthPoints: 100
   healthBar: {fileID: 1562785416933926}
   meleeDamage: 10
-  agroRange: 6
+  agroRange: 4.15
+  attackRange: 7.18
   attackTime: 2
 --- !u!212 &212138753393141522
 SpriteRenderer:

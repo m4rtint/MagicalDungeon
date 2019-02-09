@@ -73,5 +73,17 @@ public class RangedEnemy : EnemyController {
         return Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+
+    #region Gizmo
+    void OnDrawGizmosSelected()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, this.agroRange);
+    }
+    #endregion
 }
 
