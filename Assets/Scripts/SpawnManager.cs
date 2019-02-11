@@ -60,7 +60,7 @@ public class SpawnManager : MonoBehaviour {
 
     void setupEnemy(EnemyController enemy)
     {
-        enemy.onDeathDelegate += enemyOnDeath;
+        enemy.onCharacterDeath += enemyOnDeath;
         enemy.OnObjectSpawn();
     }
 

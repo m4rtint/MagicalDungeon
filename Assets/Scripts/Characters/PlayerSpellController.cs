@@ -18,9 +18,6 @@ public class PlayerSpellController : ICharacter
     [SerializeField]
     float hasteTimeToLive = 3f;
 
-    public delegate void PlayerDelegate();
-    public PlayerDelegate onDeathDelegate;
-
     protected override void Awake()
     {
         base.Awake();
@@ -33,25 +30,24 @@ public class PlayerSpellController : ICharacter
         handleSkillInput();
         updateSpellConeRotation();
         activateFireball();
-        //updateConeCapacity();
     }
 
     protected override void onDeath()
     {
-        base.onDeath();
-        if (onDeathDelegate != null)
+        if (onCharacterDeath != null)
         {
-            onDeathDelegate();
+            gameObject.SetActive(false);
+            onCharacterDeath();
         }
-        onDeathDelegate = null;
+        onCharacterDeath = null;
     }
 
     #region Input Control
     /*
      * Skill 1 - AOE
      * Skill 2 - Firecone
-     * Skill 3 - Haste    
-     * 
+     * Skill 3 - Haste
+     *
      */
     void handleSkillInput()
     {
@@ -74,7 +70,7 @@ public class PlayerSpellController : ICharacter
             base.modifySpeed(hasteSpeedModifier, hasteTimeToLive);
             cooldownHolder.InitiateCooldown(3);
             onStateChange(STATE.HASTE);
-        } 
+        }
 
         if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4)){
             activeIceStorm();

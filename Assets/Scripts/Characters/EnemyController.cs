@@ -8,9 +8,6 @@ public class EnemyController : ICharacter, IPooledObject {
     const string ANIMATION_DEATH = "Death";
     const string ANIMATION_DAMAGED = "Damaged";
 
-    public delegate void EnemyDelegate();
-    public EnemyDelegate onDeathDelegate;
-
     protected PolyNavAgent agent;
     protected GameObject player;
 
@@ -119,10 +116,10 @@ public class EnemyController : ICharacter, IPooledObject {
     public void completeDeathAnimation()
     {
         gameObject.SetActive(false);
-        if (onDeathDelegate != null) { 
-            onDeathDelegate();
+        if (onCharacterDeath != null) {
+            onCharacterDeath();
         }
-        onDeathDelegate = null;
+        onCharacterDeath = null;
     }
 
     void OnCollisionStay2D(Collision2D other)

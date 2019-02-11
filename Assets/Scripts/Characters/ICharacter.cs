@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ICharacter : MonoBehaviour {
 
+    public delegate void CharacterDelegate();
+    public CharacterDelegate onCharacterDeath;
 
     [Header("Movement")]
     [SerializeField]
@@ -103,7 +105,7 @@ public class ICharacter : MonoBehaviour {
 
     protected virtual void onDeath()
     {
-        gameObject.SetActive(false);
+        onCharacterDeath();
     }
 
     public virtual void incrementHealth(float heal)

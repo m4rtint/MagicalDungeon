@@ -26,8 +26,8 @@ public class StateManager : MonoBehaviour {
         playerWon = false;
         gameOver.SetActive(false);
         gameWon.SetActive(false);
-        player.GetComponent<PlayerSpellController>().onDeathDelegate += didLose;
-        boss.GetComponent<BossController>().onBossDeathDelegate += didWin;
+        player.GetComponent<ICharacter>().onCharacterDeath += didLose;
+        boss.GetComponent<ICharacter>().onCharacterDeath += didWin;
     }
 
 	
