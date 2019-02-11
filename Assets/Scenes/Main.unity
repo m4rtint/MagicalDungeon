@@ -35512,20 +35512,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
+  - {fileID: 1109456942}
   - {fileID: 75149687}
+  - {fileID: 1240142424}
   - {fileID: 575562419}
   - {fileID: 479447092}
   - {fileID: 1790221686}
   - {fileID: 1157634208}
+  - {fileID: 43634573}
   - {fileID: 724691832}
   - {fileID: 1048502511}
   - {fileID: 1634865554}
+  - {fileID: 321358446}
   - {fileID: 1942561655}
   - {fileID: 2078351022}
-  - {fileID: 1109456942}
-  - {fileID: 1240142424}
-  - {fileID: 43634573}
-  - {fileID: 321358446}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -36229,6 +36229,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114239208184612032, guid: b6bddbb7c57c6c947ab030d5380e720f,
+        type: 2}
+      propertyPath: monstersToSpawn.Array.data[0].percentage
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6bddbb7c57c6c947ab030d5380e720f, type: 2}
   m_IsPrefabAsset: 0
@@ -36497,7 +36502,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5c5ff3e853b554eac30cfe3284af98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monstersToSpawn: 010000000000000002000000
+  monstersToSpawn:
+  - tag: 1
+    percentage: 1
+  - tag: 0
+    percentage: 0.77
+  - tag: 0
+    percentage: 0.495
   maxActiveEnemySpawned: 6
   maxEnemySpawned: 14
   isRespawning: 1
@@ -47992,7 +48003,6 @@ GameObject:
   - component: {fileID: 1078070150}
   - component: {fileID: 1078070151}
   - component: {fileID: 1078070152}
-  - component: {fileID: 1078070153}
   - component: {fileID: 1078070154}
   - component: {fileID: 1078070155}
   - component: {fileID: 1078070158}
@@ -50050,43 +50060,6 @@ PolygonCollider2D:
       - {x: -37.65476, y: -20.021744}
       - {x: -36.234776, y: -20.055769}
       - {x: -35.943268, y: -18.957317}
---- !u!60 &1078070153
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1078070146}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -40.196854, y: -24.010767}
-      - {x: -40.90142, y: -24.678759}
-      - {x: -41.056297, y: -29.1749}
-      - {x: -40.712852, y: -29.62218}
-      - {x: -40.003998, y: -30.015417}
-      - {x: -37.008133, y: -29.956188}
-      - {x: -36.52848, y: -29.663324}
-      - {x: -36.02345, y: -28.69218}
-      - {x: -36.06614, y: -27.307957}
-      - {x: -37.89233, y: -26.966011}
-      - {x: -38.057083, y: -26.205421}
-      - {x: -38.05925, y: -25.196363}
-      - {x: -38.179184, y: -24.213243}
 --- !u!61 &1078070154
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54338,7 +54311,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1541141924}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.71, y: -48.35, z: 0}
+  m_LocalPosition: {x: -3.3, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 379551310}
@@ -54687,6 +54660,10 @@ Prefab:
       propertyPath: monstersToSpawn.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1846633798135570, guid: b6bddbb7c57c6c947ab030d5380e720f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6bddbb7c57c6c947ab030d5380e720f, type: 2}
   m_IsPrefabAsset: 0
@@ -54771,7 +54748,7 @@ GameObject:
   - component: {fileID: 1636585100}
   - component: {fileID: 1636585099}
   m_Layer: 0
-  m_Name: MixEndlessSpawn (1)
+  m_Name: 'MixEndlessBossSpawn '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54789,7 +54766,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5c5ff3e853b554eac30cfe3284af98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monstersToSpawn: 0200000000000000
+  monstersToSpawn:
+  - tag: 0
+    percentage: 0.218
+  - tag: 2
+    percentage: 0.639
   maxActiveEnemySpawned: 5
   maxEnemySpawned: 4
   isRespawning: 1

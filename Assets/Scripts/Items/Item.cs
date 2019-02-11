@@ -10,7 +10,7 @@ public class Item : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other)
     {
         incrementHealthIfNeeded(other.gameObject);
-        Destroy(gameObject);
+       
     }
 
     void incrementHealthIfNeeded(GameObject character)
@@ -18,6 +18,7 @@ public class Item : MonoBehaviour {
         if (character.CompareTag(Tags.PLAYER))
         {
             character.GetComponent<ICharacter>().incrementHealth(amountHealed);
+            Destroy(gameObject);
         }
     }
 

@@ -7,7 +7,16 @@ public class SpawnManager : MonoBehaviour {
     Transform[] spawnPoints;
 
     [SerializeField]
-    MONSTERS[] monstersToSpawn;
+    Monsters[] monstersToSpawn;
+
+    [System.Serializable]
+    public class Monsters
+    {
+        public MONSTERS tag;
+        [Range(0, 1)]
+        [SerializeField]
+        public float percentage;
+    }
 
     [Range(0, 20)]
     [SerializeField]
@@ -73,11 +82,39 @@ public class SpawnManager : MonoBehaviour {
 
     string generateRandomEnemy()
     {
-        int length = Mathf.Max(0, monstersToSpawn.Length);
-        int index = Random.Range(0, length);
-
-        return monstersToSpawn.Length == 0 ? convertEnumToString(0) : convertEnumToString(monstersToSpawn[index]);
+        float rate = Random.Range(0.0f, 1.0f);
+        MONSTERS m = generateMonsterBasedOnPercentage(rate);
+        return monstersToSpawn.Length == 0 ? convertEnumToString(0) : convertEnumToString(m);
     }
+
+    MONSTERS generateMonsterBasedOnPercentage(float rate)
+    {
+        MONSTERS chosenMonster = monstersToSpawn[0].tag;
+        float accumulatedChance = accumulatedMonsterChances();
+        foreach (Monsters m in monstersToSpawn)
+        {
+            float percentage = m.percentage / accumulatedChance;
+            if (percentage <= rate)
+            {
+                chosenMonster = m.tag;
+            }
+        }
+
+        return chosenMonster;
+    }
+
+    float accumulatedMonsterChances()
+    {
+        float accumulatedChance = 0;
+        foreach (Monsters m in monstersToSpawn)
+        {
+            accumulatedChance += m.percentage;
+        }
+
+        return Mathf.Clamp(accumulatedChance, 0.0001f, 1);
+    }
+
+
 
     string convertEnumToString(MONSTERS m)
     {
