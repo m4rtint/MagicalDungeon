@@ -91,9 +91,10 @@ public class SpawnManager : MonoBehaviour {
     {
         MONSTERS chosenMonster = monstersToSpawn[0].tag;
         float accumulatedChance = accumulatedMonsterChances();
+        float percentage = 0;
         foreach (Monsters m in monstersToSpawn)
         {
-            float percentage = m.percentage / accumulatedChance;
+            percentage += m.percentage / accumulatedChance;
             if (percentage <= rate)
             {
                 chosenMonster = m.tag;
@@ -102,6 +103,13 @@ public class SpawnManager : MonoBehaviour {
 
         return chosenMonster;
     }
+
+    //0.3 0.5 0.2 
+    //0.7
+
+    //0.4 0.5 0.1
+    //0.1
+
 
     float accumulatedMonsterChances()
     {
