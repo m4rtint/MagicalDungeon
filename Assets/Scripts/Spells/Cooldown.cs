@@ -111,16 +111,8 @@ public class Cooldown : MonoBehaviour
 
     private void UpdateCooldown2()
     {
-        //if (cd2Time > 0)
-        //{
-        //    cd2.fillAmount = (cd2Time * (360 / defaultCD2)) / 360;
-        //    cd2Time -= Time.deltaTime;
-        //}
-        //else if (cd2Time <= 0)
-        //{
-        //    cd2.fillAmount = 0;
-        //}
-        cd2.fillAmount = 1 - coneSpellHolder.currentConeCapacity / coneSpellHolder.maxConeCapacity;
+
+        cd2.fillAmount = 1 - coneSpellHolder.GetCurrentConeCapacity() / coneSpellHolder.GetMaxConeCapacity();
     }
 
     private void UpdateCooldown3()
