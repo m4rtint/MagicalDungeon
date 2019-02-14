@@ -13,12 +13,12 @@ public class ConeSpell : MonoBehaviour {
 
     [Header("Cone")]
     [SerializeField]
-    float maxConeCapacity = 2000f;
+    public float maxConeCapacity = 2000f;
     [SerializeField]
     float coneRecharge = 5f;
     [SerializeField]
     float coneDrain = 17f;
-    float currentConeCapacity = 0f;
+    public float currentConeCapacity = 0f;
 
     bool canDamage = true;
 
