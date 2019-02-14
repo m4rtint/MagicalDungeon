@@ -66,4 +66,13 @@ public class ConeSpell : MonoBehaviour {
         canDamage = true;
     }
 
+    public float GetCurrentConeCapacity()
+    {
+        return currentConeCapacity;
+    }
+
+    public float GetMaxConeCapacity()
+    {
+        return maxConeCapacity;
+    }
 }
