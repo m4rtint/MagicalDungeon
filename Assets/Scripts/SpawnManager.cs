@@ -27,6 +27,8 @@ public class SpawnManager : MonoBehaviour {
     int currentActiveEnemies;
     int enemiesAlreadySpawned = 0;
 
+    bool totemDestroyed = false;
+
     [SerializeField]
     bool isRespawning = false;
 
@@ -53,6 +55,10 @@ public class SpawnManager : MonoBehaviour {
 
     void spawnEnemyIfNeeded()
     {
+        if (totemDestroyed)
+        {
+            Destroy(gameObject);
+        }
         if (isSpawnNeeded())
         {
             GameObject enemy = ObjectPooler.Instance.SpawnFromPool(generateRandomEnemy(), getSpawnPosition(), Quaternion.identity);
@@ -102,6 +108,12 @@ public class SpawnManager : MonoBehaviour {
         }
 
         return chosenMonster;
+    }
+
+    public void DestroyTotem()
+    {
+        Debug.Log("Stopped enemy spawning");
+        totemDestroyed = true;
     }
 
     //0.3 0.5 0.2 
