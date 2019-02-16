@@ -35512,20 +35512,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 1109456942}
-  - {fileID: 75149687}
-  - {fileID: 1240142424}
-  - {fileID: 575562419}
-  - {fileID: 479447092}
-  - {fileID: 1790221686}
   - {fileID: 1157634208}
-  - {fileID: 43634573}
-  - {fileID: 724691832}
-  - {fileID: 1048502511}
-  - {fileID: 1634865554}
   - {fileID: 321358446}
-  - {fileID: 1942561655}
+  - {fileID: 1790221686}
+  - {fileID: 575562419}
+  - {fileID: 1240142424}
+  - {fileID: 1109456942}
+  - {fileID: 43634573}
+  - {fileID: 75149687}
   - {fileID: 2078351022}
+  - {fileID: 479447092}
+  - {fileID: 1942561655}
+  - {fileID: 1634865554}
+  - {fileID: 1048502511}
+  - {fileID: 724691832}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -54380,7 +54380,7 @@ SpriteRenderer:
   m_SortingLayerID: 1464904271
   m_SortingLayer: 2
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 7eec3058720c24b718760d0d43653de6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef0d2d3f08b724509b8558ed8744b98b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -54460,9 +54460,9 @@ MonoBehaviour:
   cd2: {fileID: 337737391}
   cd3: {fileID: 1974253397}
   cd4: {fileID: 719546475}
+  coneSpellHolder: {fileID: 179682052}
   quickSkillCD: 0.3
   defaultCD1: 3
-  defaultCD2: 4
   defaultCD3: 5
   defaultCD4: 2
 --- !u!95 &1541141932

@@ -43,50 +43,33 @@ public class PlayerController : MonoBehaviour {
         position = Input.mousePosition - position;
         float angle = Utilities.getAngleDegBetween(position.y, position.x);
 
-        if ((angle <= 45 && angle >= 0) || (angle >= -45 && angle <= 0))
-        {
-            animate.SetTrigger(ATTACK_RIGHT);
-            Debug.Log("Attack right");
-        }
-        else
-        {
-            animate.SetTrigger(ATTACK_LEFT);
-            Debug.Log("Attack left");
-        }
+        string animationName = (angle > -90 && angle < 90) ? ATTACK_RIGHT : ATTACK_LEFT;
+        animate.SetTrigger(animationName);
+        
     }
 
     private void SpriteChange(Vector3 direction)
     {
-        //Else look depending on direction
-
         float x = direction.x;
         float y = direction.y;
 
 
-        if (direction == Vector3.zero)
+        if (direction != Vector3.zero)
         {
-            return;
-        }
-        if (Mathf.Abs(x) >= Mathf.Abs(y)) //Look horizontally as priority
-        {
-            if (x > 0)
+            if (Mathf.Abs(x) >= Mathf.Abs(y)) //Look horizontally as priority
             {
-                //playerSpriteRenderer.sprite = rightSprite;
+                animate.SetBool("IdleRight", (x > 0));
             }
             else
             {
-                //playerSpriteRenderer.sprite = leftSprite;
-            }
-        }
-        else
-        {
-            if (y > 0)
-            {
-                //playerSpriteRenderer.sprite = upSprite;
-            }
-            else
-            {
-                //playerSpriteRenderer.sprite = downSprite;
+                if (y > 0)
+                {
+                    //playerSpriteRenderer.sprite = upSprite;
+                }
+                else
+                {
+                    //playerSpriteRenderer.sprite = downSprite;
+                }
             }
         }
         
