@@ -20,6 +20,9 @@ public class Cooldown : MonoBehaviour
     private float cd3Time;
     private float cd4Time;
 
+    [SerializeField]
+    ConeSpell coneSpellHolder;
+
     // Default cooldown times
     [SerializeField]
     private float quickSkillCD = 0.3f;
@@ -108,15 +111,8 @@ public class Cooldown : MonoBehaviour
 
     private void UpdateCooldown2()
     {
-        if (cd2Time > 0)
-        {
-            cd2.fillAmount = (cd2Time * (360 / defaultCD2)) / 360;
-            cd2Time -= Time.deltaTime;
-        }
-        else if (cd2Time <= 0)
-        {
-            cd2.fillAmount = 0;
-        }
+
+        cd2.fillAmount = 1 - coneSpellHolder.GetCurrentConeCapacity() / coneSpellHolder.GetMaxConeCapacity();
     }
 
     private void UpdateCooldown3()
@@ -124,7 +120,7 @@ public class Cooldown : MonoBehaviour
         if (cd3Time > 0)
         {   
 
-            cd3.fillAmount = (cd3Time * (360 / defaultCD3)) / 360;
+            cd3.fillAmount = cd3Time / defaultCD3;
             cd3Time -= Time.deltaTime;
         }
         else if (cd3Time <= 0)
@@ -138,7 +134,7 @@ public class Cooldown : MonoBehaviour
     {
         if (cd4Time > 0)
         {
-            cd4.fillAmount = (cd4Time * (360 / defaultCD4)) / 360;
+            cd4.fillAmount = cd4Time / defaultCD4;
             cd4Time -= Time.deltaTime;
         }
         else if (cd4Time <= 0)
