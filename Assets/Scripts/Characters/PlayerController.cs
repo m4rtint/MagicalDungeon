@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     const string ATTACK_LEFT = "AttackLeft";
     const string ATTACK_RIGHT = "AttackRight";
+    const string IDLE = "IdleRight";
 
     private Rigidbody2D playerRigidbody;
     private PlayerSpellController playerSpell;
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (Mathf.Abs(x) >= Mathf.Abs(y)) //Look horizontally as priority
             {
-                animate.SetBool("IdleRight", (x > 0));
+                animate.SetBool(IDLE, (x > 0));
             }
             else
             {
