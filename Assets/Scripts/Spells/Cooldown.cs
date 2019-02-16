@@ -16,7 +16,6 @@ public class Cooldown : MonoBehaviour
 
     private float quickCdTime;
     private float cd1Time;
-    private float cd2Time;
     private float cd3Time;
     private float cd4Time;
 
@@ -28,8 +27,6 @@ public class Cooldown : MonoBehaviour
     private float quickSkillCD = 0.3f;
     [SerializeField]
     private float defaultCD1 = 3f;
-    [SerializeField]
-    private float defaultCD2 = 4f;
     [SerializeField]
     private float defaultCD3 = 10f;
     [SerializeField]
@@ -45,8 +42,6 @@ public class Cooldown : MonoBehaviour
                 return quickCdTime > 0;
             case 1:
                 return cd1Time > 0;
-            case 2:
-                return cd2Time > 0;
             case 3:
                 return cd3Time > 0;
             case 4:
@@ -66,7 +61,6 @@ public class Cooldown : MonoBehaviour
 
     public void InitiateCooldown(int cdNum)
     {
-        //Debug.Log("Cooldown initiated");
         switch(cdNum)
         {
             case 0:
@@ -74,9 +68,6 @@ public class Cooldown : MonoBehaviour
                 break;
             case 1:
                 cd1Time = defaultCD1;
-                break;
-            case 2:
-                cd2Time = defaultCD2;
                 break;
             case 3:
                 cd3Time = defaultCD3;

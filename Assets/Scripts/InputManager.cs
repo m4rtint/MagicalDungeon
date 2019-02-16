@@ -50,5 +50,8 @@ public static class InputManager{
         return Input.GetButtonDown("SkillFour");
     }
 
-
+    public static bool isCastingSpell()
+    {
+        return isFiring() || skillOnePressed() || skillTwoPressed() || skillFourPressed();
+    }
 }
