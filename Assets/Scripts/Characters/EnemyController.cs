@@ -16,8 +16,6 @@ public class EnemyController : ICharacter, IPooledObject {
 
     [SerializeField]
     protected float agroRange = 4; 
-
-    bool isAgroingPlayer = false;
     
     protected override void Awake()
     {
@@ -31,12 +29,14 @@ public class EnemyController : ICharacter, IPooledObject {
     {
         setSpeed();
         agent.enabled = true;
+        GetComponent<Collider2D>().enabled = true;
     }
 
     protected virtual void FixedUpdate()
     {
         gotoPlayerIfNeeded();
         updateSpriteDirection();
+        ifPlayerDeath();
     }
 
     #region Motion
@@ -60,16 +60,9 @@ public class EnemyController : ICharacter, IPooledObject {
 
     protected virtual void gotoPlayerIfNeeded()
     {
-        if (player == null)
+        if (Vector3.Distance(player.transform.position, transform.position) <= this.agroRange)
         {
-            agent.enabled = false;
-        }
-        else
-        {
-            if (Vector3.Distance(player.transform.position, transform.position) <= this.agroRange)
-            {
-                goToPlayer();
-            }
+            goToPlayer();
         }
     }
 
@@ -101,11 +94,30 @@ public class EnemyController : ICharacter, IPooledObject {
         }
     }
 
+    void ifPlayerDeath()
+    {
+        if (player == null)
+        {
+            onPlayerDeath();
+        }
+    }
+
+    protected virtual void onPlayerDeath()
+    {
+        stopMovement();
+    }
+
     protected override void onDeath()
     {
         runAnimation(ANIMATION_DEATH);
-        agent.enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        stopMovement();
         Invoke("completeDeathAnimation", 1.5f);
+    }
+
+    void stopMovement()
+    {
+        agent.enabled = false;
     }
 
     void runAnimation(string name)
@@ -126,9 +138,8 @@ public class EnemyController : ICharacter, IPooledObject {
     {
         GameObject player = other.gameObject;
 
-        if (player.tag == Tags.PLAYER)
+        if (player.tag == Tags.PLAYER && !isHealthZero())
         {
-            player.GetComponent<ICharacter>().getKnockedBackSolid(2000, transform.position);
             player.GetComponent<ICharacter>().damagedByAttacker(meleeDamage);
         }
     }

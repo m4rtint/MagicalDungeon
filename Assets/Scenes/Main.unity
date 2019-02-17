@@ -35564,12 +35564,18 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   generateOnUpdate: 1
   navObstacles:
+  - {fileID: 724691832}
+  - {fileID: 1048502511}
+  - {fileID: 1634865554}
+  - {fileID: 1942561655}
+  - {fileID: 2078351022}
+  - {fileID: 1109456942}
+  - {fileID: 1240142424}
+  - {fileID: 575562419}
+  - {fileID: 1790221686}
   - {fileID: 1157634208}
   - {fileID: 321358446}
-  - {fileID: 1790221686}
-  - {fileID: 575562419}
-  - {fileID: 1240142424}
-  - {fileID: 1109456942}
+  - {fileID: 479447092}
   - {fileID: 43634573}
   - {fileID: 75149687}
   - {fileID: 479447092}
@@ -35699,7 +35705,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cf5b24874ffe4df1bbd80b4bda72e13, type: 3}
   m_Name:
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   target: {fileID: 1541141925}
   smoothTime: 0.025
 --- !u!20 &519420031
@@ -36233,7 +36239,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1846633798135570, guid: b6bddbb7c57c6c947ab030d5380e720f, type: 2}
       propertyPath: m_Name
-      value: MushroomSpawn (1)
+      value: MushroomFIrstDownSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 114239208184612032, guid: b6bddbb7c57c6c947ab030d5380e720f,
         type: 2}
@@ -36561,11 +36567,11 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   monstersToSpawn:
   - tag: 1
-    percentage: 0.2
+    percentage: 1
   - tag: 0
-    percentage: 0.77
+    percentage: 1
   - tag: 2
-    percentage: 0.495
+    percentage: 0.527
   maxActiveEnemySpawned: 6
   maxEnemySpawned: 14
   isRespawning: 1
