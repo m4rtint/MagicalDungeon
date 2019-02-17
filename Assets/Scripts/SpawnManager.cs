@@ -95,20 +95,15 @@ public class SpawnManager : MonoBehaviour {
         foreach (Monsters m in monstersToSpawn)
         {
             percentage += m.percentage / accumulatedChance;
-            if (percentage <= rate)
+            if (percentage > rate)
             {
                 chosenMonster = m.tag;
+                break;
             }
         }
 
         return chosenMonster;
     }
-
-    //0.3 0.5 0.2 
-    //0.7
-
-    //0.4 0.5 0.1
-    //0.1
 
 
     float accumulatedMonsterChances()
@@ -119,7 +114,7 @@ public class SpawnManager : MonoBehaviour {
             accumulatedChance += m.percentage;
         }
 
-        return Mathf.Clamp(accumulatedChance, 0.0001f, 1);
+        return Mathf.Clamp(accumulatedChance, 0.0001f, monstersToSpawn.Length);
     }
 
 
