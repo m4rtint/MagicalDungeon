@@ -91,8 +91,8 @@ MonoBehaviour:
   spellMovementTimeToLive: 2
   damage: 10
   slowCoolDown: 2.5
-  idleTimeToLive: 0.5
-  slowDownPercentage: 0.25
+  idleTimeToLive: 3
+  slowDownPercentage: 0.1
 --- !u!212 &212117869758306504
 SpriteRenderer:
   m_ObjectHideFlags: 1

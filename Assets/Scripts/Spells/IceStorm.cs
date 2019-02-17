@@ -8,6 +8,9 @@ public class IceStorm : ISpell
     [SerializeField] float idleTimeToLive = 0.5f;
     [SerializeField] float slowDownPercentage = 0.25f;
 
+    //Animation
+    float fadeTime = 0.5f;
+
     private void Awake()
     {
         slowDownPercentage = Mathf.Max(0.0001f, slowDownPercentage);
@@ -19,11 +22,25 @@ public class IceStorm : ISpell
         if (!isMoving)
         {
             currentTimeToLive += Time.fixedDeltaTime;
-            if (currentTimeToLive > idleTimeToLive)
+            if (currentTimeToLive > idleTimeToLive - fadeTime)
             {
-                gameObject.SetActive(false);
+                endIceStorm();
             }
         }
+    }
+
+    void endIceStorm()
+    {
+        Hashtable ht = new Hashtable();
+        ht.Add("alpha", 0);
+        ht.Add("time", fadeTime);
+        ht.Add("oncomplete", "onCompleteEndIceStormFade");
+        iTween.FadeTo(gameObject, ht);
+    }
+
+    void onCompleteEndIceStormFade()
+    {
+        gameObject.SetActive(false);
     }
 
     protected override void onMovementTimeToLiveStopped()
@@ -32,9 +49,14 @@ public class IceStorm : ISpell
         isMoving = false;
     }
 
+    void resetAlpha()
+    {
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
 
     public void OnObjectSpawn()
     {
+        resetAlpha();
         Vector3 dir = transform.rotation.eulerAngles;
         angle = Utilities.getAngleDegBetween(dir.y, dir.x) + 90;
         currentTimeToLive = 0;
@@ -52,7 +74,7 @@ public class IceStorm : ISpell
     {
         if (gObject.tag == Tags.ENEMY)
         {
-            gObject.GetComponent<ICharacter>().modifySpeed(0.00001f, slowCoolDown);
+            gObject.GetComponent<ICharacter>().modifySpeed(slowDownPercentage, slowCoolDown);
         }
     }
 
