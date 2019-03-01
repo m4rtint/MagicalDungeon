@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Totem : ICharacter {
 
-    [SerializeField]
-    SpawnManager spawnManager;
-
     protected override void Awake()
     {
         base.Awake();
         gameObject.SetActive(true);
         healthBar.SetActive(false);
-        spawnManager = GetComponent<SpawnManager>();
     }
 
-
+    protected override void Update()
+    {
+        if (isHealthZero())
+        {
+            onDeath();
+        }
+    }
 
     public override void decrementHealth(float damage)
     {
@@ -24,12 +26,6 @@ public class Totem : ICharacter {
     }
 
     protected override void onDeath()
-    {
-        spawnManager.DestroyTotem();
-        gameObject.SetActive(false);
-    }
-
-    private void onDeathAnimationComplete()
     {
         gameObject.SetActive(false);
     }

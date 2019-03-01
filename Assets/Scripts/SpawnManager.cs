@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour {
 
     Transform[] spawnPoints;
+    GameObject totem;
 
     [SerializeField]
     Monsters[] monstersToSpawn;
@@ -40,6 +41,10 @@ public class SpawnManager : MonoBehaviour {
     private void Update()
     {
         spawnEnemyIfNeeded();
+        if (totemDestroyed)
+        {
+            Destroy(this);
+        }
     }
 
 
