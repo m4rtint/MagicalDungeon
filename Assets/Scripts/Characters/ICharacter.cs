@@ -6,6 +6,7 @@ public class ICharacter : MonoBehaviour {
 
     public delegate void CharacterDelegate();
     public CharacterDelegate onCharacterDeath;
+    private Color frozenColor = new Color(0, 255, 255, 255);
 
     [Header("Movement")]
     [SerializeField]
@@ -73,10 +74,12 @@ public class ICharacter : MonoBehaviour {
         isCoolingDown = true;
         coolDownTime = time;
         speedModifier = mod;
+        GetComponent<SpriteRenderer>().color = frozenColor;
     }
 
     protected virtual void resetSpeedCoolDown()
     {
+        GetComponent<SpriteRenderer>().color = Color.white;
         isCoolingDown = false;
         speedModifier = 1;
     }
