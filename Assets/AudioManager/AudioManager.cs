@@ -7,11 +7,19 @@ public class AudioManager : MonoBehaviour {
 	
 	public static AudioManager instance = null;
 
-	AudioSource m_audioSource;
+	AudioSource[] m_audioSource;
 	AudioData AUDIO;
 
-	#region Mono
-	void Awake() {
+    enum SOURCES
+    {
+        SPELL1,
+        SPELL2,
+        CHARACTER,
+        GENERIC
+    }
+
+    #region Mono
+    void Awake() {
 		if (instance == null)
 			instance = this;
 		else if (instance != this)
@@ -21,30 +29,108 @@ public class AudioManager : MonoBehaviour {
 		SetupVariable ();
 	}
 
-	void SetupVariable() {
-		m_audioSource = GetComponent<AudioSource> ();
-		m_audioSource.playOnAwake = false;
+    void SetupVariable() {
+        m_audioSource = GetComponents<AudioSource>();
+        foreach (AudioSource source in m_audioSource)
+        {
+            source.playOnAwake = false;
+        }
 		AUDIO = GetComponent<AudioData> ();
 	}
 	#endregion
 
 	#region Controls
-	void PLAY(AudioClip clip, float volume = 1.0f) {
-		m_audioSource.PlayOneShot (clip, volume);
+	void PLAYCHARACTER(AudioClip clip, float volume = 1.0f) {
+
+		getCharacterSource().PlayOneShot (clip, volume);
 	}
 
-	public void STOP(){
-		if (m_audioSource.isPlaying) {
-			m_audioSource.Stop ();
-		}
-	}
-	#endregion
+    void PLAYSPELL(AudioClip clip, float volume = 1.0f)
+    {
+        getSpellSource().PlayOneShot(clip, volume);
+    }
 
-	#region Public
-	//Place Different Sound effects here
-	public void ShootFireball() {
-		PLAY (AUDIO.FireballProjectile);
+    void PLAYGENERIC(AudioClip clip, float volume = 1.0f)
+    {
+        getGenericSource().PlayOneShot(clip, volume);
+    }
+
+    public void STOPCHARACTER()
+    {
+        AudioSource source = m_audioSource[(int)SOURCES.CHARACTER];
+        if (source.isPlaying)
+        {
+            source.Stop();
+        }
+    }
+
+    public void STOPSPELLS()
+    {
+        AudioSource source = m_audioSource[(int)SOURCES.SPELL1];
+        AudioSource source2 = m_audioSource[(int)SOURCES.SPELL2];
+        if (source.isPlaying)
+        {
+            source.Stop();
+        }
+
+        if (source2.isPlaying)
+        {
+            source2.Stop();
+        }
+    }
+
+    public void STOPGENERIC()
+    {
+        AudioSource source = m_audioSource[(int)SOURCES.GENERIC];
+        if (source.isPlaying)
+        {
+            source.Stop();
+        }
+    }
+
+    public void STOPALL() 
+    {
+        foreach (AudioSource source in m_audioSource)
+        {
+            if (source.isPlaying)
+            {
+                source.Stop();
+            }
+        }
 	}
 
-	#endregion
+    private AudioSource getSpellSource()
+    {
+        return m_audioSource[(int)SOURCES.SPELL1].isPlaying ? m_audioSource[(int)SOURCES.SPELL2] : m_audioSource[(int)SOURCES.SPELL1];
+    }
+
+    private AudioSource getCharacterSource()
+    {
+        return m_audioSource[(int)SOURCES.CHARACTER];
+    }
+
+    private AudioSource getGenericSource()
+    {
+        return m_audioSource[(int)SOURCES.GENERIC];
+    }
+
+    #endregion
+
+    #region Public
+    //Place Different Sound effects here
+    public void ShootFireball() {
+		PLAYSPELL (AUDIO.FireballProjectile);
+	}
+
+    public void PlayHealPlayer()
+    {
+        PLAYCHARACTER(AUDIO.Healing);
+    }
+
+    public void StopHealPlayer()
+    {
+        STOPCHARACTER();
+    }
+
+    #endregion
 }
