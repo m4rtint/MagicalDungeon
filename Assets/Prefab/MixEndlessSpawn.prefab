@@ -74,8 +74,8 @@ GameObject:
   - component: {fileID: 50029768598985912}
   - component: {fileID: 114665942199337114}
   m_Layer: 0
-  m_Name: MixEndlessSpawn 1
-  m_TagString: Untagged
+  m_Name: MixEndlessSpawn
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4485268830403706}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4485268830403706
 Transform:
@@ -119,10 +119,10 @@ Transform:
   m_LocalPosition: {x: -16.51, y: -25.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4621466051253082}
   - {fileID: 4584119590020856}
   - {fileID: 4275530117181556}
   - {fileID: 4709530450985464}
-  - {fileID: 4621466051253082}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -137,7 +137,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4485268830403706}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4621466051253082
 Transform:
@@ -150,7 +150,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4485268830403706}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4709530450985464
 Transform:
@@ -163,7 +163,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4485268830403706}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50029768598985912
 Rigidbody2D:
@@ -276,7 +276,6 @@ MonoBehaviour:
   invulnerableTimer: 0
   healthPoints: 100
   healthBar: {fileID: 1201631773515724}
-  spawnManager: {fileID: 1375008016989846}
 --- !u!114 &114850695834834358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,7 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5c5ff3e853b554eac30cfe3284af98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totem: {fileID: 0}
   monstersToSpawn:
   - tag: 1
     percentage: 1
