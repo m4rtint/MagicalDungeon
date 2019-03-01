@@ -19,7 +19,7 @@ public abstract class ISpell : MonoBehaviour
     {
         if (isMoving)
         {
-            transform.Translate(VectorFromAngle(angle) * velocity);
+            transform.Translate(-VectorFromAngle(angle) * velocity);
             currentTimeToLive += Time.fixedDeltaTime;
             if (currentTimeToLive > spellMovementTimeToLive)
             {
@@ -52,7 +52,7 @@ public abstract class ISpell : MonoBehaviour
     #region Tools
     private Vector2 VectorFromAngle(float theta)
     {
-        return new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
+        return new Vector2(Mathf.Cos(theta * Mathf.PI / 180), Mathf.Sin(theta * Mathf.PI / 180));
     }
     #endregion
 

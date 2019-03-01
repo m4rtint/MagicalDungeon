@@ -56,7 +56,7 @@ public class Firestorm : ISpell, IPooledObject
     {
         resetAlpha();
         Vector3 dir = transform.rotation.eulerAngles;
-        angle = Utilities.getAngleDegBetween(dir.y, dir.x) + 90;
+        angle = Utilities.getAngleDegBetween(dir.y, dir.x);
         currentTimeToLive = 0;
         isMoving = true;
     }
