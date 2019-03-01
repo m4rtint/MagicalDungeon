@@ -91,6 +91,7 @@ MonoBehaviour:
   spellMovementTimeToLive: 2
   damage: 2.15
   damageCoolDown: 0.25
+  idleTimeToLive: 3
 --- !u!212 &212444760425755496
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -124,7 +125,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 431650397
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3e085d4ed9db145ad9acad2aa879e06d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
