@@ -35512,20 +35512,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 724691832}
-  - {fileID: 1048502511}
-  - {fileID: 1634865554}
-  - {fileID: 1942561655}
-  - {fileID: 2078351022}
-  - {fileID: 1109456942}
   - {fileID: 1240142424}
-  - {fileID: 575562419}
-  - {fileID: 1790221686}
-  - {fileID: 1157634208}
-  - {fileID: 321358446}
   - {fileID: 479447092}
+  - {fileID: 1109456942}
+  - {fileID: 2078351022}
   - {fileID: 43634573}
+  - {fileID: 1942561655}
+  - {fileID: 1634865554}
+  - {fileID: 1048502511}
+  - {fileID: 321358446}
+  - {fileID: 724691832}
+  - {fileID: 1157634208}
+  - {fileID: 1790221686}
   - {fileID: 75149687}
+  - {fileID: 575562419}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -50230,6 +50230,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 27, y: 12}
   m_EdgeRadius: 0
+--- !u!1001 &1086275772
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4576190831047580, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576190831047580, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576190831047580, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576190831047580, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576190831047580, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576190831047580, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576190831047580, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576190831047580, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: FireballProjectile
+      value: 
+      objectReference: {fileID: 8300000, guid: 503f0a1d2f6a646bfb896641a296bd45, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1109456941
 GameObject:
   m_ObjectHideFlags: 0

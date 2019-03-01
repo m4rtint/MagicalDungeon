@@ -102,6 +102,8 @@ public class PlayerSpellController : ICharacter
             GameObject fireball = ObjectPooler.Instance.SpawnFromPool(Pool.FIREBALL, transform.position, getPlayerRotation());
             fireball.GetComponent<Fireball>().OnObjectSpawn();
             playerController.castSpell();
+            //AUDIO
+            AudioManager.instance.ShootFireball();
         }
     }
 
