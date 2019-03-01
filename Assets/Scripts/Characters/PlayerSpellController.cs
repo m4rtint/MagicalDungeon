@@ -11,6 +11,7 @@ public class PlayerSpellController : ICharacter
     [SerializeField]
     CharacterGlow glow;
     Cooldown cooldownHolder;
+    PlayerController playerController;
 
     [Header("Haste")]
     [SerializeField]
@@ -23,6 +24,7 @@ public class PlayerSpellController : ICharacter
         base.Awake();
         spellHolder = coneSpellHolder.GetComponent<SpellHolder>();
         cooldownHolder = GetComponent<Cooldown>();
+        playerController = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -55,12 +57,13 @@ public class PlayerSpellController : ICharacter
         {
             activateFirestorm();
             cooldownHolder.InitiateCooldown(1);
+            playerController.castSpell();
         }
 
         if (InputManager.skillTwoPressed())
         {
             spellHolder.fireConeIfAble(true);
-            //cooldownHolder.InitiateCooldown(2);
+            playerController.castSpell();
         } else
         {
             spellHolder.fireConeIfAble(false);
@@ -69,12 +72,14 @@ public class PlayerSpellController : ICharacter
         if (InputManager.skillThreePressed() && !cooldownHolder.isCoolingDown(3)) {
             base.modifySpeed(hasteSpeedModifier, hasteTimeToLive);
             cooldownHolder.InitiateCooldown(3);
+            playerController.castSpell();
             onStateChange(STATE.HASTE);
         }
 
         if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4)){
             activeIceStorm();
             cooldownHolder.InitiateCooldown(4);
+            playerController.castSpell();
         }
     }
     #endregion
@@ -96,6 +101,7 @@ public class PlayerSpellController : ICharacter
             cooldownHolder.InitiateCooldown(0);
             GameObject fireball = ObjectPooler.Instance.SpawnFromPool(Pool.FIREBALL, transform.position, getPlayerRotation());
             fireball.GetComponent<Fireball>().OnObjectSpawn();
+            playerController.castSpell();
         }
     }
 
@@ -111,7 +117,6 @@ public class PlayerSpellController : ICharacter
         GameObject icestorm = ObjectPooler.Instance.SpawnFromPool(Pool.ICESTORM, transform.position, getPlayerRotation());
         icestorm.GetComponent<IceStorm>().OnObjectSpawn();
     }
-
 
     private void activateFirestorm()
     {

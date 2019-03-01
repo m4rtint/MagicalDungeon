@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    private Rigidbody2D playerRigidbody;
-    private SpriteRenderer playerSpriteRenderer;
-    private PlayerSpellController playerSpell;
+    const string ATTACK_LEFT = "AttackLeft";
+    const string ATTACK_RIGHT = "AttackRight";
+    const string IDLE = "IdleRight";
 
+    private Rigidbody2D playerRigidbody;
+    private PlayerSpellController playerSpell;
+    private Animator animate;
 
     // Use this for initialization
     void Start () {
         playerRigidbody = GetComponent<Rigidbody2D>();
-        playerSpriteRenderer = GetComponent<SpriteRenderer>();
         playerSpell = GetComponent<PlayerSpellController>();
+        animate = GetComponent<Animator>();
     }
+
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -33,51 +37,29 @@ public class PlayerController : MonoBehaviour {
         playerRigidbody.velocity = (Vector3.Normalize(direction) * playerSpell.MoveSpeed() * playerSpell.SpeedModifier());
     }
 
+    public void castSpell()
+    {
+        //Convert the player to Screen coordinates
+        Vector3 position = Utilities.worldToScreenObjectPosition(gameObject);
+        position = Input.mousePosition - position;
+        float angle = Utilities.getAngleDegBetween(position.y, position.x);
+
+        string animationName = (angle > -90 && angle < 90) ? ATTACK_RIGHT : ATTACK_LEFT;
+        animate.SetTrigger(animationName);
+        
+    }
+
     private void SpriteChange(Vector3 direction)
     {
-        if (Input.GetMouseButton(0)) //If mousebutton is down, look at mouse
-        {
-            //Convert the player to Screen coordinates
-            Vector3 position = Utilities.worldToScreenObjectPosition(gameObject);
-            position = Input.mousePosition - position;
-            float angle = Utilities.getAngleDegBetween(position.y, position.x);
-            if ((angle <= 45 && angle >= 0) || (angle >= -45 && angle <= 0))
-            {
-                //playerSpriteRenderer.sprite = rightSprite;
-            }
-            else if (angle >= 135 || angle <= -135)
-            {
-                //playerSpriteRenderer.sprite = leftSprite;
-            }
-            else if (angle > 0)
-            {
-                //playerSpriteRenderer.sprite = upSprite;
-            }
-            else if (angle < 0)
-            {
-                //playerSpriteRenderer.sprite = downSprite;
-            }
-        }
-        else //Else look depending on direction
-        {
-            float x = direction.x;
-            float y = direction.y;
+        float x = direction.x;
+        float y = direction.y;
 
 
-            if (direction == Vector3.zero)
-            {
-                return;
-            }
+        if (direction != Vector3.zero)
+        {
             if (Mathf.Abs(x) >= Mathf.Abs(y)) //Look horizontally as priority
             {
-                if (x > 0)
-                {
-                    //playerSpriteRenderer.sprite = rightSprite;
-                }
-                else
-                {
-                    //playerSpriteRenderer.sprite = leftSprite;
-                }
+                animate.SetBool(IDLE, (x > 0));
             }
             else
             {
@@ -91,6 +73,7 @@ public class PlayerController : MonoBehaviour {
                 }
             }
         }
+        
     }
 
     #endregion

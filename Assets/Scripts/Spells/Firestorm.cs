@@ -9,18 +9,35 @@ public class Firestorm : ISpell, IPooledObject
     bool isCoolingDown;
     float currentCoolDown = 0;
 
+    //Animation
+    float fadeTime = 0.5f;
+
     protected override void Update()
     {
         base.Update();
         if (!isMoving)
         {
             currentTimeToLive += Time.fixedDeltaTime;
-            if (currentTimeToLive > idleTimeToLive)
+            if (currentTimeToLive > idleTimeToLive - fadeTime)
             {
-                gameObject.SetActive(false);
+                endFireStorm();
             }
         }
         currentCoolDown += Time.fixedDeltaTime;
+    }
+
+    void endFireStorm()
+    {
+        Hashtable ht = new Hashtable();
+        ht.Add("alpha", 0);
+        ht.Add("time", fadeTime);
+        ht.Add("oncomplete", "onCompleteEndFireStormFade");
+        iTween.FadeTo(gameObject, ht);
+    }
+
+    void onCompleteEndFireStormFade()
+    {
+        gameObject.SetActive(false);
     }
 
     protected override void onMovementTimeToLiveStopped()
@@ -29,9 +46,15 @@ public class Firestorm : ISpell, IPooledObject
         isMoving = false;
     }
 
+    void resetAlpha()
+    {
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
 
     public void OnObjectSpawn()
     {
+        resetAlpha();
         Vector3 dir = transform.rotation.eulerAngles;
         angle = Utilities.getAngleDegBetween(dir.y, dir.x) + 90;
         currentTimeToLive = 0;

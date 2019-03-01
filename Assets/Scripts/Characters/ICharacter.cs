@@ -124,15 +124,6 @@ public class ICharacter : MonoBehaviour {
         }
     }
 
-    public void getKnockedBackSolid(float knockBackAmount, Vector3 attackPos)
-    {
-        if (!isInvulnerable)
-        {
-            Vector3 knockBack = attackPos - transform.position;
-            GetComponent<Rigidbody2D>().AddForce(knockBack.normalized * -knockBackAmount);
-        }
-    }
-
 
     public void resetInvulnerable()
     {

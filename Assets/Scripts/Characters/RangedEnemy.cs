@@ -10,53 +10,53 @@ public class RangedEnemy : EnemyController {
 
     [SerializeField]
     float attackTime = 2f;
-    float currentTime = 0;
+    float currentAttackCoolDown = 0;
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
         attackPlayerIfNeeded();
-        if (currentTime > 0)
+        if (currentAttackCoolDown > 0)
         {
-            currentTime -= Time.deltaTime;
+            currentAttackCoolDown -= Time.deltaTime;
         }
     }
 
     #region Motion
     protected override void gotoPlayerIfNeeded()
     {
-        float distance = Vector3.Distance(player.transform.position, transform.position);
-        if (player == null)
-        {
-            agent.enabled = false;
-        }
-        else if (distance <= this.attackRange && distance > this.agroRange)
+        if (isMovementNeeded())
         {
             attackTriggered = true;
             base.goToPlayer();
         }
     }
 
+    bool isMovementNeeded()
+    {
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        return distance <= this.attackRange && distance > this.agroRange;
+    }
+
     #endregion
+
+    #region Attack
 
     void attackPlayerIfNeeded()
     {
-        if (player == null)
-        {
-            attackTriggered = false;
+        // If player is within attack range 
+        if (isAttackNeeded()) { 
+            currentAttackCoolDown = attackTime;
+            attackPlayer();
         }
-        else
-        {
-            // If player is within attack range 
-            if (Vector3.Distance(player.transform.position, transform.position) <= this.attackRange && attackTriggered)
-            {
-                if (currentTime <= 0)
-                {
-                    currentTime = attackTime;
-                    attackPlayer();
-                }
-            }
-        }
+    }
+
+    bool isAttackNeeded()
+    {
+        return Vector3.Distance(player.transform.position, transform.position) <= this.attackRange && 
+                    attackTriggered &&
+                    currentAttackCoolDown <= 0 &&
+                    !isHealthZero();
     }
 
     void attackPlayer()
@@ -72,6 +72,16 @@ public class RangedEnemy : EnemyController {
         float angle = Utilities.getAngleDegBetween(position.y, position.x) + 180;
         return Quaternion.AngleAxis(angle, Vector3.forward);
     }
+
+    #endregion
+
+    #region PlayerDeath
+    protected override void onPlayerDeath()
+    {
+        base.onPlayerDeath();
+        attackTriggered = false;
+    }
+    #endregion
 
 
     #region Gizmo
