@@ -18,6 +18,7 @@ public class Fireball : ISpell, IPooledObject
         Vector3 dir = transform.rotation.eulerAngles;
         angle = Utilities.getAngleDegBetween(dir.y, dir.x) + 90;
         base.currentTimeToLive = 0;
+        GetComponent<CircleCollider2D>().enabled = true;
         isMoving = true;
     }
 
@@ -35,6 +36,7 @@ public class Fireball : ISpell, IPooledObject
     protected override void onSpellHitObject()
     {
         isMoving = false;
+        GetComponent<CircleCollider2D>().enabled = false;
         GetComponent<Animator>().SetTrigger(ANIMATION_EXPLOSION);
         Invoke("onFinishExplosionAnimation", EXPLOSION_ANIMATION_TIME);
     }
