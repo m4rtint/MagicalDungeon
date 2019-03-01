@@ -36,6 +36,7 @@ public class EnemyFireball : ISpell, IPooledObject
         angle = Utilities.getAngleDegBetween(dir.y, dir.x);
         base.currentTimeToLive = 0;
         isMoving = true;
+        GetComponent<CircleCollider2D>().enabled = true;
     }
 
     protected override void OnTriggerEnter2D(Collider2D col)
@@ -52,6 +53,7 @@ public class EnemyFireball : ISpell, IPooledObject
     protected override void onSpellHitObject()
     {
         isMoving = false;
+        GetComponent<CircleCollider2D>().enabled = false;
         GetComponent<Animator>().SetTrigger(ANIMATION_EXPLOSION);
         Invoke("onFinishExplosionAnimation", EXPLOSION_ANIMATION_TIME);
     }
