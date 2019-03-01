@@ -8,6 +8,9 @@ public class AudioData : MonoBehaviour {
     //Spells
 	public AudioClip FireballProjectile;
     public AudioClip Haste;
+    public AudioClip FlameCone;
+    public AudioClip FireVortex;
+    public AudioClip IceStorm;
 
     public AudioClip Healing;
 }

@@ -9,7 +9,8 @@ public class IceStorm : ISpell
     [SerializeField] float slowDownPercentage = 0.25f;
 
     //Animation
-    float fadeTime = 0.5f;
+    const float fadeOutTime = 0.5f;
+    const float fadeInTime = 0.1f;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class IceStorm : ISpell
         if (!isMoving)
         {
             currentTimeToLive += Time.fixedDeltaTime;
-            if (currentTimeToLive > idleTimeToLive - fadeTime)
+            if (currentTimeToLive > idleTimeToLive - fadeOutTime)
             {
                 endIceStorm();
             }
@@ -32,15 +33,25 @@ public class IceStorm : ISpell
     void endIceStorm()
     {
         Hashtable ht = new Hashtable();
-        ht.Add("alpha", 0);
-        ht.Add("time", fadeTime);
+        ht.Add("alpha", 0f);
+        ht.Add("time", fadeOutTime);
         ht.Add("oncomplete", "onCompleteEndIceStormFade");
+        iTween.FadeTo(gameObject, ht);
+    }
+
+    void startIceStorm()
+    {
+        Hashtable ht = new Hashtable();
+        ht.Add("alpha", 1f);
+        ht.Add("time", fadeInTime);
         iTween.FadeTo(gameObject, ht);
     }
 
     void onCompleteEndIceStormFade()
     {
         gameObject.SetActive(false);
+        //AUDIO
+        AudioManager.instance.StopSpells();
     }
 
     protected override void onMovementTimeToLiveStopped()
@@ -49,18 +60,15 @@ public class IceStorm : ISpell
         isMoving = false;
     }
 
-    void resetAlpha()
-    {
-        GetComponent<SpriteRenderer>().color = Color.white;
-    }
-
     public void OnObjectSpawn()
     {
-        resetAlpha();
+        startIceStorm();
         Vector3 dir = transform.rotation.eulerAngles;
         angle = Utilities.getAngleDegBetween(dir.y, dir.x);
         currentTimeToLive = 0;
         isMoving = true;
+        //AUDIO
+        AudioManager.instance.ActiveIceStorm();
     }
 
     protected override void OnTriggerEnter2D(Collider2D col)

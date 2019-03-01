@@ -35,14 +35,16 @@ public class AudioManager : MonoBehaviour {
         {
             source.playOnAwake = false;
         }
-		AUDIO = GetComponent<AudioData> ();
+       getCharacterSource().volume = 0;
+       AUDIO = GetComponent<AudioData> ();
 	}
 	#endregion
 
 	#region Controls
 	void PLAYCHARACTER(AudioClip clip, float volume = 1.0f) {
-
-		getCharacterSource().PlayOneShot (clip, volume);
+        AudioSource source = getCharacterSource();
+        fadeAudio(source, volume);
+        source.PlayOneShot (clip, volume);
 	}
 
     void PLAYSPELL(AudioClip clip, float volume = 1.0f)
@@ -60,11 +62,21 @@ public class AudioManager : MonoBehaviour {
         AudioSource source = m_audioSource[(int)SOURCES.CHARACTER];
         if (source.isPlaying)
         {
-            source.Stop();
+            fadeAudio(source);
         }
     }
 
-    public void STOPSPELLS()
+    void fadeAudio(AudioSource source, float volume = 0)
+    {
+        Hashtable ht = new Hashtable();
+        ht.Add("audiosource", source);
+        ht.Add("volume", volume);
+        ht.Add("time", 1f);
+        iTween.AudioTo(gameObject, ht);
+    }
+
+
+    void STOPSPELLS()
     {
         AudioSource source = m_audioSource[(int)SOURCES.SPELL1];
         AudioSource source2 = m_audioSource[(int)SOURCES.SPELL2];
@@ -125,6 +137,26 @@ public class AudioManager : MonoBehaviour {
     public void ActivateHaste()
     {
         PLAYSPELL(AUDIO.Haste);
+    }
+
+    public void ActivateFlameCone()
+    {
+        PLAYSPELL(AUDIO.FlameCone);
+    }
+
+    public void ActivateFlameVortex()
+    {
+        PLAYSPELL(AUDIO.FireVortex, 0.5f);
+    }
+
+    public void ActiveIceStorm()
+    {
+        PLAYSPELL(AUDIO.IceStorm, 0.5f);
+    }
+
+    public void StopSpells()
+    {
+        STOPSPELLS();
     }
 
     //Character
