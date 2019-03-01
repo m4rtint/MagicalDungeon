@@ -117,11 +117,17 @@ public class AudioManager : MonoBehaviour {
     #endregion
 
     #region Public
-    //Place Different Sound effects here
+    //Spells
     public void ShootFireball() {
 		PLAYSPELL (AUDIO.FireballProjectile);
 	}
 
+    public void ActivateHaste()
+    {
+        PLAYSPELL(AUDIO.Haste);
+    }
+
+    //Character
     public void PlayHealPlayer()
     {
         PLAYCHARACTER(AUDIO.Healing);

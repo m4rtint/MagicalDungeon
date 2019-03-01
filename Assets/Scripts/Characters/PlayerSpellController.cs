@@ -74,6 +74,8 @@ public class PlayerSpellController : ICharacter
             cooldownHolder.InitiateCooldown(3);
             playerController.castSpell();
             onStateChange(STATE.HASTE);
+            //AUDIO
+            AudioManager.instance.ActivateHaste();
         }
 
         if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4)){
