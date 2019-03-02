@@ -378,7 +378,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4417750331695642, guid: 1d530fcd247884bf99ab87961a06be10, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d530fcd247884bf99ab87961a06be10, type: 2}
@@ -491,7 +491,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4485268830403706, guid: e126e6980584c4c87b789d63bee39cf4, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4621466051253082, guid: e126e6980584c4c87b789d63bee39cf4, type: 2}
       propertyPath: m_RootOrder
@@ -782,7 +782,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 04d37471f0fdc4114bf3d918b5205939, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f0478c69e2d7e14cb9c61d7630a977b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -35529,7 +35529,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: bd8c6f7dcd29845e19acce8b05aaef37, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1199786d38eb3e04da46516fb67edc78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -35574,20 +35574,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 479447092}
-  - {fileID: 1634865554}
-  - {fileID: 1157634208}
-  - {fileID: 2078351022}
   - {fileID: 724691832}
   - {fileID: 1048502511}
-  - {fileID: 321358446}
   - {fileID: 575562419}
-  - {fileID: 75149687}
-  - {fileID: 43634573}
   - {fileID: 1942561655}
   - {fileID: 1790221686}
   - {fileID: 1109456942}
   - {fileID: 1240142424}
+  - {fileID: 321358446}
+  - {fileID: 75149687}
+  - {fileID: 1634865554}
+  - {fileID: 479447092}
+  - {fileID: 1157634208}
+  - {fileID: 43634573}
+  - {fileID: 2078351022}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -36172,7 +36172,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9cedcef8a8130402c8b9f406a8a3a310, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a4671fcf1ad61a4f99f1b1ef9116164, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -36229,7 +36229,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4569137525337204, guid: b6bddbb7c57c6c947ab030d5380e720f, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114239208184612032, guid: b6bddbb7c57c6c947ab030d5380e720f,
         type: 2}
@@ -47780,6 +47780,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
         type: 2}
+      propertyPath: TreeBossHurt.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
       propertyPath: MushroomDeath.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -47905,6 +47910,26 @@ Prefab:
       propertyPath: ZombieHurt.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: 3598f07c854ec5342963b02e33b4694a, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: TreeBossHurt.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 260db6915e5082e469377f4bb37f2ded, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: TreeBossHurt.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 075a87478595dcf42b471a0a4f73c5e7, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: TreeBossHurt.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: d1559810490b155498f4892221a9daba, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: HealingItem
+      value: 
+      objectReference: {fileID: 8300000, guid: 9df7cf0377e7cc54ca64f5c3e9316353, type: 3}
     m_RemovedComponents:
     - {fileID: 82465847955435830, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
     - {fileID: 82435778861931632, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
@@ -47969,7 +47994,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d267eb11ec1ec4e09b3c9097a3672380, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f1799577e636414ba9498105d216b8e, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -50748,7 +50773,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1240142423
 GameObject:
@@ -54372,7 +54397,7 @@ Transform:
   - {fileID: 379551310}
   - {fileID: 1556874202}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1541141926
 MonoBehaviour:
@@ -54848,7 +54873,7 @@ Transform:
   - {fileID: 277004154}
   - {fileID: 1951160334}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1790221685
 GameObject:

@@ -12,18 +12,15 @@ public class StateManager : MonoBehaviour {
     GameObject boss;
 
     [SerializeField]
-    public GameObject gameOver;
+    GameObject gameOver;
 
     [SerializeField]
-    public GameObject gameWon;
+    GameObject gameWon;
 
-    private bool playerDead;
-    private bool playerWon;
+    bool allowReset = false;
 
     private void Awake()
     {
-        playerDead = false;
-        playerWon = false;
         gameOver.SetActive(false);
         gameWon.SetActive(false);
         player.GetComponent<ICharacter>().onCharacterDeath += didLose;
@@ -33,11 +30,7 @@ public class StateManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.anyKeyDown && playerDead)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        if (Input.anyKeyDown && playerWon)
+		if (Input.anyKeyDown && allowReset)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -45,16 +38,21 @@ public class StateManager : MonoBehaviour {
 
     void didLose()
     {
-        playerDead = true;
         ResetButtonAppear();
+        Invoke("activateReset", 2.5f);
     }
 
     void didWin()
     {
-        playerWon = true;
         YouWonAppear();
+        Invoke("activateReset", 2.5f);
     }
 
+    void activateReset()
+    {
+        allowReset = true;
+    }
+    
     private void ResetButtonAppear()
     {
         gameOver.SetActive(true);

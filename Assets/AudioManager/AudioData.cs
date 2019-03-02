@@ -29,4 +29,10 @@ public class AudioData : MonoBehaviour {
     public AudioClip[] ZombieHurt;
     public AudioClip[] ZombieDeath;
 
+    [Header("TreeBoss")]
+    public AudioClip[] TreeBossHurt;
+
+    [Header("Item")]
+    public AudioClip HealingItem;
+
 }
