@@ -15,7 +15,10 @@ public class EnemyController : ICharacter, IPooledObject {
     protected float meleeDamage = 10;
 
     [SerializeField]
-    protected float agroRange = 4; 
+    protected float agroRange = 4;
+
+    [SerializeField]
+    MONSTERS monster = MONSTERS.MUSHROOM;
     
     protected override void Awake()
     {
@@ -91,6 +94,8 @@ public class EnemyController : ICharacter, IPooledObject {
         {
             goToPlayer();
             runAnimation(ANIMATION_DAMAGED);
+            //AUDIO
+            playHurtAudio();
         }
     }
 
@@ -112,6 +117,7 @@ public class EnemyController : ICharacter, IPooledObject {
         runAnimation(ANIMATION_DEATH);
         GetComponent<Collider2D>().enabled = false;
         stopMovement();
+        playDeathAudio();
         Invoke("completeDeathAnimation", 1.5f);
     }
 
@@ -130,6 +136,8 @@ public class EnemyController : ICharacter, IPooledObject {
         gameObject.SetActive(false);
         if (onCharacterDeath != null) {
             onCharacterDeath();
+            //AUDIO
+            playDeathAudio();
         }
         onCharacterDeath = null;
     }
@@ -141,6 +149,39 @@ public class EnemyController : ICharacter, IPooledObject {
         if (player.tag == Tags.PLAYER && !isHealthZero())
         {
             player.GetComponent<ICharacter>().damagedByAttacker(meleeDamage);
+        }
+    }
+
+    #endregion
+
+    #region Audio
+    private void playHurtAudio()
+    {
+        switch (monster)
+        {
+            case MONSTERS.MUSHROOM:
+                AudioManager.instance.PlayMushroomHurt();
+                break;
+            case MONSTERS.ZOMBIE:
+                AudioManager.instance.PlayZombieHurt();
+                break;
+            default:
+                return;
+        }
+    }
+
+    private void playDeathAudio()
+    {
+        switch(monster)
+        {
+            case MONSTERS.MUSHROOM:
+                AudioManager.instance.PlayMushroomDeath();
+                break;
+            case MONSTERS.ZOMBIE:
+                AudioManager.instance.PlayZombieDeath();
+                break;
+            default:
+                return;
         }
     }
 

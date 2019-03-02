@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour {
         SPELL,
         HEAL,
         CHARACTER,
+        ENEMY,
         GENERIC
     }
 
@@ -86,6 +87,11 @@ public class AudioManager : MonoBehaviour {
         audioSource.PlayOneShot (clip, volume);
 	}
 
+    void PLAYENEMY(AudioClip clip, float volume = 1.0f)
+    {
+        AudioSource audioSource = audioSources[(int)SOURCES.ENEMY];
+        audioSource.PlayOneShot(clip, volume);
+    }
   
     void PLAYGENERIC(AudioClip clip, float volume = 1.0f)
     {
@@ -132,6 +138,11 @@ public class AudioManager : MonoBehaviour {
         return audioSources[(int)SOURCES.GENERIC];
     }
 
+    private AudioSource getHealSource()
+    {
+        return audioSources[(int)SOURCES.HEAL];
+    }
+    
     #endregion
 
     #region Public
@@ -193,27 +204,49 @@ public class AudioManager : MonoBehaviour {
     //Character
     public void PlayHealPlayer()
     {
-        AudioSource audioSource = audioSources[(int)SOURCES.HEAL];
-        fadeAudio(audioSource, 0.5f);
-        audioSource.PlayOneShot (AUDIO.Healing);
+        fadeAudio(getHealSource(), 0.5f);
+        getHealSource().PlayOneShot (AUDIO.Healing);
     }
 
     public void StopHealPlayer()
     {
-        AudioSource audioSource = audioSources[(int)SOURCES.HEAL];
-        fadeAudio(audioSource, 0f);
+        fadeAudio(getHealSource(), 0f);
     }
 
     public void PlayHurtPlayer()
     {
         int index = UnityEngine.Random.Range(0, AUDIO.PlayerHurt.Length);
-
         PLAYCHARACTER(AUDIO.PlayerHurt[index], 1.0f);
     }
 
     public void PlayPlayerDeath()
     {
         PLAYCHARACTER(AUDIO.PlayerDeath, 1.0f);
+    }
+
+    //Enemy
+    public void PlayMushroomHurt()
+    {
+        int index = UnityEngine.Random.Range(0, AUDIO.MushroomHurt.Length);
+        PLAYENEMY(AUDIO.MushroomHurt[index], 0.5f);
+    }
+
+    public void PlayMushroomDeath()
+    {
+        int index = UnityEngine.Random.Range(0, AUDIO.MushroomDeath.Length);
+        PLAYENEMY(AUDIO.MushroomDeath[index], 0.5f);
+    }
+
+    public void PlayZombieHurt()
+    {
+        int index = UnityEngine.Random.Range(0, AUDIO.ZombieHurt.Length);
+        PLAYENEMY(AUDIO.ZombieHurt[index], 0.5f);
+    }
+
+    public void PlayZombieDeath()
+    {
+        int index = UnityEngine.Random.Range(0, AUDIO.ZombieDeath.Length);
+        PLAYENEMY(AUDIO.ZombieDeath[index], 0.5f);
     }
 
 

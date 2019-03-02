@@ -167,6 +167,7 @@ MonoBehaviour:
   healthBar: {fileID: 1562785416933926}
   meleeDamage: 10
   agroRange: 4.15
+  monster: 2
   attackRange: 7.18
   attackTime: 2
 --- !u!212 &212138753393141522

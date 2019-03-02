@@ -35575,19 +35575,19 @@ MonoBehaviour:
   generateOnUpdate: 1
   navObstacles:
   - {fileID: 479447092}
-  - {fileID: 75149687}
-  - {fileID: 575562419}
-  - {fileID: 1048502511}
-  - {fileID: 43634573}
-  - {fileID: 724691832}
-  - {fileID: 2078351022}
-  - {fileID: 1157634208}
   - {fileID: 1634865554}
-  - {fileID: 1240142424}
+  - {fileID: 1157634208}
+  - {fileID: 2078351022}
+  - {fileID: 724691832}
+  - {fileID: 1048502511}
   - {fileID: 321358446}
-  - {fileID: 1109456942}
-  - {fileID: 1790221686}
+  - {fileID: 575562419}
+  - {fileID: 75149687}
+  - {fileID: 43634573}
   - {fileID: 1942561655}
+  - {fileID: 1790221686}
+  - {fileID: 1109456942}
+  - {fileID: 1240142424}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -47763,6 +47763,26 @@ Prefab:
       propertyPath: PlayerHurt.Array.size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: ZombieHurt.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: ZombieDeath.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: MushroomHurt.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: MushroomDeath.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4576190831047580, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -47825,6 +47845,66 @@ Prefab:
       propertyPath: PlayerDeath
       value: 
       objectReference: {fileID: 8300000, guid: cfa7d40e8f889524584f4807c478cf7c, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: MushroomDeath.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d5feeb800c5e4b4eadd8ec4c7b5c14a, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: MushroomDeath.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 39a69c2c438fb9e4aa2248c27ee6af46, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: MushroomHurt.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c1dd76a1265858044a8010dd25198c4c, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: MushroomHurt.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a4da863360362644905806dd0466844, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: MushroomHurt.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: a58b756ff416dbe41ae830745ef80a95, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: ZombieDeath.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 22bc8479a3c5d6942b6532960f3b3995, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: ZombieDeath.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0111119a9640e274fa4c5bcecc9ba8d2, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: ZombieDeath.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1b236a56babf66f4db73573e3feea6a3, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: ZombieHurt.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e14213d0d71415641bc104732b6073a3, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: ZombieHurt.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: a470ba174049b3448aa927db59b7afd4, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: ZombieHurt.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ae780543d674e047b41cab4ef8f8a2c, type: 3}
+    - target: {fileID: 114572132723842944, guid: a65ea3f8bbd014da9a08e076cf07bf38,
+        type: 2}
+      propertyPath: ZombieHurt.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3598f07c854ec5342963b02e33b4694a, type: 3}
     m_RemovedComponents:
     - {fileID: 82465847955435830, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
     - {fileID: 82435778861931632, guid: a65ea3f8bbd014da9a08e076cf07bf38, type: 2}
