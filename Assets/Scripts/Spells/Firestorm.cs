@@ -46,7 +46,8 @@ public class Firestorm : ISpell, IPooledObject
 
     void onCompleteEndFireStormFade()
     {
-        AudioManager.instance.StopSpells();
+        //AUDIO
+        AudioManager.instance.StopFireStorm();
         gameObject.SetActive(false);
     }
 
@@ -64,7 +65,7 @@ public class Firestorm : ISpell, IPooledObject
         angle = Utilities.getAngleDegBetween(dir.y, dir.x);
         currentTimeToLive = 0;
         isMoving = true;
-        AudioManager.instance.ActivateFlameVortex();
+        AudioManager.instance.PlayFireStorm();
     }
 
     protected override void OnTriggerEnter2D(Collider2D col)

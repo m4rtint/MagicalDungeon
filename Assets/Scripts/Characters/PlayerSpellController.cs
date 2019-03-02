@@ -40,6 +40,9 @@ public class PlayerSpellController : ICharacter
         {
             gameObject.SetActive(false);
             onCharacterDeath();
+
+            //AUDIO
+            AudioManager.instance.PlayPlayerDeath();
         }
         onCharacterDeath = null;
     }
@@ -140,6 +143,13 @@ public class PlayerSpellController : ICharacter
     {
         base.incrementHealth(heal);
         GetComponent<PlayerSpellController>().onStateChange(STATE.HEAL);
+    }
+
+    public override void decrementHealth(float damage)
+    {
+        base.decrementHealth(damage);
+        //AUDIO
+        AudioManager.instance.PlayHurtPlayer();
     }
     #endregion
 }

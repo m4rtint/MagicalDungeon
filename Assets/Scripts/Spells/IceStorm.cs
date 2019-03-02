@@ -51,7 +51,7 @@ public class IceStorm : ISpell
     {
         gameObject.SetActive(false);
         //AUDIO
-        AudioManager.instance.StopSpells();
+        AudioManager.instance.StopIceStorm();
     }
 
     protected override void onMovementTimeToLiveStopped()
@@ -68,7 +68,7 @@ public class IceStorm : ISpell
         currentTimeToLive = 0;
         isMoving = true;
         //AUDIO
-        AudioManager.instance.ActiveIceStorm();
+        AudioManager.instance.PlayIceStorm();
     }
 
     protected override void OnTriggerEnter2D(Collider2D col)

@@ -1,19 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour {
 	
 	public static AudioManager instance = null;
 
-	AudioSource[] m_audioSource;
+	AudioSource[] audioSources;
 	AudioData AUDIO;
+
+    [SerializeField]
+    AudioSource backgroundSource;
 
     enum SOURCES
     {
-        SPELL1,
-        SPELL2,
+        FIRESTORM,
+        ICESTORM,
+        FIRECONE,
+        SPELL,
+        HEAL,
         CHARACTER,
         GENERIC
     }
@@ -26,83 +32,88 @@ public class AudioManager : MonoBehaviour {
 			Destroy(gameObject);
 
 		DontDestroyOnLoad(gameObject);
+        SetupAudioSources();
 		SetupVariable ();
+
 	}
 
+    private void Start()
+    {
+        playRandomBackground();
+    }
+
+    void playRandomBackground()
+    {
+        int index = UnityEngine.Random.Range(0, AUDIO.BackgroundMusic.Length);
+        backgroundSource.clip = AUDIO.BackgroundMusic[index];
+        backgroundSource.loop = true;
+        backgroundSource.volume = 0.75f;
+        backgroundSource.Play();
+    }
+
+    void SetupAudioSources()
+    {
+        int count = Enum.GetValues(typeof(SOURCES)).Length;
+        for (int i = 0; i < count; i++)
+        {
+            gameObject.AddComponent(typeof(AudioSource));
+        }
+
+    }
+
     void SetupVariable() {
-        m_audioSource = GetComponents<AudioSource>();
-        foreach (AudioSource source in m_audioSource)
+        audioSources = GetComponents<AudioSource>();
+        foreach (AudioSource source in audioSources)
         {
             source.playOnAwake = false;
         }
        getCharacterSource().volume = 0;
        AUDIO = GetComponent<AudioData> ();
 	}
-	#endregion
+    #endregion
 
-	#region Controls
-	void PLAYCHARACTER(AudioClip clip, float volume = 1.0f) {
-        AudioSource source = getCharacterSource();
-        fadeAudio(source, volume);
-        source.PlayOneShot (clip, volume);
-	}
-
-    void PLAYSPELL(AudioClip clip, float volume = 1.0f)
+    #region Controls
+    void PLAYSPELL(SOURCES source, AudioClip clip, float volume = 1.0f, bool loop = false)
     {
-        getSpellSource().PlayOneShot(clip, volume);
+        AudioSource audioSource = audioSources[(int)source];
+        audioSource.loop = loop;
+        audioSource.PlayOneShot(clip, volume);
     }
 
+    void PLAYCHARACTER(AudioClip clip, float volume = 1.0f) {
+        AudioSource audioSource = audioSources[(int)SOURCES.CHARACTER];
+        fadeAudio(audioSource, volume);
+        audioSource.PlayOneShot (clip, volume);
+	}
+
+  
     void PLAYGENERIC(AudioClip clip, float volume = 1.0f)
     {
         getGenericSource().PlayOneShot(clip, volume);
     }
 
-    public void STOPCHARACTER()
-    {
-        AudioSource source = m_audioSource[(int)SOURCES.CHARACTER];
-        if (source.isPlaying)
-        {
-            fadeAudio(source);
-        }
-    }
 
-    void fadeAudio(AudioSource source, float volume = 0)
+    void fadeAudio(AudioSource source, float volume = 0, float time = 1f)
     {
         Hashtable ht = new Hashtable();
         ht.Add("audiosource", source);
         ht.Add("volume", volume);
-        ht.Add("time", 1f);
+        ht.Add("time", time);
         iTween.AudioTo(gameObject, ht);
     }
 
-
-    void STOPSPELLS()
+    void stopSource(SOURCES source)
     {
-        AudioSource source = m_audioSource[(int)SOURCES.SPELL1];
-        AudioSource source2 = m_audioSource[(int)SOURCES.SPELL2];
-        if (source.isPlaying)
+        AudioSource audioSource = audioSources[(int)source];
+        if (audioSource.isPlaying)
         {
-            source.Stop();
-        }
-
-        if (source2.isPlaying)
-        {
-            source2.Stop();
-        }
-    }
-
-    public void STOPGENERIC()
-    {
-        AudioSource source = m_audioSource[(int)SOURCES.GENERIC];
-        if (source.isPlaying)
-        {
-            source.Stop();
+            audioSource.Stop();
         }
     }
 
     public void STOPALL() 
     {
-        foreach (AudioSource source in m_audioSource)
+        foreach (AudioSource source in audioSources)
         {
             if (source.isPlaying)
             {
@@ -111,63 +122,105 @@ public class AudioManager : MonoBehaviour {
         }
 	}
 
-    private AudioSource getSpellSource()
-    {
-        return m_audioSource[(int)SOURCES.SPELL1].isPlaying ? m_audioSource[(int)SOURCES.SPELL2] : m_audioSource[(int)SOURCES.SPELL1];
-    }
-
     private AudioSource getCharacterSource()
     {
-        return m_audioSource[(int)SOURCES.CHARACTER];
+        return audioSources[(int)SOURCES.CHARACTER];
     }
 
     private AudioSource getGenericSource()
     {
-        return m_audioSource[(int)SOURCES.GENERIC];
+        return audioSources[(int)SOURCES.GENERIC];
     }
 
     #endregion
 
     #region Public
     //Spells
+    //Fireball
     public void ShootFireball() {
-		PLAYSPELL (AUDIO.FireballProjectile);
+		PLAYSPELL (SOURCES.SPELL, AUDIO.FireballProjectile, 0.5f);
 	}
 
+    //Haste
     public void ActivateHaste()
     {
-        PLAYSPELL(AUDIO.Haste);
+        PLAYSPELL(SOURCES.SPELL, AUDIO.Haste);
     }
 
-    public void ActivateFlameCone()
+    //FireCone
+    public void PlayFireCone()
     {
-        PLAYSPELL(AUDIO.FlameCone);
+        AudioSource audioSource = audioSources[(int)SOURCES.FIRECONE];
+        if (!audioSource.isPlaying)
+        {
+            PLAYSPELL(SOURCES.FIRECONE, AUDIO.FlameCone, 0.25f, true);
+        }
     }
 
-    public void ActivateFlameVortex()
+    public void StopFireCone()
     {
-        PLAYSPELL(AUDIO.FireVortex, 0.5f);
+        stopSource(SOURCES.FIRECONE);
     }
 
-    public void ActiveIceStorm()
+    //Fire Storm
+    public void PlayFireStorm()
     {
-        PLAYSPELL(AUDIO.IceStorm, 0.5f);
+        PLAYSPELL(SOURCES.FIRESTORM, AUDIO.FireStorm, 0.5f);
     }
 
+    public void StopFireStorm()
+    {
+        stopSource(SOURCES.FIRESTORM);
+    }
+
+    //IceStorm
+    public void PlayIceStorm()
+    {
+        PLAYSPELL(SOURCES.ICESTORM, AUDIO.IceStorm, 0.5f);
+    }
+
+    public void StopIceStorm()
+    {
+        stopSource(SOURCES.ICESTORM);
+    }
+
+    //Generic Spell
     public void StopSpells()
     {
-        STOPSPELLS();
+        stopSource(SOURCES.SPELL);
     }
 
     //Character
     public void PlayHealPlayer()
     {
-        PLAYCHARACTER(AUDIO.Healing);
+        AudioSource audioSource = audioSources[(int)SOURCES.HEAL];
+        fadeAudio(audioSource, 0.5f);
+        audioSource.PlayOneShot (AUDIO.Healing);
     }
 
     public void StopHealPlayer()
     {
-        STOPCHARACTER();
+        AudioSource audioSource = audioSources[(int)SOURCES.HEAL];
+        fadeAudio(audioSource, 0f);
+    }
+
+    public void PlayHurtPlayer()
+    {
+        int index = UnityEngine.Random.Range(0, AUDIO.PlayerHurt.Length);
+
+        PLAYCHARACTER(AUDIO.PlayerHurt[index], 1.0f);
+    }
+
+    public void PlayPlayerDeath()
+    {
+        PLAYCHARACTER(AUDIO.PlayerDeath, 1.0f);
+    }
+
+
+    //UNIQUE/GENERIC
+    public void STOPGENERIC()
+    {
+        stopSource(SOURCES.GENERIC);
     }
 
     #endregion
