@@ -20,6 +20,8 @@ public class BossController : ICharacter {
     {
         base.decrementHealth(damage);
         healthBar.SetActive(true);
+        //AUDIO
+        AudioManager.instance.PlayTreeBossHurt();
     }
 
     protected override void onDeath()

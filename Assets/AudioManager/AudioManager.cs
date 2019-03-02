@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour {
         HEAL,
         CHARACTER,
         ENEMY,
+        BOSS,
         GENERIC
     }
 
@@ -92,7 +93,13 @@ public class AudioManager : MonoBehaviour {
         AudioSource audioSource = audioSources[(int)SOURCES.ENEMY];
         audioSource.PlayOneShot(clip, volume);
     }
-  
+
+    void PLAYBOSS(AudioClip clip, float volume = 1.0f)
+    {
+        AudioSource audioSource = audioSources[(int)SOURCES.BOSS];
+        audioSource.PlayOneShot(clip, volume);
+    }
+
     void PLAYGENERIC(AudioClip clip, float volume = 1.0f)
     {
         getGenericSource().PlayOneShot(clip, volume);
@@ -249,11 +256,17 @@ public class AudioManager : MonoBehaviour {
         PLAYENEMY(AUDIO.ZombieDeath[index], 0.5f);
     }
 
+    //Boss
+    public void PlayTreeBossHurt()
+    {
+        int index = UnityEngine.Random.Range(0, AUDIO.TreeBossHurt.Length);
+        PLAYENEMY(AUDIO.TreeBossHurt[index], 0.5f);
+    }
 
     //UNIQUE/GENERIC
-    public void STOPGENERIC()
+    public void PlayItemHealingPickup()
     {
-        stopSource(SOURCES.GENERIC);
+        PLAYGENERIC(AUDIO.HealingItem, 1.0f);
     }
 
     #endregion

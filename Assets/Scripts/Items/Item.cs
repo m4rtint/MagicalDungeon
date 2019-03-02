@@ -18,6 +18,8 @@ public class Item : MonoBehaviour {
         if (character.CompareTag(Tags.PLAYER))
         {
             character.GetComponent<ICharacter>().incrementHealth(amountHealed);
+            //AUDIO
+            AudioManager.instance.PlayItemHealingPickup();
             Destroy(gameObject);
         }
     }
