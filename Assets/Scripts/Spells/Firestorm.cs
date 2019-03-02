@@ -10,7 +10,8 @@ public class Firestorm : ISpell, IPooledObject
     float currentCoolDown = 0;
 
     //Animation
-    float fadeTime = 0.5f;
+    const float fadeInTime = 0.5f;
+    const float fadeOutTime = 0.1f;
 
     protected override void Update()
     {
@@ -18,7 +19,7 @@ public class Firestorm : ISpell, IPooledObject
         if (!isMoving)
         {
             currentTimeToLive += Time.fixedDeltaTime;
-            if (currentTimeToLive > idleTimeToLive - fadeTime)
+            if (currentTimeToLive > idleTimeToLive - fadeOutTime)
             {
                 endFireStorm();
             }
@@ -29,14 +30,24 @@ public class Firestorm : ISpell, IPooledObject
     void endFireStorm()
     {
         Hashtable ht = new Hashtable();
-        ht.Add("alpha", 0);
-        ht.Add("time", fadeTime);
+        ht.Add("alpha", 0f);
+        ht.Add("time", fadeOutTime);
         ht.Add("oncomplete", "onCompleteEndFireStormFade");
+        iTween.FadeTo(gameObject, ht);
+    }
+
+    void starFireStorm()
+    {
+        Hashtable ht = new Hashtable();
+        ht.Add("alpha", 1.0f);
+        ht.Add("time", fadeInTime);
         iTween.FadeTo(gameObject, ht);
     }
 
     void onCompleteEndFireStormFade()
     {
+        //AUDIO
+        AudioManager.instance.StopFireStorm();
         gameObject.SetActive(false);
     }
 
@@ -46,19 +57,15 @@ public class Firestorm : ISpell, IPooledObject
         isMoving = false;
     }
 
-    void resetAlpha()
-    {
-        GetComponent<SpriteRenderer>().color = Color.white;
-    }
-
 
     public void OnObjectSpawn()
     {
-        resetAlpha();
+        starFireStorm();
         Vector3 dir = transform.rotation.eulerAngles;
         angle = Utilities.getAngleDegBetween(dir.y, dir.x);
         currentTimeToLive = 0;
         isMoving = true;
+        AudioManager.instance.PlayFireStorm();
     }
 
     protected override void OnTriggerEnter2D(Collider2D col)

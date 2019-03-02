@@ -59,6 +59,16 @@ public class ConeSpell : MonoBehaviour {
         bool onIfAble = !isConePowerEmpty() && isOn;
         GetComponent<SpriteRenderer>().enabled = onIfAble;
         GetComponent<BoxCollider2D>().enabled = onIfAble;
+
+        //AUDIO
+        if (onIfAble)
+        {
+            AudioManager.instance.PlayFireCone();
+        }
+        else
+        {
+            AudioManager.instance.StopFireCone();
+        }
     }
 
     private void resetCanDamage()

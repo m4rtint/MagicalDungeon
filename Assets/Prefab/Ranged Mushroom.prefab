@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 114170456134687036}
   - component: {fileID: 95896265035826498}
   - component: {fileID: 114742266692375800}
-  - component: {fileID: 114658099122651130}
   m_Layer: 0
   m_Name: Ranged Mushroom
   m_TagString: Enemy
@@ -151,23 +150,6 @@ MonoBehaviour:
   sendMessages: 1
   debugPath: 1
   avoidRadius: 0
---- !u!114 &114658099122651130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1276287899759596}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aaa139d1cbc69241b771daf1e68710b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 100
-  moveSpeed: 5
-  invulnerableTimer: 0.5
-  healthBar: {fileID: 1982174973680544, guid: 8d138036f44e2684fa68d213d9c94c03, type: 2}
-  meleeDamage: 10
-  agroRange: 5
 --- !u!114 &114742266692375800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,12 +161,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493bc4f2965374b1d905a9918eb8b79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
   moveSpeed: 5
   invulnerableTimer: 0.5
+  healthPoints: 100
   healthBar: {fileID: 1621632457807296}
   meleeDamage: 10
   agroRange: 6
+  monster: 0
+  attackRange: 6
   attackTime: 2
 --- !u!212 &212555827855764930
 SpriteRenderer:

@@ -167,6 +167,7 @@ MonoBehaviour:
   healthBar: {fileID: 1562785416933926}
   meleeDamage: 10
   agroRange: 4.15
+  monster: 2
   attackRange: 7.18
   attackTime: 2
 --- !u!212 &212138753393141522
@@ -209,7 +210,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.78125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

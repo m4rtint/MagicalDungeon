@@ -11,7 +11,7 @@ public enum STATE
 
 public class CharacterGlow : MonoBehaviour {
 
-    const float colorGlowTimer = 2f;
+    const float colorGlowTimer = 0.5f;
     SpriteRenderer glowColour;
     float currentGlowTimer = 0;
     bool isGlowing = false;

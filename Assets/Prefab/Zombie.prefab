@@ -161,12 +161,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aaa139d1cbc69241b771daf1e68710b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 50
   moveSpeed: 2.5
   invulnerableTimer: 0.5
+  healthPoints: 50
   healthBar: {fileID: 1377003075469184}
   meleeDamage: 5
   agroRange: 6.44
+  monster: 1
 --- !u!212 &212387286431734664
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -207,7 +208,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

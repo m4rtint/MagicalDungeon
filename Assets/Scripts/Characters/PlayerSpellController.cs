@@ -40,6 +40,9 @@ public class PlayerSpellController : ICharacter
         {
             gameObject.SetActive(false);
             onCharacterDeath();
+
+            //AUDIO
+            AudioManager.instance.PlayPlayerDeath();
         }
         onCharacterDeath = null;
     }
@@ -74,6 +77,8 @@ public class PlayerSpellController : ICharacter
             cooldownHolder.InitiateCooldown(3);
             playerController.castSpell();
             onStateChange(STATE.HASTE);
+            //AUDIO
+            AudioManager.instance.ActivateHaste();
         }
 
         if (InputManager.skillFourPressed() && !cooldownHolder.isCoolingDown(4)){
@@ -102,6 +107,8 @@ public class PlayerSpellController : ICharacter
             GameObject fireball = ObjectPooler.Instance.SpawnFromPool(Pool.FIREBALL, transform.position, getPlayerRotation());
             fireball.GetComponent<Fireball>().OnObjectSpawn();
             playerController.castSpell();
+            //AUDIO
+            AudioManager.instance.ShootFireball();
         }
     }
 
@@ -136,6 +143,13 @@ public class PlayerSpellController : ICharacter
     {
         base.incrementHealth(heal);
         GetComponent<PlayerSpellController>().onStateChange(STATE.HEAL);
+    }
+
+    public override void decrementHealth(float damage)
+    {
+        base.decrementHealth(damage);
+        //AUDIO
+        AudioManager.instance.PlayHurtPlayer();
     }
     #endregion
 }
