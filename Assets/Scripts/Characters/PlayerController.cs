@@ -61,17 +61,6 @@ public class PlayerController : MonoBehaviour {
             {
                 animate.SetBool(IDLE, (x > 0));
             }
-            else
-            {
-                if (y > 0)
-                {
-                    //playerSpriteRenderer.sprite = upSprite;
-                }
-                else
-                {
-                    //playerSpriteRenderer.sprite = downSprite;
-                }
-            }
         }
         
     }
