@@ -8,6 +8,8 @@ public class EnemyController : ICharacter, IPooledObject {
     const string ANIMATION_DEATH = "Death";
     const string ANIMATION_DAMAGED = "Damaged";
 
+    private Color frozenColor = new Color(0, 255, 255, 255);
+
     protected PolyNavAgent agent;
     protected GameObject player;
 
@@ -52,11 +54,13 @@ public class EnemyController : ICharacter, IPooledObject {
     {
         base.modifySpeed(mod, time);
         setSpeed();
+        GetComponent<SpriteRenderer>().color = frozenColor;
     }
 
     protected override void resetSpeedCoolDown()
     {
         base.resetSpeedCoolDown();
+        GetComponent<SpriteRenderer>().color = Color.white;
         setSpeed();
     }
 
