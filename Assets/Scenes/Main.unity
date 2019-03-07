@@ -54781,7 +54781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   invulnerableTimer: 1
-  healthPoints: 1
+  healthPoints: 100
   healthBar: {fileID: 1178251937}
   coneSpellHolder: {fileID: 379551309}
   glow: {fileID: 1556874204}
