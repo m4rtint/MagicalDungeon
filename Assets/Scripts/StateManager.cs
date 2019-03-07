@@ -17,6 +17,9 @@ public class StateManager : MonoBehaviour {
     [SerializeField]
     GameObject gameWon;
 
+    [SerializeField]
+    GameObject fade;
+
     bool allowReset = false;
 
     private void Awake()
@@ -25,6 +28,7 @@ public class StateManager : MonoBehaviour {
         gameWon.SetActive(false);
         player.GetComponent<ICharacter>().onCharacterDeath += didLose;
         boss.GetComponent<ICharacter>().onCharacterDeath += didWin;
+        fadeIn();
     }
 
 	
@@ -32,8 +36,13 @@ public class StateManager : MonoBehaviour {
 	void Update () {
 		if (Input.anyKeyDown && allowReset)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            fadeOut();
         }
+    }
+
+    void loadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void didLose()
@@ -61,5 +70,29 @@ public class StateManager : MonoBehaviour {
     private void YouWonAppear()
     {
         gameWon.SetActive(true);
+    }
+
+
+    private void fadeOut()
+    {
+        Hashtable var = new Hashtable();
+        var.Add("easetype", "easeInQuart");
+        var.Add("scale", new Vector3(100f, 100f));
+        var.Add("time", 2);
+        var.Add("oncompletetarget", gameObject);
+        var.Add("oncomplete", "loadScene");
+
+        iTween.ScaleTo(fade, var);
+    }
+
+    private void fadeIn()
+    {
+        fade.transform.localScale = new Vector3(100f, 100f);
+        Hashtable var = new Hashtable();
+        var.Add("easetype", "easeInQuart");
+        var.Add("scale", Vector3.zero);
+        var.Add("time", 2);
+
+        iTween.ScaleTo(fade, var);
     }
 }
