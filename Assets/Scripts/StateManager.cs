@@ -89,7 +89,7 @@ public class StateManager : MonoBehaviour {
     {
         fade.transform.localScale = new Vector3(100f, 100f);
         Hashtable var = new Hashtable();
-        var.Add("easetype", "easeInQuart");
+        var.Add("easetype", "easeOutExpo");
         var.Add("scale", Vector3.zero);
         var.Add("time", 2);
 
