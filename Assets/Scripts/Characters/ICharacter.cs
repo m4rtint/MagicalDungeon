@@ -20,7 +20,6 @@ public class ICharacter : MonoBehaviour {
     float invulnerableTimer;
     bool isInvulnerable = false;
 
-
     [Header("Health")]
     [SerializeField]
     float healthPoints;
@@ -38,6 +37,11 @@ public class ICharacter : MonoBehaviour {
     public float SpeedModifier()
     {
         return speedModifier;
+    }
+
+    public void setInvulnerable()
+    {
+        isInvulnerable = true;
     }
     #endregion
 
