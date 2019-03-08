@@ -55178,8 +55178,8 @@ MonoBehaviour:
   - tag: 0
     percentage: 0.218
   - tag: 2
-    percentage: 0.639
-  maxActiveEnemySpawned: 5
+    percentage: 0.3
+  maxActiveEnemySpawned: 3
   maxEnemySpawned: 4
   isRespawning: 1
 --- !u!4 &1636585100
