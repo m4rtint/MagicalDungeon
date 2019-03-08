@@ -22,6 +22,7 @@ public class StateManager : MonoBehaviour {
 
     bool allowReset = false;
 
+
     private void Awake()
     {
         gameOver.SetActive(false);

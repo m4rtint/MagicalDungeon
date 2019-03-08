@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   invulnerableTimer: 0
-  healthPoints: 500
+  healthPoints: 1
   healthBar: {fileID: 1806010862}
 --- !u!95 &24039415
 Animator:
@@ -35628,20 +35628,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 1634865554}
-  - {fileID: 479447092}
-  - {fileID: 724691832}
-  - {fileID: 75149687}
-  - {fileID: 1942561655}
-  - {fileID: 1240142424}
-  - {fileID: 2078351022}
-  - {fileID: 575562419}
-  - {fileID: 1109456942}
-  - {fileID: 321358446}
-  - {fileID: 1157634208}
   - {fileID: 43634573}
-  - {fileID: 1048502511}
+  - {fileID: 479447092}
+  - {fileID: 321358446}
+  - {fileID: 75149687}
   - {fileID: 1790221686}
+  - {fileID: 1048502511}
+  - {fileID: 1157634208}
+  - {fileID: 1109456942}
+  - {fileID: 575562419}
+  - {fileID: 2078351022}
+  - {fileID: 1240142424}
+  - {fileID: 1942561655}
+  - {fileID: 724691832}
+  - {fileID: 1634865554}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -36572,7 +36572,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2fac314bfad33498397674c3af63503e, type: 3}
     m_FontSize: 140
     m_FontStyle: 0
     m_BestFit: 0
@@ -50613,7 +50613,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2fac314bfad33498397674c3af63503e, type: 3}
     m_FontSize: 140
     m_FontStyle: 0
     m_BestFit: 0
@@ -50770,7 +50770,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2fac314bfad33498397674c3af63503e, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -55189,9 +55189,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monstersToSpawn:
   - tag: 0
-    percentage: 0.218
+    percentage: 0.541
   - tag: 2
-    percentage: 0.639
+    percentage: 0.203
   maxActiveEnemySpawned: 5
   maxEnemySpawned: 4
   isRespawning: 1
@@ -55407,7 +55407,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2fac314bfad33498397674c3af63503e, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0

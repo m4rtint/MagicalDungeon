@@ -10,10 +10,7 @@ public class BossController : ICharacter {
         healthBar.SetActive(false);
     }
 
-    protected override void Update()
-    {
-
-    }
+    protected override void Update(){}
 
 
     public override void decrementHealth(float damage)
