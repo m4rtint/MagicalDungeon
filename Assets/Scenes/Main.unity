@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   invulnerableTimer: 0
-  healthPoints: 1000
+  healthPoints: 500
   healthBar: {fileID: 1806010862}
 --- !u!95 &24039415
 Animator:
@@ -513,6 +513,14 @@ Prefab:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4485268830403706, guid: e126e6980584c4c87b789d63bee39cf4, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485268830403706, guid: e126e6980584c4c87b789d63bee39cf4, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e126e6980584c4c87b789d63bee39cf4, type: 2}
   m_IsPrefabAsset: 0
@@ -704,7 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd095aef410ba564ab83b096c134cc03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
   perTime: 0.1
   maxConeCapacity: 2000
   coneRecharge: 5
@@ -36079,6 +36087,11 @@ Prefab:
     - target: {fileID: 4743319611947570, guid: 100458754b037436f82ea52b79aa2e67, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114270081951269342, guid: 100458754b037436f82ea52b79aa2e67,
+        type: 2}
+      propertyPath: damage
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 100458754b037436f82ea52b79aa2e67, type: 2}
