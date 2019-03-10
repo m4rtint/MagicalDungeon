@@ -54,6 +54,7 @@ public class StateManager : MonoBehaviour {
 
     void didWin()
     {
+        player.GetComponent<ICharacter>().setInvulnerable();
         YouWonAppear();
         Invoke("activateReset", 2.5f);
     }

@@ -28,7 +28,7 @@ public class ICharacter : MonoBehaviour {
 
     private float maxHealth;
 
-    #region Getter
+    #region SetterGetter
     public float MoveSpeed()
     {
         return moveSpeed;
@@ -39,9 +39,15 @@ public class ICharacter : MonoBehaviour {
         return speedModifier;
     }
 
+    public void resetInvulnerable()
+    {
+        isInvulnerable = false;
+    }
+
     public void setInvulnerable()
     {
         isInvulnerable = true;
+        CancelInvoke();
     }
     #endregion
 
@@ -90,6 +96,7 @@ public class ICharacter : MonoBehaviour {
     #region Health
     public virtual void decrementHealth(float damage)
     {
+        damage = isInvulnerable ? 0 : damage;
         healthPoints = Mathf.Clamp(healthPoints - damage, 0, maxHealth);
         if (isHealthZero())
         {
@@ -127,12 +134,6 @@ public class ICharacter : MonoBehaviour {
             decrementHealth(damage);
             Invoke("resetInvulnerable", invulnerableTimer);
         }
-    }
-
-
-    public void resetInvulnerable()
-    {
-        isInvulnerable = false;
     }
 
     #endregion

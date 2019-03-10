@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   invulnerableTimer: 0
-  healthPoints: 1
+  healthPoints: 1000
   healthBar: {fileID: 1806010862}
 --- !u!95 &24039415
 Animator:
@@ -35628,19 +35628,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 43634573}
-  - {fileID: 479447092}
-  - {fileID: 321358446}
-  - {fileID: 75149687}
-  - {fileID: 1790221686}
-  - {fileID: 1048502511}
-  - {fileID: 1157634208}
-  - {fileID: 1109456942}
-  - {fileID: 575562419}
-  - {fileID: 2078351022}
-  - {fileID: 1240142424}
-  - {fileID: 1942561655}
   - {fileID: 724691832}
+  - {fileID: 2078351022}
+  - {fileID: 1157634208}
+  - {fileID: 75149687}
+  - {fileID: 575562419}
+  - {fileID: 1048502511}
+  - {fileID: 1942561655}
+  - {fileID: 321358446}
+  - {fileID: 1790221686}
+  - {fileID: 479447092}
+  - {fileID: 1240142424}
+  - {fileID: 1109456942}
+  - {fileID: 43634573}
   - {fileID: 1634865554}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
@@ -54681,7 +54681,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1541141924}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.3, y: -0.3, z: 0}
+  m_LocalPosition: {x: -3.8, y: -1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 379551310}
