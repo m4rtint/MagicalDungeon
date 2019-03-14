@@ -43,12 +43,6 @@ public class ICharacter : MonoBehaviour {
     {
         isInvulnerable = false;
     }
-
-    public void setInvulnerable()
-    {
-        isInvulnerable = true;
-        CancelInvoke();
-    }
     #endregion
 
     #region Mono
@@ -96,7 +90,6 @@ public class ICharacter : MonoBehaviour {
     #region Health
     public virtual void decrementHealth(float damage)
     {
-        damage = isInvulnerable ? 0 : damage;
         healthPoints = Mathf.Clamp(healthPoints - damage, 0, maxHealth);
         if (isHealthZero())
         {

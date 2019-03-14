@@ -21,7 +21,7 @@ public class StateManager : MonoBehaviour {
     GameObject fade;
 
     bool allowReset = false;
-
+    bool playerWonGame = false;
 
     private void Awake()
     {
@@ -48,13 +48,16 @@ public class StateManager : MonoBehaviour {
 
     void didLose()
     {
-        ResetButtonAppear();
-        Invoke("activateReset", 2.5f);
+        if (!playerWonGame)
+        {
+            ResetButtonAppear();
+            Invoke("activateReset", 2.5f);
+        }
     }
 
     void didWin()
     {
-        player.GetComponent<ICharacter>().setInvulnerable();
+        playerWonGame = true;
         YouWonAppear();
         Invoke("activateReset", 2.5f);
     }
