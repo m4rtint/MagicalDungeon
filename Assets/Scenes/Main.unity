@@ -35628,20 +35628,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnUpdate: 1
   navObstacles:
-  - {fileID: 724691832}
-  - {fileID: 2078351022}
-  - {fileID: 1157634208}
-  - {fileID: 75149687}
-  - {fileID: 575562419}
-  - {fileID: 1048502511}
-  - {fileID: 1942561655}
-  - {fileID: 321358446}
-  - {fileID: 1790221686}
-  - {fileID: 479447092}
-  - {fileID: 1240142424}
-  - {fileID: 1109456942}
-  - {fileID: 43634573}
   - {fileID: 1634865554}
+  - {fileID: 1109456942}
+  - {fileID: 75149687}
+  - {fileID: 1240142424}
+  - {fileID: 1790221686}
+  - {fileID: 1942561655}
+  - {fileID: 1048502511}
+  - {fileID: 575562419}
+  - {fileID: 43634573}
+  - {fileID: 1157634208}
+  - {fileID: 2078351022}
+  - {fileID: 321358446}
+  - {fileID: 724691832}
+  - {fileID: 479447092}
   inflateRadius: 0.1
   masterCollider: {fileID: 512375593}
 --- !u!60 &512375593
@@ -51039,7 +51039,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
