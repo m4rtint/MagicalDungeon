@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class StateManager : MonoBehaviour {
 
+    enum GameState
+    {
+        InGame,
+        Win,
+        Lose
+    }
+
     [SerializeField]
     GameObject player;
 
@@ -20,8 +27,9 @@ public class StateManager : MonoBehaviour {
     [SerializeField]
     GameObject fade;
 
+    GameState currentState = GameState.InGame;
+
     bool allowReset = false;
-    bool playerWonGame = false;
 
     private void Awake()
     {
@@ -48,8 +56,9 @@ public class StateManager : MonoBehaviour {
 
     void didLose()
     {
-        if (!playerWonGame)
+        if (currentState == GameState.InGame)
         {
+            currentState = GameState.Lose;
             ResetButtonAppear();
             Invoke("activateReset", 2.5f);
         }
@@ -57,9 +66,12 @@ public class StateManager : MonoBehaviour {
 
     void didWin()
     {
-        playerWonGame = true;
-        YouWonAppear();
-        Invoke("activateReset", 2.5f);
+        if (currentState == GameState.InGame)
+        {
+            currentState = GameState.Win;
+            YouWonAppear();
+            Invoke("activateReset", 2.5f);
+        }
     }
 
     void activateReset()
