@@ -122,7 +122,7 @@ public class EnemyController : ICharacter, IPooledObject {
         GetComponent<Collider2D>().enabled = false;
         stopMovement();
         playDeathAudio();
-        Invoke("completeDeathAnimation", 1.5f);
+        Invoke("completeDeathAnimation", 1.2f);
     }
 
     void stopMovement()
