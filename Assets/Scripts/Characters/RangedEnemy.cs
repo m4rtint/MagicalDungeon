@@ -12,6 +12,8 @@ public class RangedEnemy : EnemyController {
     float attackTime = 2f;
     float currentAttackCoolDown = 0;
 
+    const string ANIMATION_ATTACK = "Attack";
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -47,7 +49,8 @@ public class RangedEnemy : EnemyController {
         // If player is within attack range 
         if (isAttackNeeded()) { 
             currentAttackCoolDown = attackTime;
-            attackPlayer();
+            runAnimation(ANIMATION_ATTACK);
+            Invoke("attackPlayer", 0.8f);
         }
     }
 

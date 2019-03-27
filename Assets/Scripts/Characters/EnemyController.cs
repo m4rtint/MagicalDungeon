@@ -7,6 +7,7 @@ public class EnemyController : ICharacter, IPooledObject {
 
     const string ANIMATION_DEATH = "Death";
     const string ANIMATION_DAMAGED = "Damaged";
+    const string ANIMATION_ATTACK = "Attack";
 
     private Color frozenColor = new Color(0, 255, 255, 255);
 
@@ -130,7 +131,7 @@ public class EnemyController : ICharacter, IPooledObject {
         agent.enabled = false;
     }
 
-    void runAnimation(string name)
+    protected void runAnimation(string name)
     {
         GetComponent<Animator>().SetTrigger(name);
     }
